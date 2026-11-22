@@ -15,6 +15,9 @@ import type {
   UserSrsCard,
   Vocabulary,
 } from '../../../shared/types';
+import { firestoreApi } from './firestoreApi';
+
+const USE_FIRESTORE_DIRECT = import.meta.env.VITE_USE_FIRESTORE_DIRECT === 'true';
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, {
@@ -99,7 +102,7 @@ export interface SurvivalPhrase {
   audio_slow_url: string;
 }
 
-export const api = {
+const httpApi = {
   getHealth: () =>
     request<{
       ok: boolean;
@@ -236,3 +239,5 @@ export const api = {
       body: JSON.stringify(payload),
     }),
 };
+
+export const api = USE_FIRESTORE_DIRECT ? firestoreApi : httpApi;

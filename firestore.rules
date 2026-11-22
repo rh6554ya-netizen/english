@@ -1,0 +1,28 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{col}/{docId} {
+      allow read, write: if col in [
+        'content_sources',
+        'categories',
+        'scenarios',
+        'dialogues',
+        'dialogue_turns',
+        'sentence_patterns',
+        'expression_groups',
+        'expressions',
+        'vocabulary',
+        'dialogue_turn_vocabulary',
+        'cultural_notes',
+        'exercises',
+        'users',
+        'user_scenario_progress',
+        'user_srs_cards',
+        'user_practice_logs',
+        'listening_playlists',
+        'playlist_items'
+      ];
+    }
+  }
+}

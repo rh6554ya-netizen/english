@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { DashboardPage } from './pages/DashboardPage';
 import { ScenariosPage } from './pages/ScenariosPage';
@@ -10,9 +10,12 @@ import { SurvivalPage } from './pages/SurvivalPage';
 import { SrsVaultPage } from './pages/SrsVaultPage';
 import { AdminPage } from './pages/AdminPage';
 
+const useHashRouter = import.meta.env.VITE_USE_HASH_ROUTER === 'true';
+
 export default function App() {
+  const Router = useHashRouter ? HashRouter : BrowserRouter;
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<DashboardPage />} />
@@ -26,6 +29,6 @@ export default function App() {
           <Route path="/admin" element={<AdminPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }

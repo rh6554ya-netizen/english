@@ -10,7 +10,8 @@
     "dev:client": "npm --prefix client run dev",
     "build": "npm --prefix server run build && npm --prefix client run build",
     "tts:generate": "node scripts/generate-tts.mjs",
-    "seed:firebase": "node scripts/seed-firebase.mjs"
+    "seed:firebase": "node scripts/seed-firebase.mjs",
+    "deploy:pages": "node scripts/deploy-gh-pages.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

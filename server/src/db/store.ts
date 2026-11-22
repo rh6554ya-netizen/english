@@ -14,8 +14,10 @@ function resolveProjectRoot(startDir: string): string {
   return path.resolve(startDir, '../../..');
 }
 const ROOT = resolveProjectRoot(__dirname);
+const SERVER_DIR = path.join(ROOT, 'server');
 const SEED_PATH = path.join(ROOT, 'data', 'seed-notebooklm.json');
 const RUNTIME_PATH = path.join(ROOT, 'data', 'runtime-db.json');
+const BATCH_LIMIT = 400;
 
 const COLLECTIONS: (keyof DatabaseState)[] = [
   'content_sources',
@@ -50,6 +52,18 @@ class DataStore {
   private mode: 'firebase' | 'local' = 'local';
   private projectId: string | null = null;
 
+  private resolveCredentialFile(rawPath: string): string {
+    const trimmed = rawPath.trim();
+    const candidates = path.isAbsolute(trimmed)
+      ? [trimmed]
+      : [path.resolve(SERVER_DIR, trimmed), path.resolve(ROOT, trimmed), path.resolve(trimmed)];
+    const found = candidates.find((p) => fs.existsSync(p));
+    if (!found) {
+      throw new Error(`找不到 GOOGLE_APPLICATION_CREDENTIALS 檔案：${trimmed}`);
+    }
+    return found;
+  }
+
   async init(): Promise<void> {
     const hasServiceJson = Boolean(process.env.FIREBASE_SERVICE_ACCOUNT_JSON?.trim());
     const hasCredPath = Boolean(process.env.GOOGLE_APPLICATION_CREDENTIALS?.trim());
@@ -57,22 +71,28 @@ class DataStore {
     if (hasServiceJson || hasCredPath) {
       try {
         if (!admin.apps.length) {
+          let cred: admin.ServiceAccount & { project_id?: string };
           if (hasServiceJson) {
-            const cred = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON!);
-            admin.initializeApp({
-              credential: admin.credential.cert(cred),
-              projectId: process.env.FIREBASE_PROJECT_ID || cred.project_id,
-            });
-            this.projectId = process.env.FIREBASE_PROJECT_ID || cred.project_id || null;
+            cred = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON!);
           } else {
-            admin.initializeApp({
-              credential: admin.credential.applicationDefault(),
-              projectId: process.env.FIREBASE_PROJECT_ID || undefined,
-            });
-            this.projectId = process.env.FIREBASE_PROJECT_ID || null;
+            const credPath = this.resolveCredentialFile(
+              process.env.GOOGLE_APPLICATION_CREDENTIALS!
+            );
+            cred = JSON.parse(fs.readFileSync(credPath, 'utf8'));
           }
+          const projectId = process.env.FIREBASE_PROJECT_ID || cred.project_id || undefined;
+          admin.initializeApp({
+            credential: admin.credential.cert(cred),
+            projectId,
+          });
+          this.projectId = projectId || null;
         }
         this.firestore = admin.firestore();
+        try {
+          this.firestore.settings({ ignoreUndefinedProperties: true });
+        } catch {
+          // settings() may only be called once per Firestore instance
+        }
         this.mode = 'firebase';
         await this.loadFromFirestoreOrSeed();
         console.log(`[DB] Connected to Firebase Firestore (project=${this.projectId ?? 'default'})`);
@@ -106,6 +126,22 @@ class DataStore {
     fs.writeFileSync(RUNTIME_PATH, JSON.stringify(this.state, null, 2), 'utf8');
   }
 
+  private async commitDocs(col: string, docs: Record<string, unknown>[]): Promise<void> {
+    if (!this.firestore || docs.length === 0) return;
+    for (let i = 0; i < docs.length; i += BATCH_LIMIT) {
+      const chunk = docs.slice(i, i + BATCH_LIMIT);
+      const batch = this.firestore.batch();
+      for (const item of chunk) {
+        const docId = this.getDocId(item);
+        const ref = docId
+          ? this.firestore.collection(col).doc(docId)
+          : this.firestore.collection(col).doc();
+        batch.set(ref, item, { merge: true });
+      }
+      await batch.commit();
+    }
+  }
+
   private async loadFromFirestoreOrSeed(): Promise<void> {
     if (!this.firestore) return;
     const seed = this.loadSeed();
@@ -117,15 +153,7 @@ class DataStore {
       for (const col of COLLECTIONS) {
         const items = seed[col] as unknown as Record<string, unknown>[];
         if (!items.length) continue;
-        const batch = this.firestore.batch();
-        for (const item of items) {
-          const docId = this.getDocId(item);
-          const ref = docId
-            ? this.firestore.collection(col).doc(docId)
-            : this.firestore.collection(col).doc();
-          batch.set(ref, item, { merge: true });
-        }
-        await batch.commit();
+        await this.commitDocs(col, items);
       }
       this.state = seed;
       return;
@@ -167,13 +195,7 @@ class DataStore {
 
   async saveCollection<K extends keyof DatabaseState>(col: K, changedDocs?: Record<string, unknown>[]): Promise<void> {
     if (this.mode === 'firebase' && this.firestore && changedDocs && changedDocs.length > 0) {
-      const batch = this.firestore.batch();
-      for (const doc of changedDocs) {
-        const id = this.getDocId(doc);
-        const ref = id ? this.firestore.collection(col).doc(id) : this.firestore.collection(col).doc();
-        batch.set(ref, doc, { merge: true });
-      }
-      await batch.commit();
+      await this.commitDocs(col, changedDocs);
     } else if (this.mode === 'local') {
       this.persistLocal();
     }

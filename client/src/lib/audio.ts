@@ -7,6 +7,15 @@
 let currentAudio: HTMLAudioElement | null = null;
 let currentCancel: (() => void) | null = null;
 
+export function resolveAudioUrl(url: string): string {
+  if (/^https?:\/\//i.test(url)) return url;
+  const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  if (url.startsWith(normalizedBase)) return url;
+  const clean = url.startsWith('/') ? url.slice(1) : url;
+  return `${normalizedBase}${clean}`;
+}
+
 export function stopAllAudio() {
   if (currentAudio) {
     currentAudio.pause();
@@ -62,7 +71,7 @@ export function playAudio({
     };
 
     if (url) {
-      const audio = new Audio(url);
+      const audio = new Audio(resolveAudioUrl(url));
       audio.playbackRate = rate;
       currentAudio = audio;
       audio.onended = () => {
