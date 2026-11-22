@@ -2,7 +2,10 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   getDocs,
+  query,
+  where,
   writeBatch,
 } from 'firebase/firestore';
 import { firestore, isFirebaseClientConfigured } from './firebase';
@@ -31,9 +34,17 @@ import type {
   SurvivalPhrase,
 } from './api';
 
-const DEFAULT_USER_ID = 'demo-user';
-const LOCAL_STORAGE_KEY = 'echospeak_db_cache_v1';
-const COLLECTIONS: (keyof DatabaseState)[] = [
+const GUEST_USER_ID = 'demo-user';
+const GUEST_STORAGE_KEY = 'echospeak_guest_user_v2';
+
+export interface AuthUserInfo {
+  uid: string;
+  email?: string | null;
+  displayName?: string | null;
+  isAdmin?: boolean;
+}
+
+const PUBLIC_CONTENT_COLLECTIONS = [
   'content_sources',
   'categories',
   'scenarios',
@@ -46,13 +57,18 @@ const COLLECTIONS: (keyof DatabaseState)[] = [
   'dialogue_turn_vocabulary',
   'cultural_notes',
   'exercises',
-  'users',
-  'user_scenario_progress',
-  'user_srs_cards',
-  'user_practice_logs',
-  'listening_playlists',
-  'playlist_items',
-];
+] as const;
+
+type PublicContentKey = (typeof PUBLIC_CONTENT_COLLECTIONS)[number];
+
+interface UserScopedState {
+  users: UserProfile[];
+  user_scenario_progress: UserScenarioProgress[];
+  user_srs_cards: UserSrsCard[];
+  user_practice_logs: UserPracticeLog[];
+  user_playlists: ListeningPlaylist[];
+  user_playlist_items: PlaylistItem[];
+}
 
 const SURVIVAL_PHRASES: SurvivalPhrase[] = [
   {
@@ -231,89 +247,316 @@ function stripUndefined<T extends Record<string, unknown>>(obj: T): Record<strin
   return out;
 }
 
+function buildDefaultGuestState(seed: DatabaseState): UserScopedState {
+  return {
+    users: seed.users.length
+      ? seed.users
+      : [
+          {
+            id: GUEST_USER_ID,
+            email: 'guest@echospeak.local',
+            display_name: '訪客學員',
+            role: 'learner',
+            current_level: 'beginner',
+            learning_goal: 'travel_solo',
+            preferred_accent: 'US',
+            daily_goal_minutes: 15,
+            streak_days: 1,
+            last_active_date: todayIsoDate(),
+            created_at: new Date().toISOString(),
+          },
+        ],
+    user_scenario_progress: seed.user_scenario_progress || [],
+    user_srs_cards: seed.user_srs_cards || [],
+    user_practice_logs: seed.user_practice_logs || [],
+    user_playlists: [],
+    user_playlist_items: [],
+  };
+}
+
+function buildNewAuthProfile(authUser: AuthUserInfo): UserProfile {
+  return {
+    id: authUser.uid,
+    email: authUser.email || `${authUser.uid}@firebase.user`,
+    display_name: authUser.displayName || 'EchoSpeak 學員',
+    role: authUser.isAdmin ? 'admin' : 'learner',
+    current_level: 'beginner',
+    learning_goal: 'travel_solo',
+    preferred_accent: 'US',
+    daily_goal_minutes: 15,
+    streak_days: 1,
+    last_active_date: todayIsoDate(),
+    created_at: new Date().toISOString(),
+  };
+}
+
 class BrowserDataStore {
-  private state: DatabaseState | null = null;
-  private loadingPromise: Promise<DatabaseState> | null = null;
+  private publicContent:
+    | (Pick<DatabaseState, PublicContentKey> & {
+        system_playlists: ListeningPlaylist[];
+        system_playlist_items: PlaylistItem[];
+      })
+    | null = null;
+  private publicLoading: Promise<void> | null = null;
+
+  private authUser: AuthUserInfo | null = null;
+  private loadedForUid: string | null = '__init__';
+  private userState: UserScopedState | null = null;
+  private userLoading: Promise<void> | null = null;
+
   private mode: 'firebase' | 'local' = 'local';
   private projectId: string | null = import.meta.env.VITE_FIREBASE_PROJECT_ID || null;
 
-  async ensureLoaded(): Promise<DatabaseState> {
-    if (this.state) return this.state;
-    if (this.loadingPromise) return this.loadingPromise;
+  setAuthUser(user: AuthUserInfo | null) {
+    const nextUid = user?.uid ?? null;
+    const prevUid = this.authUser?.uid ?? null;
+    const prevAdmin = Boolean(this.authUser?.isAdmin);
+    const nextAdmin = Boolean(user?.isAdmin);
+    this.authUser = user;
+    if (nextUid !== prevUid || prevAdmin !== nextAdmin) {
+      this.userState = null;
+      this.userLoading = null;
+      this.loadedForUid = '__init__';
+    }
+  }
 
-    this.loadingPromise = this.init().finally(() => {
-      this.loadingPromise = null;
+  getActiveUserId(): string {
+    return this.authUser?.uid ?? GUEST_USER_ID;
+  }
+
+  isSignedIn(): boolean {
+    return Boolean(this.authUser?.uid);
+  }
+
+  isAdminUser(): boolean {
+    return Boolean(this.authUser?.isAdmin);
+  }
+
+  private async ensurePublicLoaded(): Promise<void> {
+    if (this.publicContent) return;
+    if (this.publicLoading) return this.publicLoading;
+
+    this.publicLoading = (async () => {
+      const seed = cloneSeed();
+      if (isFirebaseClientConfigured && firestore) {
+        try {
+          const [contentSnaps, sysPlSnap, sysPlItemSnap] = await Promise.all([
+            Promise.all(
+              PUBLIC_CONTENT_COLLECTIONS.map((col) => getDocs(collection(firestore!, col)))
+            ),
+            getDocs(
+              query(collection(firestore, 'listening_playlists'), where('is_system', '==', true))
+            ),
+            getDocs(
+              query(collection(firestore, 'playlist_items'), where('is_system', '==', true))
+            ),
+          ]);
+
+          const content = {} as Pick<DatabaseState, PublicContentKey> & {
+            system_playlists: ListeningPlaylist[];
+            system_playlist_items: PlaylistItem[];
+          };
+
+          PUBLIC_CONTENT_COLLECTIONS.forEach((col, idx) => {
+            const snap = contentSnaps[idx];
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (content as any)[col] = !snap.empty
+              ? snap.docs.map((d) => d.data())
+              : seed[col];
+          });
+
+          content.system_playlists = !sysPlSnap.empty
+            ? (sysPlSnap.docs.map((d) => d.data()) as ListeningPlaylist[])
+            : seed.listening_playlists.filter((p) => p.is_system);
+
+          content.system_playlist_items = !sysPlItemSnap.empty
+            ? (sysPlItemSnap.docs.map((d) => d.data()) as PlaylistItem[])
+            : seed.playlist_items;
+
+          this.mode = 'firebase';
+          this.publicContent = content;
+          return;
+        } catch (err) {
+          console.warn('[EchoSpeak] Public Firestore load failed, falling back to bundled seed:', err);
+        }
+      }
+
+      this.mode = 'local';
+      this.publicContent = {
+        content_sources: seed.content_sources,
+        categories: seed.categories,
+        scenarios: seed.scenarios,
+        dialogues: seed.dialogues,
+        dialogue_turns: seed.dialogue_turns,
+        sentence_patterns: seed.sentence_patterns,
+        expression_groups: seed.expression_groups,
+        expressions: seed.expressions,
+        vocabulary: seed.vocabulary,
+        dialogue_turn_vocabulary: seed.dialogue_turn_vocabulary,
+        cultural_notes: seed.cultural_notes,
+        exercises: seed.exercises,
+        system_playlists: seed.listening_playlists.filter((p) => p.is_system),
+        system_playlist_items: seed.playlist_items,
+      };
+    })().finally(() => {
+      this.publicLoading = null;
     });
-    return this.loadingPromise;
+
+    return this.publicLoading;
   }
 
-  private async init(): Promise<DatabaseState> {
-    const seed = cloneSeed();
+  private async ensureUserLoaded(): Promise<void> {
+    const targetUid = this.authUser?.uid ?? null;
+    if (this.userState && this.loadedForUid === targetUid) return;
+    if (this.userLoading) return this.userLoading;
 
-    if (isFirebaseClientConfigured && firestore) {
-      try {
-        const snapshots = await Promise.all(
-          COLLECTIONS.map((col) => getDocs(collection(firestore!, col)))
-        );
-        const state = {} as DatabaseState;
-        let hasCloudData = false;
-        COLLECTIONS.forEach((col, idx) => {
-          const snap = snapshots[idx];
-          if (!snap.empty) {
-            hasCloudData = true;
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (state as any)[col] = snap.docs.map((d) => d.data());
+    this.userLoading = (async () => {
+      if (targetUid && this.mode === 'firebase' && firestore && this.authUser) {
+        try {
+          const [userDoc, progSnap, srsSnap, logSnap, plSnap, plItemSnap] = await Promise.all([
+            getDoc(doc(firestore, 'users', targetUid)),
+            getDocs(
+              query(
+                collection(firestore, 'user_scenario_progress'),
+                where('user_id', '==', targetUid)
+              )
+            ),
+            getDocs(
+              query(collection(firestore, 'user_srs_cards'), where('user_id', '==', targetUid))
+            ),
+            getDocs(
+              query(collection(firestore, 'user_practice_logs'), where('user_id', '==', targetUid))
+            ),
+            getDocs(
+              query(collection(firestore, 'listening_playlists'), where('user_id', '==', targetUid))
+            ),
+            getDocs(
+              query(collection(firestore, 'playlist_items'), where('user_id', '==', targetUid))
+            ),
+          ]);
+
+          let profile: UserProfile;
+          if (userDoc.exists()) {
+            profile = userDoc.data() as UserProfile;
           } else {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (state as any)[col] = seed[col];
+            profile = buildNewAuthProfile(this.authUser);
+            const batch = writeBatch(firestore);
+            batch.set(doc(firestore, 'users', targetUid), stripUndefined(profile as unknown as Record<string, unknown>), { merge: true });
+            await batch.commit();
           }
-        });
-        this.mode = 'firebase';
-        this.state = hasCloudData ? state : seed;
-        this.persistCache();
-        return this.state;
-      } catch (err) {
-        console.warn('[EchoSpeak] Firestore client load failed, falling back to local cache:', err);
-      }
-    }
 
-    this.mode = 'local';
-    try {
-      const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (cached) {
-        this.state = JSON.parse(cached) as DatabaseState;
-        return this.state;
+          this.userState = {
+            users: [profile],
+            user_scenario_progress: progSnap.docs.map((d) => d.data() as UserScenarioProgress),
+            user_srs_cards: srsSnap.docs.map((d) => d.data() as UserSrsCard),
+            user_practice_logs: logSnap.docs.map((d) => d.data() as UserPracticeLog),
+            user_playlists: plSnap.docs.map((d) => d.data() as ListeningPlaylist),
+            user_playlist_items: plItemSnap.docs.map((d) => d.data() as PlaylistItem),
+          };
+          this.loadedForUid = targetUid;
+          return;
+        } catch (err) {
+          console.warn('[EchoSpeak] Failed to load signed-in user Firestore data:', err);
+        }
       }
-    } catch {
-      // ignore storage errors
-    }
-    this.state = seed;
-    this.persistCache();
-    return this.state;
+
+      // Guest mode or offline fallback -> strictly localStorage (no unauthorized Firestore calls)
+      try {
+        const cached = localStorage.getItem(GUEST_STORAGE_KEY);
+        if (cached) {
+          this.userState = JSON.parse(cached) as UserScopedState;
+          this.loadedForUid = targetUid;
+          return;
+        }
+      } catch {
+        // ignore storage errors
+      }
+
+      this.userState = buildDefaultGuestState(cloneSeed());
+      this.loadedForUid = targetUid;
+      this.persistGuestState();
+    })().finally(() => {
+      this.userLoading = null;
+    });
+
+    return this.userLoading;
   }
 
-  private persistCache() {
-    if (!this.state) return;
+  async ensureLoaded(): Promise<DatabaseState> {
+    await this.ensurePublicLoaded();
+    await this.ensureUserLoaded();
+    const pub = this.publicContent!;
+    const usr = this.userState!;
+
+    return {
+      content_sources: pub.content_sources,
+      categories: pub.categories,
+      scenarios: pub.scenarios,
+      dialogues: pub.dialogues,
+      dialogue_turns: pub.dialogue_turns,
+      sentence_patterns: pub.sentence_patterns,
+      expression_groups: pub.expression_groups,
+      expressions: pub.expressions,
+      vocabulary: pub.vocabulary,
+      dialogue_turn_vocabulary: pub.dialogue_turn_vocabulary,
+      cultural_notes: pub.cultural_notes,
+      exercises: pub.exercises,
+      users: usr.users,
+      user_scenario_progress: usr.user_scenario_progress,
+      user_srs_cards: usr.user_srs_cards,
+      user_practice_logs: usr.user_practice_logs,
+      listening_playlists: [...pub.system_playlists, ...usr.user_playlists],
+      playlist_items: [...pub.system_playlist_items, ...usr.user_playlist_items],
+    };
+  }
+
+  getUserScopedState(): UserScopedState {
+    if (!this.userState) {
+      this.userState = buildDefaultGuestState(cloneSeed());
+    }
+    return this.userState;
+  }
+
+  persistGuestState() {
+    if (this.authUser || !this.userState) return;
     try {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.state));
+      localStorage.setItem(GUEST_STORAGE_KEY, JSON.stringify(this.userState));
     } catch {
       // ignore quota errors
     }
   }
 
   getBackendInfo(): { mode: 'firebase' | 'local'; projectId: string | null; note: string } {
+    if (this.mode === 'firebase') {
+      return {
+        mode: 'firebase',
+        projectId: this.projectId,
+        note: this.authUser
+          ? '已透過 Google 登入直連 Firebase Firestore（個人進度雲端隔離同步・公開教材唯讀保護）'
+          : '已直連雲端教材 Firestore（教材公開唯讀・個人進度暫存於本機，登入 Google 即可雲端同步）',
+      };
+    }
     return {
-      mode: this.mode,
+      mode: 'local',
       projectId: this.projectId,
-      note:
-        this.mode === 'firebase'
-          ? '已直連雲端 Firebase Firestore（GitHub Pages 靜態模式，18 張集合即時同步）'
-          : '目前使用瀏覽器本機暫存（離線降級模式）',
+      note: '目前使用瀏覽器本機暫存（離線降級模式）',
     };
   }
 
-  async saveDocs(col: keyof DatabaseState, docs: Record<string, unknown>[]): Promise<void> {
-    this.persistCache();
+  async saveUserDocs(
+    col:
+      | 'users'
+      | 'user_scenario_progress'
+      | 'user_srs_cards'
+      | 'user_practice_logs'
+      | 'listening_playlists'
+      | 'playlist_items',
+    docs: Record<string, unknown>[]
+  ): Promise<void> {
+    if (!this.authUser) {
+      this.persistGuestState();
+      return;
+    }
     if (this.mode !== 'firebase' || !firestore || docs.length === 0) return;
 
     const BATCH_LIMIT = 400;
@@ -330,8 +573,31 @@ class BrowserDataStore {
     }
   }
 
-  async removeDoc(col: keyof DatabaseState, id: string): Promise<void> {
-    this.persistCache();
+  async saveAdminContentDocs(col: keyof DatabaseState, docs: Record<string, unknown>[]): Promise<void> {
+    if (!this.isAdminUser()) {
+      throw new Error('權限不足：公開版教材已啟用唯讀保護，僅管理員帳號或本機後端可寫入教材。');
+    }
+    if (this.mode !== 'firebase' || !firestore || docs.length === 0) return;
+
+    const BATCH_LIMIT = 400;
+    for (let i = 0; i < docs.length; i += BATCH_LIMIT) {
+      const chunk = docs.slice(i, i + BATCH_LIMIT);
+      const batch = writeBatch(firestore);
+      for (const item of chunk) {
+        const clean = stripUndefined(item);
+        const id = getDocId(clean);
+        const ref = id ? doc(firestore, col, id) : doc(collection(firestore, col));
+        batch.set(ref, clean, { merge: true });
+      }
+      await batch.commit();
+    }
+  }
+
+  async removeUserDoc(col: 'user_srs_cards', id: string): Promise<void> {
+    if (!this.authUser) {
+      this.persistGuestState();
+      return;
+    }
     if (this.mode !== 'firebase' || !firestore) return;
     await deleteDoc(doc(firestore, col, id));
   }
@@ -339,8 +605,13 @@ class BrowserDataStore {
 
 const browserStore = new BrowserDataStore();
 
+export function setFirestoreAuthUser(user: AuthUserInfo | null) {
+  browserStore.setAuthUser(user);
+}
+
 function touchUserActivity(db: DatabaseState): UserProfile | null {
-  const user = db.users.find((u) => u.id === DEFAULT_USER_ID) || db.users[0] || null;
+  const uid = browserStore.getActiveUserId();
+  const user = db.users.find((u) => u.id === uid) || db.users[0] || null;
   if (!user) return null;
   const today = todayIsoDate();
   if (user.last_active_date !== today) {
@@ -371,7 +642,8 @@ export const firestoreApi = {
 
   async getDashboard(): Promise<DashboardResponse> {
     const db = await browserStore.ensureLoaded();
-    const user = db.users.find((u) => u.id === DEFAULT_USER_ID) || db.users[0];
+    const uid = browserStore.getActiveUserId();
+    const user = db.users.find((u) => u.id === uid) || db.users[0];
     const now = new Date();
     const todayStr = todayIsoDate();
 
@@ -393,10 +665,31 @@ export const firestoreApi = {
     );
 
     const goalCategoryMap: Record<string, string[]> = {
-      travel_solo: ['cat-travel-airport', 'cat-travel-dining', 'cat-shopping-tryon'],
-      travel_group: ['cat-shopping-tryon', 'cat-travel-dining', 'cat-travel-airport'],
-      daily_life: ['cat-daily-morning', 'cat-daily-kitchen', 'cat-social-park'],
-      small_talk: ['cat-social-park', 'cat-social-phone', 'cat-travel-dining'],
+      travel_solo: [
+        'cat-travel-airport',
+        'cat-travel-hotel',
+        'cat-travel-transport',
+        'cat-travel-dining',
+        'cat-shopping-tryon',
+      ],
+      travel_group: [
+        'cat-shopping-tryon',
+        'cat-travel-dining',
+        'cat-travel-hotel',
+        'cat-travel-airport',
+      ],
+      daily_life: [
+        'cat-daily-morning',
+        'cat-daily-kitchen',
+        'cat-daily-health',
+        'cat-social-park',
+      ],
+      small_talk: [
+        'cat-social-park',
+        'cat-social-weekend',
+        'cat-social-phone',
+        'cat-travel-dining',
+      ],
     };
     const preferredCats = goalCategoryMap[user.learning_goal] || [];
 
@@ -449,7 +742,8 @@ export const firestoreApi = {
 
   async updateProfile(body: Partial<UserProfile>) {
     const db = await browserStore.ensureLoaded();
-    const user = db.users.find((u) => u.id === DEFAULT_USER_ID) || db.users[0];
+    const uid = browserStore.getActiveUserId();
+    const user = db.users.find((u) => u.id === uid) || db.users[0];
     if (!user) throw new Error('User not found');
 
     if (body.display_name) user.display_name = String(body.display_name);
@@ -460,7 +754,7 @@ export const firestoreApi = {
       user.daily_goal_minutes = body.daily_goal_minutes;
     }
 
-    await browserStore.saveDocs('users', [user as unknown as Record<string, unknown>]);
+    await browserStore.saveUserDocs('users', [user as unknown as Record<string, unknown>]);
     return { user };
   },
 
@@ -484,6 +778,7 @@ export const firestoreApi = {
 
   async getScenarios(params?: Record<string, string>): Promise<{ scenarios: ScenarioListItem[] }> {
     const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
     const { category, difficulty, travel_mode, search, survival_only } = params || {};
 
     let catIds: string[] | null = null;
@@ -497,7 +792,7 @@ export const firestoreApi = {
 
     const progressMap = new Map(
       db.user_scenario_progress
-        .filter((p) => p.user_id === DEFAULT_USER_ID)
+        .filter((p) => p.user_id === uid)
         .map((p) => [p.scenario_id, p])
     );
 
@@ -543,6 +838,7 @@ export const firestoreApi = {
 
   async getScenarioDetail(slug: string): Promise<ScenarioDetailResponse> {
     const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
     const scenario = db.scenarios.find((s) => s.slug === slug || s.id === slug);
     if (!scenario) throw new Error('Scenario not found');
 
@@ -587,9 +883,8 @@ export const firestoreApi = {
       .sort((a, b) => a.sort_order - b.sort_order);
 
     const progress =
-      db.user_scenario_progress.find(
-        (p) => p.user_id === DEFAULT_USER_ID && p.scenario_id === scenario.id
-      ) || null;
+      db.user_scenario_progress.find((p) => p.user_id === uid && p.scenario_id === scenario.id) ||
+      null;
 
     return {
       scenario,
@@ -614,13 +909,15 @@ export const firestoreApi = {
     }
   ) {
     const db = await browserStore.ensureLoaded();
-    let prog = db.user_scenario_progress.find(
-      (p) => p.user_id === DEFAULT_USER_ID && p.scenario_id === scenarioId
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
+    let prog = usr.user_scenario_progress.find(
+      (p) => p.user_id === uid && p.scenario_id === scenarioId
     );
     if (!prog) {
       prog = {
-        id: `prog-${DEFAULT_USER_ID}-${scenarioId}`,
-        user_id: DEFAULT_USER_ID,
+        id: `prog-${uid}-${scenarioId}`,
+        user_id: uid,
         scenario_id: scenarioId,
         step1_blind_listen_done: false,
         step2_study_done: false,
@@ -629,7 +926,7 @@ export const firestoreApi = {
         completion_percent: 0,
         last_studied_at: new Date().toISOString(),
       };
-      db.user_scenario_progress.push(prog);
+      usr.user_scenario_progress.push(prog);
     }
 
     if (typeof body.step1_blind_listen_done === 'boolean') {
@@ -653,17 +950,17 @@ export const firestoreApi = {
     prog.last_studied_at = new Date().toISOString();
 
     const user = touchUserActivity(db);
-    await browserStore.saveDocs('user_scenario_progress', [
+    await browserStore.saveUserDocs('user_scenario_progress', [
       prog as unknown as Record<string, unknown>,
     ]);
     if (user) {
-      await browserStore.saveDocs('users', [user as unknown as Record<string, unknown>]);
+      await browserStore.saveUserDocs('users', [user as unknown as Record<string, unknown>]);
     }
 
     if (typeof body.duration_seconds === 'number' && body.duration_seconds > 0) {
       const log: UserPracticeLog = {
         id: randomId('log'),
-        user_id: DEFAULT_USER_ID,
+        user_id: uid,
         activity_type: typeof body.step4_quiz_best_score === 'number' ? 'quiz' : 'shadowing',
         target_type: 'scenario',
         target_id: scenarioId,
@@ -672,8 +969,8 @@ export const firestoreApi = {
         detail_json: {},
         created_at: new Date().toISOString(),
       };
-      db.user_practice_logs.push(log);
-      await browserStore.saveDocs('user_practice_logs', [
+      usr.user_practice_logs.push(log);
+      await browserStore.saveUserDocs('user_practice_logs', [
         log as unknown as Record<string, unknown>,
       ]);
     }
@@ -737,10 +1034,12 @@ export const firestoreApi = {
     description?: string;
     item_ids: { item_type: string; item_id: string }[];
   }) {
-    const db = await browserStore.ensureLoaded();
+    await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
     const playlist: ListeningPlaylist = {
       id: randomId('pl'),
-      user_id: DEFAULT_USER_ID,
+      user_id: uid,
       title_zh: String(body.title_zh),
       description: body.description ? String(body.description) : null,
       is_system: false,
@@ -755,8 +1054,8 @@ export const firestoreApi = {
       },
       created_at: new Date().toISOString(),
     };
-    db.listening_playlists.push(playlist);
-    await browserStore.saveDocs('listening_playlists', [
+    usr.user_playlists.push(playlist);
+    await browserStore.saveUserDocs('listening_playlists', [
       playlist as unknown as Record<string, unknown>,
     ]);
 
@@ -769,12 +1068,14 @@ export const firestoreApi = {
           item_type: entry.item_type as PlaylistItem['item_type'],
           item_id: entry.item_id,
           sort_order: idx + 1,
+          is_system: false,
+          user_id: uid,
         };
-        db.playlist_items.push(pi);
+        usr.user_playlist_items.push(pi);
         newItems.push(pi);
       });
       if (newItems.length > 0) {
-        await browserStore.saveDocs(
+        await browserStore.saveUserDocs(
           'playlist_items',
           newItems as unknown as Record<string, unknown>[]
         );
@@ -798,13 +1099,15 @@ export const firestoreApi = {
     duration_seconds?: number;
   }) {
     const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
     const ex = db.exercises.find((e) => e.id === body.exercise_id);
     if (!ex) throw new Error('Exercise not found');
 
     const score = body.rating === 'instant' ? 100 : body.rating === 'hesitated' ? 60 : 20;
     const log: UserPracticeLog = {
       id: randomId('log'),
-      user_id: DEFAULT_USER_ID,
+      user_id: uid,
       activity_type: 'quick_3s',
       target_type: null,
       target_id: body.exercise_id,
@@ -813,19 +1116,19 @@ export const firestoreApi = {
       detail_json: { rating: body.rating },
       created_at: new Date().toISOString(),
     };
-    db.user_practice_logs.push(log);
+    usr.user_practice_logs.push(log);
     const user = touchUserActivity(db);
-    await browserStore.saveDocs('user_practice_logs', [
+    await browserStore.saveUserDocs('user_practice_logs', [
       log as unknown as Record<string, unknown>,
     ]);
     if (user) {
-      await browserStore.saveDocs('users', [user as unknown as Record<string, unknown>]);
+      await browserStore.saveUserDocs('users', [user as unknown as Record<string, unknown>]);
     }
 
     let srsCard: UserSrsCard | null = null;
     if (body.rating === 'hesitated' || body.rating === 'missed') {
-      const existing = db.user_srs_cards.find(
-        (c) => c.user_id === DEFAULT_USER_ID && c.item_type === 'exercise' && c.item_id === ex.id
+      const existing = usr.user_srs_cards.find(
+        (c) => c.user_id === uid && c.item_type === 'exercise' && c.item_id === ex.id
       );
       if (existing) {
         Object.assign(existing, calculateSm2(existing, body.rating === 'missed' ? 0 : 3));
@@ -833,7 +1136,7 @@ export const firestoreApi = {
       } else {
         srsCard = {
           id: randomId('srs'),
-          user_id: DEFAULT_USER_ID,
+          user_id: uid,
           item_type: 'exercise',
           item_id: ex.id,
           front_zh: `聽到「${ex.prompt_en}」➜ 回覆：${ex.prompt_text}`,
@@ -847,9 +1150,9 @@ export const firestoreApi = {
           next_review_at: new Date().toISOString(),
           last_reviewed_at: null,
         };
-        db.user_srs_cards.push(srsCard);
+        usr.user_srs_cards.push(srsCard);
       }
-      await browserStore.saveDocs('user_srs_cards', [
+      await browserStore.saveUserDocs('user_srs_cards', [
         srsCard as unknown as Record<string, unknown>,
       ]);
     }
@@ -894,9 +1197,10 @@ export const firestoreApi = {
 
   async getSrsCards() {
     const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
     const now = new Date();
     const cards = db.user_srs_cards
-      .filter((c) => c.user_id === DEFAULT_USER_ID)
+      .filter((c) => c.user_id === uid)
       .sort((a, b) => a.next_review_at.localeCompare(b.next_review_at));
     const due_count = cards.filter((c) => new Date(c.next_review_at) <= now).length;
     return { cards, due_count };
@@ -911,10 +1215,12 @@ export const firestoreApi = {
     audio_url?: string | null;
     personal_note?: string | null;
   }) {
-    const db = await browserStore.ensureLoaded();
-    const existing = db.user_srs_cards.find(
+    await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
+    const existing = usr.user_srs_cards.find(
       (c) =>
-        c.user_id === DEFAULT_USER_ID &&
+        c.user_id === uid &&
         c.item_type === body.item_type &&
         c.item_id === String(body.item_id)
     );
@@ -922,7 +1228,7 @@ export const firestoreApi = {
 
     const card: UserSrsCard = {
       id: randomId('srs'),
-      user_id: DEFAULT_USER_ID,
+      user_id: uid,
       item_type: body.item_type,
       item_id: String(body.item_id),
       front_zh: String(body.front_zh),
@@ -936,20 +1242,22 @@ export const firestoreApi = {
       next_review_at: new Date().toISOString(),
       last_reviewed_at: null,
     };
-    db.user_srs_cards.push(card);
-    await browserStore.saveDocs('user_srs_cards', [card as unknown as Record<string, unknown>]);
+    usr.user_srs_cards.push(card);
+    await browserStore.saveUserDocs('user_srs_cards', [card as unknown as Record<string, unknown>]);
     return { card, already_exists: false };
   },
 
   async reviewSrsCard(id: string, quality: number) {
     const db = await browserStore.ensureLoaded();
-    const card = db.user_srs_cards.find((c) => c.id === id);
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
+    const card = usr.user_srs_cards.find((c) => c.id === id);
     if (!card) throw new Error('SRS card not found');
 
     Object.assign(card, calculateSm2(card, Number(quality ?? 4)));
     const log: UserPracticeLog = {
       id: randomId('log'),
-      user_id: DEFAULT_USER_ID,
+      user_id: uid,
       activity_type: 'srs_review',
       target_type: null,
       target_id: card.id,
@@ -958,34 +1266,36 @@ export const firestoreApi = {
       detail_json: { quality },
       created_at: new Date().toISOString(),
     };
-    db.user_practice_logs.push(log);
+    usr.user_practice_logs.push(log);
     const user = touchUserActivity(db);
 
-    await browserStore.saveDocs('user_srs_cards', [card as unknown as Record<string, unknown>]);
-    await browserStore.saveDocs('user_practice_logs', [
+    await browserStore.saveUserDocs('user_srs_cards', [card as unknown as Record<string, unknown>]);
+    await browserStore.saveUserDocs('user_practice_logs', [
       log as unknown as Record<string, unknown>,
     ]);
     if (user) {
-      await browserStore.saveDocs('users', [user as unknown as Record<string, unknown>]);
+      await browserStore.saveUserDocs('users', [user as unknown as Record<string, unknown>]);
     }
     return { card };
   },
 
   async updateSrsNote(id: string, personal_note: string) {
-    const db = await browserStore.ensureLoaded();
-    const card = db.user_srs_cards.find((c) => c.id === id);
+    await browserStore.ensureLoaded();
+    const usr = browserStore.getUserScopedState();
+    const card = usr.user_srs_cards.find((c) => c.id === id);
     if (!card) throw new Error('SRS card not found');
     card.personal_note = personal_note;
-    await browserStore.saveDocs('user_srs_cards', [card as unknown as Record<string, unknown>]);
+    await browserStore.saveUserDocs('user_srs_cards', [card as unknown as Record<string, unknown>]);
     return { card };
   },
 
   async deleteSrsCard(id: string) {
-    const db = await browserStore.ensureLoaded();
-    const idx = db.user_srs_cards.findIndex((c) => c.id === id);
+    await browserStore.ensureLoaded();
+    const usr = browserStore.getUserScopedState();
+    const idx = usr.user_srs_cards.findIndex((c) => c.id === id);
     if (idx === -1) throw new Error('SRS card not found');
-    const [removed] = db.user_srs_cards.splice(idx, 1);
-    await browserStore.removeDoc('user_srs_cards', removed.id);
+    const [removed] = usr.user_srs_cards.splice(idx, 1);
+    await browserStore.removeUserDoc('user_srs_cards', removed.id);
     return { ok: true };
   },
 
@@ -998,9 +1308,11 @@ export const firestoreApi = {
     detail_json?: Record<string, unknown>;
   }) {
     const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
     const log: UserPracticeLog = {
       id: randomId('log'),
-      user_id: DEFAULT_USER_ID,
+      user_id: uid,
       activity_type: (body.activity_type || 'loop_listening') as UserPracticeLog['activity_type'],
       target_type: (body.target_type || null) as UserPracticeLog['target_type'],
       target_id: body.target_id || null,
@@ -1009,13 +1321,13 @@ export const firestoreApi = {
       detail_json: body.detail_json || {},
       created_at: new Date().toISOString(),
     };
-    db.user_practice_logs.push(log);
+    usr.user_practice_logs.push(log);
     const user = touchUserActivity(db);
-    await browserStore.saveDocs('user_practice_logs', [
+    await browserStore.saveUserDocs('user_practice_logs', [
       log as unknown as Record<string, unknown>,
     ]);
     if (user) {
-      await browserStore.saveDocs('users', [user as unknown as Record<string, unknown>]);
+      await browserStore.saveUserDocs('users', [user as unknown as Record<string, unknown>]);
     }
     return { log };
   },
@@ -1038,6 +1350,10 @@ export const firestoreApi = {
   },
 
   async importAdminJson(payload: unknown) {
+    if (!browserStore.isAdminUser()) {
+      throw new Error('權限不足：公開版教材已啟用唯讀保護，僅管理員帳號或本機後端可執行批次匯入。');
+    }
+
     const db = await browserStore.ensureLoaded();
     if (!payload || typeof payload !== 'object') throw new Error('Invalid JSON payload');
 
@@ -1082,7 +1398,7 @@ export const firestoreApi = {
       }
 
       if (added.length > 0) {
-        await browserStore.saveDocs(key, added);
+        await browserStore.saveAdminContentDocs(key, added);
         imported[key] = added.length;
       }
     }

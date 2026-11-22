@@ -52,7 +52,7 @@ try {
   run('git', ['remote', 'add', 'origin', remoteUrl], { cwd: tmpDir });
   run('git', ['push', '--force', 'origin', 'gh-pages'], { cwd: tmpDir });
 
-  console.log('✅ Pushed static bundle + 306 MP3s to branch gh-pages!');
+  console.log('✅ Pushed static bundle + MP3 audio tracks to branch gh-pages!');
 } finally {
   fs.rmSync(tmpDir, { recursive: true, force: true });
 }

@@ -38,7 +38,7 @@
 | **本地路徑** | `/home/admin/english` |
 | **GitHub Repo** | `https://github.com/rh6554ya-netizen/english`（Public） |
 | **線上部署（GitHub Pages）** | `https://rh6554ya-netizen.github.io/english/`（`gh-pages` 分支） |
-| **Firebase 專案** | `echospeak-english-studio`（Firestore `asia-east1` 台灣，18 張集合 251 筆資料） |
+| **Firebase 專案** | `echospeak-english-studio`（Firestore `asia-east1` 台灣，18 張集合 457 筆資料，已啟用唯讀規則保護與 Firebase Auth 串接） |
 | **Obsidian 工作筆記** | `英文教學網站/工作流程.md` |
 | **Obsidian 規劃書** | `英文教學網站/功能與資料庫規劃.md` |
 | **NotebookLM 來源筆記本** | 英文對話練習 |

@@ -266,6 +266,8 @@ export interface PlaylistItem {
   item_type: 'dialogue' | 'dialogue_turn' | 'sentence_pattern' | 'expression' | 'exercise';
   item_id: string;
   sort_order: number;
+  is_system?: boolean;
+  user_id?: string | null;
 }
 
 export interface DatabaseState {

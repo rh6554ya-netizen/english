@@ -2,8 +2,21 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    // 1. 公開唯讀教材集合（12 張表）：任何人可瀏覽，僅管理員（或 Admin SDK）可寫入
     match /{col}/{docId} {
-      allow read, write: if col in [
+      allow read: if col in [
         'content_sources',
         'categories',
         'scenarios',
@@ -15,14 +28,96 @@ service cloud.firestore {
         'vocabulary',
         'dialogue_turn_vocabulary',
         'cultural_notes',
-        'exercises',
-        'users',
-        'user_scenario_progress',
-        'user_srs_cards',
-        'user_practice_logs',
-        'listening_playlists',
-        'playlist_items'
+        'exercises'
       ];
+      allow write: if col in [
+        'content_sources',
+        'categories',
+        'scenarios',
+        'dialogues',
+        'dialogue_turns',
+        'sentence_patterns',
+        'expression_groups',
+        'expressions',
+        'vocabulary',
+        'dialogue_turn_vocabulary',
+        'cultural_notes',
+        'exercises'
+      ] && isAdmin();
+    }
+
+    // 2. 系統播放清單公開唯讀；使用者自訂清單僅限本人讀寫
+    match /listening_playlists/{playlistId} {
+      allow read: if resource.data.is_system == true
+        || (isSignedIn() && resource.data.user_id == request.auth.uid)
+        || isAdmin();
+      allow create: if (isSignedIn()
+        && request.resource.data.is_system == false
+        && request.resource.data.user_id == request.auth.uid)
+        || isAdmin();
+      allow update, delete: if (isSignedIn()
+        && resource.data.is_system == false
+        && resource.data.user_id == request.auth.uid)
+        || isAdmin();
+    }
+
+    match /playlist_items/{itemId} {
+      allow read: if resource.data.is_system == true
+        || (isSignedIn() && resource.data.user_id == request.auth.uid)
+        || isAdmin();
+      allow create: if (isSignedIn()
+        && request.resource.data.is_system == false
+        && request.resource.data.user_id == request.auth.uid)
+        || isAdmin();
+      allow update, delete: if (isSignedIn()
+        && resource.data.is_system == false
+        && resource.data.user_id == request.auth.uid)
+        || isAdmin();
+    }
+
+    // 3. 使用者個人檔案：僅限本人讀寫（禁止自行提權為 admin）
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if (isOwner(userId)
+        && request.resource.data.id == userId
+        && request.resource.data.role == 'learner')
+        || isAdmin();
+      allow update: if (isOwner(userId)
+        && request.resource.data.id == userId
+        && request.resource.data.role == resource.data.role)
+        || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 4. 個人學習進度、SRS 記憶卡片與練習紀錄：嚴格隔離，僅限本人讀寫
+    match /user_scenario_progress/{docId} {
+      allow read: if isSignedIn() && (resource.data.user_id == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && (request.resource.data.user_id == request.auth.uid || isAdmin());
+      allow update: if isSignedIn() && (
+        (resource.data.user_id == request.auth.uid && request.resource.data.user_id == request.auth.uid)
+        || isAdmin()
+      );
+      allow delete: if isSignedIn() && (resource.data.user_id == request.auth.uid || isAdmin());
+    }
+
+    match /user_srs_cards/{docId} {
+      allow read: if isSignedIn() && (resource.data.user_id == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && (request.resource.data.user_id == request.auth.uid || isAdmin());
+      allow update: if isSignedIn() && (
+        (resource.data.user_id == request.auth.uid && request.resource.data.user_id == request.auth.uid)
+        || isAdmin()
+      );
+      allow delete: if isSignedIn() && (resource.data.user_id == request.auth.uid || isAdmin());
+    }
+
+    match /user_practice_logs/{docId} {
+      allow read: if isSignedIn() && (resource.data.user_id == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && (request.resource.data.user_id == request.auth.uid || isAdmin());
+      allow update: if isSignedIn() && (
+        (resource.data.user_id == request.auth.uid && request.resource.data.user_id == request.auth.uid)
+        || isAdmin()
+      );
+      allow delete: if isSignedIn() && (resource.data.user_id == request.auth.uid || isAdmin());
     }
   }
 }
