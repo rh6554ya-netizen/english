@@ -36,6 +36,23 @@ import type {
 
 const GUEST_USER_ID = 'demo-user';
 const GUEST_STORAGE_KEY = 'echospeak_guest_user_v2';
+const AUTH_USER_CACHE_PREFIX = 'echospeak_user_cache_v1_';
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`Firestore request timed out (${ms}ms)`)), ms);
+    promise.then(
+      (val) => {
+        clearTimeout(timer);
+        resolve(val);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      }
+    );
+  });
+}
 
 export interface AuthUserInfo {
   uid: string;
@@ -340,17 +357,22 @@ class BrowserDataStore {
       const seed = cloneSeed();
       if (isFirebaseClientConfigured && firestore) {
         try {
-          const [contentSnaps, sysPlSnap, sysPlItemSnap] = await Promise.all([
-            Promise.all(
-              PUBLIC_CONTENT_COLLECTIONS.map((col) => getDocs(collection(firestore!, col)))
-            ),
-            getDocs(
-              query(collection(firestore, 'listening_playlists'), where('is_system', '==', true))
-            ),
-            getDocs(
-              query(collection(firestore, 'playlist_items'), where('is_system', '==', true))
-            ),
-          ]);
+          const isOffline = typeof navigator !== 'undefined' && !navigator.onLine;
+          const timeoutMs = isOffline ? 1800 : 8000;
+          const [contentSnaps, sysPlSnap, sysPlItemSnap] = await withTimeout(
+            Promise.all([
+              Promise.all(
+                PUBLIC_CONTENT_COLLECTIONS.map((col) => getDocs(collection(firestore!, col)))
+              ),
+              getDocs(
+                query(collection(firestore, 'listening_playlists'), where('is_system', '==', true))
+              ),
+              getDocs(
+                query(collection(firestore, 'playlist_items'), where('is_system', '==', true))
+              ),
+            ]),
+            timeoutMs
+          );
 
           const content = {} as Pick<DatabaseState, PublicContentKey> & {
             system_playlists: ListeningPlaylist[];
@@ -413,36 +435,43 @@ class BrowserDataStore {
     this.userLoading = (async () => {
       if (targetUid && this.mode === 'firebase' && firestore && this.authUser) {
         try {
-          const [userDoc, progSnap, srsSnap, logSnap, plSnap, plItemSnap] = await Promise.all([
-            getDoc(doc(firestore, 'users', targetUid)),
-            getDocs(
-              query(
-                collection(firestore, 'user_scenario_progress'),
-                where('user_id', '==', targetUid)
-              )
-            ),
-            getDocs(
-              query(collection(firestore, 'user_srs_cards'), where('user_id', '==', targetUid))
-            ),
-            getDocs(
-              query(collection(firestore, 'user_practice_logs'), where('user_id', '==', targetUid))
-            ),
-            getDocs(
-              query(collection(firestore, 'listening_playlists'), where('user_id', '==', targetUid))
-            ),
-            getDocs(
-              query(collection(firestore, 'playlist_items'), where('user_id', '==', targetUid))
-            ),
-          ]);
+          const isOffline = typeof navigator !== 'undefined' && !navigator.onLine;
+          const timeoutMs = isOffline ? 1800 : 8000;
+          const [userDoc, progSnap, srsSnap, logSnap, plSnap, plItemSnap] = await withTimeout(
+            Promise.all([
+              getDoc(doc(firestore, 'users', targetUid)),
+              getDocs(
+                query(
+                  collection(firestore, 'user_scenario_progress'),
+                  where('user_id', '==', targetUid)
+                )
+              ),
+              getDocs(
+                query(collection(firestore, 'user_srs_cards'), where('user_id', '==', targetUid))
+              ),
+              getDocs(
+                query(collection(firestore, 'user_practice_logs'), where('user_id', '==', targetUid))
+              ),
+              getDocs(
+                query(collection(firestore, 'listening_playlists'), where('user_id', '==', targetUid))
+              ),
+              getDocs(
+                query(collection(firestore, 'playlist_items'), where('user_id', '==', targetUid))
+              ),
+            ]),
+            timeoutMs
+          );
 
           let profile: UserProfile;
           if (userDoc.exists()) {
             profile = userDoc.data() as UserProfile;
           } else {
             profile = buildNewAuthProfile(this.authUser);
-            const batch = writeBatch(firestore);
-            batch.set(doc(firestore, 'users', targetUid), stripUndefined(profile as unknown as Record<string, unknown>), { merge: true });
-            await batch.commit();
+            if (!isOffline) {
+              const batch = writeBatch(firestore);
+              batch.set(doc(firestore, 'users', targetUid), stripUndefined(profile as unknown as Record<string, unknown>), { merge: true });
+              await batch.commit();
+            }
           }
 
           this.userState = {
@@ -454,9 +483,27 @@ class BrowserDataStore {
             user_playlist_items: plItemSnap.docs.map((d) => d.data() as PlaylistItem),
           };
           this.loadedForUid = targetUid;
+          try {
+            localStorage.setItem(
+              `${AUTH_USER_CACHE_PREFIX}${targetUid}`,
+              JSON.stringify(this.userState)
+            );
+          } catch {
+            // ignore storage quota errors
+          }
           return;
         } catch (err) {
           console.warn('[EchoSpeak] Failed to load signed-in user Firestore data:', err);
+          try {
+            const offlineMirror = localStorage.getItem(`${AUTH_USER_CACHE_PREFIX}${targetUid}`);
+            if (offlineMirror) {
+              this.userState = JSON.parse(offlineMirror) as UserScopedState;
+              this.loadedForUid = targetUid;
+              return;
+            }
+          } catch {
+            // ignore storage errors
+          }
         }
       }
 

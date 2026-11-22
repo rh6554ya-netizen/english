@@ -4,8 +4,10 @@ import {
   ArrowLeft,
   BookmarkPlus,
   CheckCircle2,
+  Download,
   Headphones,
   Info,
+  Loader2,
   Mic,
   Play,
   RotateCcw,
@@ -15,6 +17,13 @@ import {
 } from 'lucide-react';
 import { api, type HydratedTurn, type ScenarioDetailResponse } from '../lib/api';
 import { playAudio, sleep, stopAllAudio } from '../lib/audio';
+import {
+  cacheAudioPaths,
+  countCachedPaths,
+  getCachedAudioUrlSet,
+  getScenarioAudioPaths,
+  isCacheApiSupported,
+} from '../lib/offlineCache';
 import type { Vocabulary } from '../../../shared/types';
 
 type Step = 1 | 2 | 3 | 4;
@@ -57,6 +66,12 @@ export function DialogueStudioPage() {
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [quizScore, setQuizScore] = useState<number | null>(null);
 
+  // Per-scenario offline audio state
+  const [lessonAudioCached, setLessonAudioCached] = useState(0);
+  const [lessonAudioTotal, setLessonAudioTotal] = useState(0);
+  const [downloadingLesson, setDownloadingLesson] = useState(false);
+  const cacheSupported = isCacheApiSupported();
+
   const showToast = (msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(null), 2600);
@@ -72,6 +87,13 @@ export function DialogueStudioPage() {
         const firstTurns = res.dialogues[0]?.turns || [];
         const defaultLearner = firstTurns.find((t) => t.is_learner_role)?.speaker_role;
         setMyRole(defaultLearner || firstTurns[0]?.speaker_role || '');
+        if (isCacheApiSupported()) {
+          const paths = getScenarioAudioPaths(res.scenario.id);
+          setLessonAudioTotal(paths.length);
+          getCachedAudioUrlSet().then((set) => {
+            setLessonAudioCached(countCachedPaths(paths, set));
+          });
+        }
       })
       .finally(() => setLoading(false));
 
@@ -264,6 +286,30 @@ export function DialogueStudioPage() {
   }
 
   const prog = detail.progress;
+  const lessonOfflineReady = lessonAudioTotal > 0 && lessonAudioCached >= lessonAudioTotal;
+
+  const handleDownloadLessonAudio = async () => {
+    if (!detail || downloadingLesson) return;
+    const paths = getScenarioAudioPaths(detail.scenario.id);
+    setLessonAudioTotal(paths.length);
+    setDownloadingLesson(true);
+    try {
+      const res = await cacheAudioPaths(paths, (p) => {
+        setLessonAudioCached(p.completed);
+      });
+      const set = await getCachedAudioUrlSet();
+      const count = countCachedPaths(paths, set);
+      setLessonAudioCached(count);
+      if (res.failed === 0) {
+        showToast(`✅ 本課 ${count} 支語音已離線快取完成！`);
+      } else {
+        showToast(`已快取 ${count}/${paths.length} 支（${res.failed} 支失敗，請稍後重試）`);
+      }
+    } finally {
+      setDownloadingLesson(false);
+    }
+  };
+
   const stepsMeta: { id: Step; title: string; subtitle: string; done: boolean }[] = [
     { id: 1, title: 'Step 1 純聽情境', subtitle: 'Blind Listen', done: Boolean(prog?.step1_blind_listen_done) },
     { id: 2, title: 'Step 2 字幕精讀', subtitle: 'Bilingual Study', done: Boolean(prog?.step2_study_done) },
@@ -293,13 +339,42 @@ export function DialogueStudioPage() {
             {detail.scenario.title_en}
           </p>
         </div>
-        <div className="text-right">
-          <div className="text-xs text-slate-500">
-            來源：{dialogue.source_ref || dialogue.source?.title}
+        <div className="flex flex-col sm:items-end gap-2">
+          <div className="sm:text-right">
+            <div className="text-xs text-slate-500">
+              來源：{dialogue.source_ref || dialogue.source?.title}
+            </div>
+            <div className="text-sm font-bold text-indigo-600 mt-0.5">
+              進度：{prog?.completion_percent ?? 0}%
+            </div>
           </div>
-          <div className="text-sm font-bold text-indigo-600 mt-1">
-            進度：{prog?.completion_percent ?? 0}%
-          </div>
+
+          {cacheSupported && lessonAudioTotal > 0 && (
+            lessonOfflineReady ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                本課已離線可用（{lessonAudioCached} 支語音）
+              </span>
+            ) : (
+              <button
+                onClick={handleDownloadLessonAudio}
+                disabled={downloadingLesson}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 text-slate-700 hover:text-indigo-700 text-xs font-bold transition shadow-sm"
+              >
+                {downloadingLesson ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-600" />
+                    下載中 {lessonAudioCached}/{lessonAudioTotal}...
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-3.5 h-3.5 text-indigo-600" />
+                    離線下載本課語音（{lessonAudioCached}/{lessonAudioTotal}）
+                  </>
+                )}
+              </button>
+            )
+          )}
         </div>
       </div>
 

@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Columns2, Search, ShieldAlert, Volume2 } from 'lucide-react';
+import { CheckCircle2, Columns2, Search, ShieldAlert, Volume2 } from 'lucide-react';
 import { api, type ScenarioListItem } from '../lib/api';
 import { playAudio } from '../lib/audio';
+import {
+  countCachedPaths,
+  getCachedAudioUrlSet,
+  getScenarioAudioPaths,
+  isCacheApiSupported,
+} from '../lib/offlineCache';
 import type { Category, SentencePattern } from '../../../shared/types';
 
 const DIFF_LABELS: Record<string, string> = {
@@ -26,10 +32,14 @@ export function ScenariosPage() {
   const [travelMode, setTravelMode] = useState('all');
   const [search, setSearch] = useState('');
   const [roleSplitOpen, setRoleSplitOpen] = useState(false);
+  const [cachedAudioSet, setCachedAudioSet] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     api.getCategories().then((r) => setCategories(r.categories));
     api.getPatterns().then((r) => setPatterns(r.patterns));
+    if (isCacheApiSupported()) {
+      getCachedAudioUrlSet().then(setCachedAudioSet);
+    }
   }, []);
 
   useEffect(() => {
@@ -202,6 +212,9 @@ export function ScenariosPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {scenarios.map((scn) => {
               const pct = scn.progress?.completion_percent ?? 0;
+              const scnAudio = getScenarioAudioPaths(scn.id);
+              const isOfflineReady =
+                scnAudio.length > 0 && countCachedPaths(scnAudio, cachedAudioSet) >= scnAudio.length;
               return (
                 <Link
                   key={scn.id}
@@ -214,6 +227,11 @@ export function ScenariosPage() {
                         {scn.category?.icon} {scn.category?.name_zh}
                       </span>
                       <div className="flex items-center gap-1.5">
+                        {isOfflineReady && (
+                          <span className="inline-flex items-center gap-0.5 text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700">
+                            <CheckCircle2 className="w-3 h-3" /> 離線
+                          </span>
+                        )}
                         <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
                           {DIFF_LABELS[scn.difficulty_level]}
                         </span>

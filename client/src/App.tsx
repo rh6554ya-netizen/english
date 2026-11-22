@@ -1,5 +1,6 @@
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './lib/auth';
+import { PwaProvider } from './lib/pwa';
 import { Layout } from './components/Layout';
 import { DashboardPage } from './pages/DashboardPage';
 import { ScenariosPage } from './pages/ScenariosPage';
@@ -16,22 +17,24 @@ const useHashRouter = import.meta.env.VITE_USE_HASH_ROUTER === 'true';
 export default function App() {
   const Router = useHashRouter ? HashRouter : BrowserRouter;
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/scenarios" element={<ScenariosPage />} />
-            <Route path="/studio/:slug" element={<DialogueStudioPage />} />
-            <Route path="/loop-player" element={<LoopPlayerPage />} />
-            <Route path="/quick-drill" element={<QuickDrillPage />} />
-            <Route path="/patterns" element={<PatternsPage />} />
-            <Route path="/survival" element={<SurvivalPage />} />
-            <Route path="/srs" element={<SrsVaultPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <PwaProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<DashboardPage />} />
+              <Route path="/scenarios" element={<ScenariosPage />} />
+              <Route path="/studio/:slug" element={<DialogueStudioPage />} />
+              <Route path="/loop-player" element={<LoopPlayerPage />} />
+              <Route path="/quick-drill" element={<QuickDrillPage />} />
+              <Route path="/patterns" element={<PatternsPage />} />
+              <Route path="/survival" element={<SurvivalPage />} />
+              <Route path="/srs" element={<SrsVaultPage />} />
+              <Route path="/admin" element={<AdminPage />} />
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </PwaProvider>
   );
 }
