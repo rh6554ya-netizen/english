@@ -1,0 +1,1121 @@
+{
+  "content_sources": [
+    {
+      "id": "src-mcgraw-hill",
+      "notebooklm_source_id": "68cdc781-3fce-400e-986a-9c7f2a6acbe0",
+      "title": "McGraw-Hill's Conversational American English: The Illustrated Guide to Everyday Expressions of American English",
+      "source_type": "book",
+      "author_or_channel": "Richard A. Spears",
+      "url": null,
+      "metadata_json": { "topics": 464, "expressions": 5000 },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-500-mini",
+      "notebooklm_source_id": "d746fb1b-f78a-4398-9a53-83f87104c8f0",
+      "title": "Spoken English Conversation Practice: 500 Mini-Dialogues for Beginners",
+      "source_type": "book",
+      "author_or_channel": "Artsun Akopyan",
+      "url": null,
+      "metadata_json": { "isbn": "978-1393499671", "dialogues": 500 },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-3s-qa",
+      "notebooklm_source_id": "36f724e1-08dc-49af-b958-70f110190e4a",
+      "title": "【3秒內說到重點】天天都在用的生活萬用英文會話，一問一答60組（常速・較慢速・中文）",
+      "source_type": "youtube",
+      "author_or_channel": "YouTube 沉浸式英語聽力",
+      "url": null,
+      "metadata_json": { "qa_pairs": 60 },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-ear-chat",
+      "notebooklm_source_id": "b8452bf6-3e98-453a-a304-479d325c193d",
+      "title": "【一小時高效聽力磨耳朵】學會美國人超常用聊天交流全攻略｜開口聊天・接話・不尷尬",
+      "source_type": "youtube",
+      "author_or_channel": "English Listening Practice",
+      "url": null,
+      "metadata_json": { "duration_min": 60 },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-ear-speaking",
+      "notebooklm_source_id": "ad2df981-d09d-4f62-a8a5-a3324e7ac326",
+      "title": "【一小時高效聽力磨耳朵】超強提升口說英文全攻略｜口說卡關救星",
+      "source_type": "youtube",
+      "author_or_channel": "English Listening Practice",
+      "url": null,
+      "metadata_json": { "duration_min": 60 },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-gjun-shop",
+      "notebooklm_source_id": "64c8b17f-19b8-4931-89ac-d606883d3cb5",
+      "title": "國外逛街購物的必會實用句型，實用生活英文讓你輕鬆血拼",
+      "source_type": "article",
+      "author_or_channel": "巨匠美語",
+      "url": null,
+      "metadata_json": {},
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-tutorabc-travel",
+      "notebooklm_source_id": "034f5bb9-c263-47ec-b15e-86bb3b049d56",
+      "title": "旅遊英文怎麼學？超實用旅遊會話情境",
+      "source_type": "article",
+      "author_or_channel": "TutorABC",
+      "url": null,
+      "metadata_json": {},
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-prepedu-travel",
+      "notebooklm_source_id": "3566ce47-b8c1-4f80-a45b-2fe1b8ae7c9d",
+      "title": "旅遊英文會話完整指南：9大情境對話+180句實用句型讓你暢遊世界",
+      "source_type": "article",
+      "author_or_channel": "Prep Edu",
+      "url": null,
+      "metadata_json": { "scenarios": 9, "patterns": 180 },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-park-jog",
+      "notebooklm_source_id": "be695259-dc36-4e37-923a-45931afe1bb6",
+      "title": "美國人的日常聊天英文！公園慢跑、偶遇朋友、聊工作近況、相約喝咖啡",
+      "source_type": "youtube",
+      "author_or_channel": "Powerful English",
+      "url": null,
+      "metadata_json": {},
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "src-tilc-daily",
+      "notebooklm_source_id": "189ed673-41a9-4d65-9750-80f340cb2184",
+      "title": "輕鬆聊天！美國人日常生活必備英語會話句型學起來",
+      "source_type": "article",
+      "author_or_channel": "時代國際",
+      "url": null,
+      "metadata_json": {},
+      "created_at": "2026-11-22T08:00:00.000Z"
+    }
+  ],
+  "categories": [
+    { "id": "cat-travel", "parent_id": null, "slug": "travel", "name_zh": "旅遊出行與自保", "name_en": "Travel & Survival", "icon": "✈️", "sort_order": 1 },
+    { "id": "cat-travel-airport", "parent_id": "cat-travel", "slug": "travel-airport", "name_zh": "機場劃位與海關", "name_en": "Airport & Customs", "icon": "🛂", "sort_order": 11 },
+    { "id": "cat-travel-dining", "parent_id": "cat-travel", "slug": "travel-dining", "name_zh": "餐廳點餐與結帳", "name_en": "Dining & Allergies", "icon": "🍽️", "sort_order": 12 },
+    { "id": "cat-daily", "parent_id": null, "slug": "daily", "name_zh": "居家起居與生活作息", "name_en": "Daily Routines & Household", "icon": "🏡", "sort_order": 2 },
+    { "id": "cat-daily-morning", "parent_id": "cat-daily", "slug": "daily-morning", "name_zh": "早晨起床與盥洗", "name_en": "Morning Routine", "icon": "☀️", "sort_order": 21 },
+    { "id": "cat-daily-kitchen", "parent_id": "cat-daily", "slug": "daily-kitchen", "name_zh": "廚房餐飲與家務", "name_en": "Kitchen & Chores", "icon": "🍳", "sort_order": 22 },
+    { "id": "cat-shopping", "parent_id": null, "slug": "shopping", "name_zh": "逛街購物實戰", "name_en": "Shopping & Retail", "icon": "🛍️", "sort_order": 3 },
+    { "id": "cat-shopping-tryon", "parent_id": "cat-shopping", "slug": "shopping-tryon", "name_zh": "試穿尺寸與退換貨", "name_en": "Fitting & Checkout", "icon": "👕", "sort_order": 31 },
+    { "id": "cat-social", "parent_id": null, "slug": "social", "name_zh": "社交閒聊與電話溝通", "name_en": "Small Talk & Phone", "icon": "💬", "sort_order": 4 },
+    { "id": "cat-social-park", "parent_id": "cat-social", "slug": "social-park", "name_zh": "偶遇破冰與近況閒聊", "name_en": "Catching Up", "icon": "🌳", "sort_order": 41 },
+    { "id": "cat-social-phone", "parent_id": "cat-social", "slug": "social-phone", "name_zh": "商務電話轉接與留言", "name_en": "Business Phone Calls", "icon": "📞", "sort_order": 42 }
+  ],
+  "scenarios": [
+    {
+      "id": "scn-airport",
+      "category_id": "cat-travel-airport",
+      "slug": "airport-check-in-customs",
+      "title_zh": "機場劃位、託運與入境查驗",
+      "title_en": "Airport Check-in & Immigration",
+      "difficulty_level": "beginner",
+      "travel_mode": "solo_travel",
+      "story_background": "你即將搭乘 BA156 班機飛往倫敦，正在機場報到櫃檯辦理託運行李、挑選走道座位，並在抵達後從容回答移民官的入境提問。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": true,
+      "is_published": true,
+      "sort_order": 1,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "scn-restaurant",
+      "category_id": "cat-travel-dining",
+      "slug": "restaurant-ordering-allergy",
+      "title_zh": "餐廳點餐、堅果過敏說明與結帳小費",
+      "title_en": "Restaurant Ordering, Allergies & Tipping",
+      "difficulty_level": "beginner",
+      "travel_mode": "general",
+      "story_background": "你在國外餐廳享用晚餐，想請服務生推薦招牌菜、明確告知嚴重堅果過敏，並在餐後確認帳單是否已含小費。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": true,
+      "is_published": true,
+      "sort_order": 2,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "scn-morning",
+      "category_id": "cat-daily-morning",
+      "slug": "morning-routine-washing",
+      "title_zh": "早晨起床、鋪床與衛浴盥洗",
+      "title_en": "Morning Routine & Washing",
+      "difficulty_level": "zero_basis",
+      "travel_mode": "general",
+      "story_background": "從 500 Mini-Dialogues 精選的早晨生活微場景：家人互喚起床、鋪床與提醒關水龍頭，同時掌握美式與英式常用表達差異。",
+      "cover_image_url": null,
+      "estimated_minutes": 8,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 3,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "scn-kitchen",
+      "category_id": "cat-daily-kitchen",
+      "slug": "kitchen-meals-chores",
+      "title_zh": "廚房早餐、洗碗與倒垃圾家務",
+      "title_en": "Kitchen, Breakfast & Household Chores",
+      "difficulty_level": "zero_basis",
+      "travel_mode": "general",
+      "story_background": "烤切片吐司、收碗盤、用肥皂水洗碗與倒垃圾的高頻生活動詞片語練習，建立居家起居的英文直覺。",
+      "cover_image_url": null,
+      "estimated_minutes": 8,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 4,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "scn-shopping",
+      "category_id": "cat-shopping-tryon",
+      "slug": "shopping-trying-checkout",
+      "title_zh": "服飾選購、試穿尺寸與退換貨結帳",
+      "title_en": "Shopping, Fitting Room & Return Policy",
+      "difficulty_level": "beginner",
+      "travel_mode": "group_tour",
+      "story_background": "跟團自由活動或自助血拼必備！進店尋找夾克尺寸、試穿詢問含稅價格、確認 14 天退換貨規定並刷卡結帳。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": true,
+      "is_published": true,
+      "sort_order": 5,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "scn-park",
+      "category_id": "cat-social-park",
+      "slug": "park-small-talk-friends",
+      "title_zh": "公園慢跑偶遇老友與相約喝咖啡",
+      "title_en": "A Surprise Meeting at the Park",
+      "difficulty_level": "intermediate",
+      "travel_mode": "general",
+      "story_background": "陽光早晨在公園慢跑的 Jennifer 巧遇許久未見的好友 Adam，兩人自然寒暄工作近況、健身習慣並敲定週末咖啡之約。",
+      "cover_image_url": null,
+      "estimated_minutes": 12,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 6,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "scn-phone",
+      "category_id": "cat-social-phone",
+      "slug": "business-phone-transfer",
+      "title_zh": "職場商務電話轉接、保留與留言",
+      "title_en": "Business Phone Transfer & Taking a Message",
+      "difficulty_level": "intermediate",
+      "travel_mode": "general",
+      "story_background": "合作夥伴來電尋找行銷部主管，學會總機禮貌應對、佔線緩衝語氣，以及主客雙方自然交代留言與回電方式。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 7,
+      "created_at": "2026-11-22T08:00:00.000Z"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "dlg-airport",
+      "scenario_id": "scn-airport",
+      "source_id": "src-prepedu-travel",
+      "source_ref": "Prep Edu 會話一 & TutorABC 機場過海關",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "機場櫃檯劃位與入境海關查驗",
+      "title_en": "Check-in Counter & Passport Control",
+      "context_note": "涵蓋報到託運、走道座位、隨身行李與海關常見問答。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-restaurant",
+      "scenario_id": "scn-restaurant",
+      "source_id": "src-prepedu-travel",
+      "source_ref": "Prep Edu 會話五 & McGraw-Hill #404-406",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "餐廳點餐、過敏告知與帳單小費確認",
+      "title_en": "Ordering Dinner, Nut Allergy & Checking the Bill",
+      "context_note": "學會清楚表達飲食過敏並確認帳單是否包含服務費。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-morning",
+      "scenario_id": "scn-morning",
+      "source_id": "src-500-mini",
+      "source_ref": "500 Mini-Dialogues #6, #13, #18, #24, #58",
+      "dialogue_type": "mini_dialogue",
+      "title_zh": "起床、鋪床與關水龍頭",
+      "title_en": "Waking Up, Making the Bed & Turning Off the Faucet",
+      "context_note": "注意美式 gotten up / faucet 與英式 got up / tap 的對照。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-kitchen",
+      "scenario_id": "scn-kitchen",
+      "source_id": "src-500-mini",
+      "source_ref": "500 Mini-Dialogues #133, #136, #159-161, #376-377",
+      "dialogue_type": "mini_dialogue",
+      "title_zh": "準備早餐、洗碗與倒垃圾",
+      "title_en": "Breakfast, Washing Dishes & Taking Out the Trash",
+      "context_note": "練習現在完成式與可分動詞片語（turn it off / take it out）。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-shopping",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "source_ref": "巨匠美語逛街購物 & Prep Edu 會話六七",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "服飾試穿、含稅詢問與 14 天退換貨結帳",
+      "title_en": "Trying On a Jacket, Tax & Return Policy",
+      "context_note": "顧客與店員完整雙向實戰，涵蓋試衣間、含稅與刷卡結帳。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-park",
+      "scenario_id": "scn-park",
+      "source_id": "src-park-jog",
+      "source_ref": "Powerful English: A Surprise Meeting at the Park",
+      "dialogue_type": "story_animation",
+      "title_zh": "公園偶遇老友、聊工作壓力與相約喝咖啡",
+      "title_en": "Catching Up with an Old Friend at the Park",
+      "context_note": "體驗道地美式共鳴接話（Tell me about it! / Same here.）與自然邀約。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-phone",
+      "scenario_id": "scn-phone",
+      "source_id": "src-mcgraw-hill",
+      "source_ref": "McGraw-Hill #455-462",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "公司總機轉接、佔線保留與代留口信",
+      "title_en": "Directing a Call, Holding & Leaving a Message",
+      "context_note": "職場商務電話標準禮貌緩衝語氣與替代方案提供。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    }
+  ],
+  "dialogue_turns": [
+    { "id": "turn-air-1", "dialogue_id": "dlg-airport", "turn_order": 1, "speaker_role": "Traveler", "speaker_side": "right", "is_learner_role": true, "text_en": "Hi, I'd like to check in for my flight to London. My flight number is BA156.", "text_en_alt_locale": null, "text_zh": "您好，我想辦理飛往倫敦航班的報到手續，班機號碼是 BA156。", "audio_normal_url": "/audio/turns/turn-air-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-2", "dialogue_id": "dlg-airport", "turn_order": 2, "speaker_role": "Agent", "speaker_side": "left", "is_learner_role": false, "text_en": "Good morning! May I see your passport and ticket, please? And do you have any bags to check today?", "text_en_alt_locale": null, "text_zh": "早安！請出示您的護照與機票。今天有行李需要託運嗎？", "audio_normal_url": "/audio/turns/turn-air-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-3", "dialogue_id": "dlg-airport", "turn_order": 3, "speaker_role": "Traveler", "speaker_side": "right", "is_learner_role": true, "text_en": "Here you are. Yes, I have this suitcase. Could I also have an aisle seat if possible?", "text_en_alt_locale": null, "text_zh": "給您。是的，我有這個行李箱。如果可以的話，能給我走道座位嗎？", "audio_normal_url": "/audio/turns/turn-air-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-4", "dialogue_id": "dlg-airport", "turn_order": 4, "speaker_role": "Agent", "speaker_side": "left", "is_learner_role": false, "text_en": "Sure, seat 15C is available. Do you have any carry-on luggage with you?", "text_en_alt_locale": null, "text_zh": "沒問題，15C 還有位子。您有隨身手提行李嗎？", "audio_normal_url": "/audio/turns/turn-air-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-5", "dialogue_id": "dlg-airport", "turn_order": 5, "speaker_role": "Traveler", "speaker_side": "right", "is_learner_role": true, "text_en": "Great! Just this backpack. I also have my customs declaration form ready.", "text_en_alt_locale": null, "text_zh": "太好了！只有這個背包。我也準備好海關申報單了。", "audio_normal_url": "/audio/turns/turn-air-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-6", "dialogue_id": "dlg-airport", "turn_order": 6, "speaker_role": "Officer", "speaker_side": "left", "is_learner_role": false, "text_en": "Welcome. What is the purpose of your visit, and how long will you be staying?", "text_en_alt_locale": null, "text_zh": "歡迎。請問您此行的目的為何？預計停留多久？", "audio_normal_url": "/audio/turns/turn-air-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-7", "dialogue_id": "dlg-airport", "turn_order": 7, "speaker_role": "Traveler", "speaker_side": "right", "is_learner_role": true, "text_en": "I'm here for tourism, staying for seven days. Here is my return ticket and hotel reservation.", "text_en_alt_locale": null, "text_zh": "我是來觀光的，預計停留七天。這是我的回程機票與飯店預訂證明。", "audio_normal_url": "/audio/turns/turn-air-7_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-7_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-7_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-air-8", "dialogue_id": "dlg-airport", "turn_order": 8, "speaker_role": "Officer", "speaker_side": "left", "is_learner_role": false, "text_en": "Everything looks in order. Here is your boarding pass. Enjoy your stay!", "text_en_alt_locale": null, "text_zh": "資料齊全沒問題。這是您的登機證。祝您旅途愉快！", "audio_normal_url": "/audio/turns/turn-air-8_normal.mp3", "audio_slow_url": "/audio/turns/turn-air-8_slow.mp3", "audio_zh_url": "/audio/turns/turn-air-8_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+
+    { "id": "turn-res-1", "dialogue_id": "dlg-restaurant", "turn_order": 1, "speaker_role": "Server", "speaker_side": "left", "is_learner_role": false, "text_en": "Good evening! Are you ready to order, or do you need a few more minutes?", "text_en_alt_locale": null, "text_zh": "晚安！請問您準備好點餐了嗎，還是需要多看幾分鐘菜單？", "audio_normal_url": "/audio/turns/turn-res-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-2", "dialogue_id": "dlg-restaurant", "turn_order": 2, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "We're ready to order. Could you recommend a house specialty? I should mention that I have a severe nut allergy.", "text_en_alt_locale": null, "text_zh": "我們準備好點餐了。能推薦店裡的招牌菜嗎？我必須先說明，我對堅果有嚴重過敏。", "audio_normal_url": "/audio/turns/turn-res-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-3", "dialogue_id": "dlg-restaurant", "turn_order": 3, "speaker_role": "Server", "speaker_side": "left", "is_learner_role": false, "text_en": "Thank you for letting me know. I'll personally ensure the kitchen keeps your order completely nut-free.", "text_en_alt_locale": null, "text_zh": "謝謝您的告知。我會親自交代廚房，確保您的餐點完全不含堅果成份。", "audio_normal_url": "/audio/turns/turn-res-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-4", "dialogue_id": "dlg-restaurant", "turn_order": 4, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "That's reassuring. I'll start with an appetizer, and then have the grilled salmon, please.", "text_en_alt_locale": null, "text_zh": "那我就放心了。我先來一份開胃菜，主菜要烤鮭魚，謝謝。", "audio_normal_url": "/audio/turns/turn-res-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-5", "dialogue_id": "dlg-restaurant", "turn_order": 5, "speaker_role": "Server", "speaker_side": "left", "is_learner_role": false, "text_en": "Excellent choice. How was everything with your meal tonight?", "text_en_alt_locale": null, "text_zh": "很棒的選擇。今晚餐點都還合胃口嗎？", "audio_normal_url": "/audio/turns/turn-res-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-6", "dialogue_id": "dlg-restaurant", "turn_order": 6, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "The food was delicious! Could we have the bill, please?", "text_en_alt_locale": "Could we have the check, please? (US common)", "text_zh": "餐點非常美味！可以請您拿帳單給我們嗎？", "audio_normal_url": "/audio/turns/turn-res-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-7", "dialogue_id": "dlg-restaurant", "turn_order": 7, "speaker_role": "Server", "speaker_side": "left", "is_learner_role": false, "text_en": "Here is your check. You can pay me directly or pay at the register.", "text_en_alt_locale": null, "text_zh": "這是您的帳單。您可以直接交給我結帳，或是到櫃檯付款。", "audio_normal_url": "/audio/turns/turn-res-7_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-7_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-7_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-res-8", "dialogue_id": "dlg-restaurant", "turn_order": 8, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "Thank you. Does this total include the tip, or should I add the gratuity?", "text_en_alt_locale": null, "text_zh": "謝謝。請問總金額已經包含小費了嗎，還是需要額外填寫小費？", "audio_normal_url": "/audio/turns/turn-res-8_normal.mp3", "audio_slow_url": "/audio/turns/turn-res-8_slow.mp3", "audio_zh_url": "/audio/turns/turn-res-8_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+
+    { "id": "turn-mor-1", "dialogue_id": "dlg-morning", "turn_order": 1, "speaker_role": "Family A", "speaker_side": "left", "is_learner_role": false, "text_en": "Wake up, sleepyhead!", "text_en_alt_locale": null, "text_zh": "快醒醒，小懶蟲！", "audio_normal_url": "/audio/turns/turn-mor-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-mor-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-mor-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-mor-2", "dialogue_id": "dlg-morning", "turn_order": 2, "speaker_role": "Family B", "speaker_side": "right", "is_learner_role": true, "text_en": "I'm awake. Look at the clock, it's too early.", "text_en_alt_locale": null, "text_zh": "我醒了。看看時鐘，現在還太早了啦。", "audio_normal_url": "/audio/turns/turn-mor-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-mor-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-mor-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-mor-3", "dialogue_id": "dlg-morning", "turn_order": 3, "speaker_role": "Family A", "speaker_side": "left", "is_learner_role": false, "text_en": "Granny, have you gotten up?", "text_en_alt_locale": "Granny, have you got up? (UK)", "text_zh": "奶奶，您起床了嗎？", "audio_normal_url": "/audio/turns/turn-mor-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-mor-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-mor-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-mor-4", "dialogue_id": "dlg-morning", "turn_order": 4, "speaker_role": "Family B", "speaker_side": "right", "is_learner_role": true, "text_en": "No, I have just sat up. Make the bed!", "text_en_alt_locale": null, "text_zh": "還沒，我才剛坐起來。去把床鋪整理好！", "audio_normal_url": "/audio/turns/turn-mor-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-mor-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-mor-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-mor-5", "dialogue_id": "dlg-morning", "turn_order": 5, "speaker_role": "Family A", "speaker_side": "left", "is_learner_role": false, "text_en": "I've made it. Don't forget to turn off the faucet.", "text_en_alt_locale": "Don't forget to turn off the tap. (UK)", "text_zh": "我已經整理好了。別忘了關水龍頭喔。", "audio_normal_url": "/audio/turns/turn-mor-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-mor-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-mor-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-mor-6", "dialogue_id": "dlg-morning", "turn_order": 6, "speaker_role": "Family B", "speaker_side": "right", "is_learner_role": true, "text_en": "I have turned it off and put on my bathrobe.", "text_en_alt_locale": "I have put on my dressing gown. (UK)", "text_zh": "我已經關掉了，也穿上了我的浴袍。", "audio_normal_url": "/audio/turns/turn-mor-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-mor-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-mor-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+
+    { "id": "turn-kit-1", "dialogue_id": "dlg-kitchen", "turn_order": 1, "speaker_role": "Family A", "speaker_side": "left", "is_learner_role": false, "text_en": "Go to the kitchen. What will we have for breakfast?", "text_en_alt_locale": null, "text_zh": "到廚房來。我們早餐要吃什麼？", "audio_normal_url": "/audio/turns/turn-kit-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-kit-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-kit-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-kit-2", "dialogue_id": "dlg-kitchen", "turn_order": 2, "speaker_role": "Family B", "speaker_side": "right", "is_learner_role": true, "text_en": "I'm going to toast the sliced bread.", "text_en_alt_locale": null, "text_zh": "我正打算烤切片吐司。", "audio_normal_url": "/audio/turns/turn-kit-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-kit-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-kit-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-kit-3", "dialogue_id": "dlg-kitchen", "turn_order": 3, "speaker_role": "Family A", "speaker_side": "left", "is_learner_role": false, "text_en": "Have you finished breakfast? Collect the dishes.", "text_en_alt_locale": null, "text_zh": "你吃完早餐了嗎？把碗盤收一收。", "audio_normal_url": "/audio/turns/turn-kit-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-kit-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-kit-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-kit-4", "dialogue_id": "dlg-kitchen", "turn_order": 4, "speaker_role": "Family B", "speaker_side": "right", "is_learner_role": true, "text_en": "I've collected them. I'm washing the dishes in the soapy water.", "text_en_alt_locale": null, "text_zh": "我收好了，正在用肥皂水洗碗。", "audio_normal_url": "/audio/turns/turn-kit-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-kit-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-kit-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-kit-5", "dialogue_id": "dlg-kitchen", "turn_order": 5, "speaker_role": "Family A", "speaker_side": "left", "is_learner_role": false, "text_en": "Take out the trash.", "text_en_alt_locale": "Take out the rubbish. (UK)", "text_zh": "把垃圾拿出去倒。", "audio_normal_url": "/audio/turns/turn-kit-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-kit-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-kit-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+    { "id": "turn-kit-6", "dialogue_id": "dlg-kitchen", "turn_order": 6, "speaker_role": "Family B", "speaker_side": "right", "is_learner_role": true, "text_en": "I've taken it out to the garbage can. May I relax in my hammock now?", "text_en_alt_locale": "I've taken it out to the dustbin. (UK)", "text_zh": "我已經拿到垃圾桶了。我現在可以去吊床上放鬆了嗎？", "audio_normal_url": "/audio/turns/turn-kit-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-kit-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-kit-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 3 },
+
+    { "id": "turn-shp-1", "dialogue_id": "dlg-shopping", "turn_order": 1, "speaker_role": "Shop Assistant", "speaker_side": "left", "is_learner_role": false, "text_en": "Hello! How may I help you today?", "text_en_alt_locale": null, "text_zh": "您好！今天有什麼我可以為您服務的嗎？", "audio_normal_url": "/audio/turns/turn-shp-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-2", "dialogue_id": "dlg-shopping", "turn_order": 2, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "Hi, I'm looking for this jacket. Do you have this in a smaller size? Can I try it on?", "text_en_alt_locale": null, "text_zh": "嗨，我在看這件夾克。這款有小一點的尺寸嗎？我可以試穿一下嗎？", "audio_normal_url": "/audio/turns/turn-shp-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-3", "dialogue_id": "dlg-shopping", "turn_order": 3, "speaker_role": "Shop Assistant", "speaker_side": "left", "is_learner_role": false, "text_en": "Certainly! Here is a smaller size. The fitting rooms are right over there.", "text_en_alt_locale": "The changing rooms are right over there. (UK)", "text_zh": "當然！這是小一號的。試衣間就在那邊。", "audio_normal_url": "/audio/turns/turn-shp-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-4", "dialogue_id": "dlg-shopping", "turn_order": 4, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "Thank you. Well, this one fits well! Does the price include tax?", "text_en_alt_locale": null, "text_zh": "謝謝。嗯，這件很合身！請問標價有含稅嗎？", "audio_normal_url": "/audio/turns/turn-shp-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-5", "dialogue_id": "dlg-shopping", "turn_order": 5, "speaker_role": "Shop Assistant", "speaker_side": "left", "is_learner_role": false, "text_en": "Yes, the tax is already included in the displayed price. Will that be all for today?", "text_en_alt_locale": null, "text_zh": "有的，稅金已經包含在標價中了。今天就買這些商品了嗎？", "audio_normal_url": "/audio/turns/turn-shp-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-6", "dialogue_id": "dlg-shopping", "turn_order": 6, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "Yes, I'll take it. What's your return policy if I need a refund or an exchange?", "text_en_alt_locale": null, "text_zh": "對，我買這件。如果我需要退款或換貨，你們的退換貨政策是什麼呢？", "audio_normal_url": "/audio/turns/turn-shp-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-7", "dialogue_id": "dlg-shopping", "turn_order": 7, "speaker_role": "Shop Assistant", "speaker_side": "left", "is_learner_role": false, "text_en": "You have 14 days with the original receipt. Please pay at the cashier's desk. Will that be cash or credit?", "text_en_alt_locale": "Please pay at the cash desk. (UK)", "text_zh": "憑原始收據 14 天內皆可辦理。請到收銀台付款，要付現還是刷卡？", "audio_normal_url": "/audio/turns/turn-shp-7_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-7_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-7_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-shp-8", "dialogue_id": "dlg-shopping", "turn_order": 8, "speaker_role": "Customer", "speaker_side": "right", "is_learner_role": true, "text_en": "I'll pay by card, please. Thank you!", "text_en_alt_locale": null, "text_zh": "我想刷卡，謝謝！", "audio_normal_url": "/audio/turns/turn-shp-8_normal.mp3", "audio_slow_url": "/audio/turns/turn-shp-8_slow.mp3", "audio_zh_url": "/audio/turns/turn-shp-8_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+
+    { "id": "turn-prk-1", "dialogue_id": "dlg-park", "turn_order": 1, "speaker_role": "Jennifer", "speaker_side": "right", "is_learner_role": true, "text_en": "Adam! What a surprise! I haven't seen you in ages!", "text_en_alt_locale": null, "text_zh": "Adam！真沒想到會遇到你！我好久沒見到你了！", "audio_normal_url": "/audio/turns/turn-prk-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-prk-2", "dialogue_id": "dlg-park", "turn_order": 2, "speaker_role": "Adam", "speaker_side": "left", "is_learner_role": false, "text_en": "Jennifer! What a small world! I'm glad we ran into each other. Got a minute to catch up?", "text_en_alt_locale": null, "text_zh": "Jennifer！世界真小！很高興巧遇你。有空聊聊近況嗎？", "audio_normal_url": "/audio/turns/turn-prk-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-prk-3", "dialogue_id": "dlg-park", "turn_order": 3, "speaker_role": "Jennifer", "speaker_side": "right", "is_learner_role": true, "text_en": "Definitely! How have you been lately? You look great.", "text_en_alt_locale": null, "text_zh": "當然！你最近過得怎麼樣？你看起來氣色很好。", "audio_normal_url": "/audio/turns/turn-prk-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-prk-4", "dialogue_id": "dlg-park", "turn_order": 4, "speaker_role": "Adam", "speaker_side": "left", "is_learner_role": false, "text_en": "Pretty good, but work has been crazy busy lately. I'm a little out of shape.", "text_en_alt_locale": null, "text_zh": "還不錯，但最近工作忙瘋了。我的體能有點退步了。", "audio_normal_url": "/audio/turns/turn-prk-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-prk-5", "dialogue_id": "dlg-park", "turn_order": 5, "speaker_role": "Jennifer", "speaker_side": "right", "is_learner_role": true, "text_en": "Tell me about it! Same here. That's why I started jogging again.", "text_en_alt_locale": null, "text_zh": "可不是嗎！我也是。所以我才又開始慢跑。", "audio_normal_url": "/audio/turns/turn-prk-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-prk-6", "dialogue_id": "dlg-park", "turn_order": 6, "speaker_role": "Adam", "speaker_side": "left", "is_learner_role": false, "text_en": "Good for you! Hey, got any plans for the weekend? Want to check out that new cafe downtown?", "text_en_alt_locale": null, "text_zh": "真替你高興！嘿，你週末有什麼計畫嗎？要不要一起去看看市中心那家新咖啡廳？", "audio_normal_url": "/audio/turns/turn-prk-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-prk-7", "dialogue_id": "dlg-park", "turn_order": 7, "speaker_role": "Jennifer", "speaker_side": "right", "is_learner_role": true, "text_en": "I'd be up for that! Saturday morning works for me. Text me the address!", "text_en_alt_locale": null, "text_zh": "我很樂意！週六早上我可以。把地址傳訊息給我吧！", "audio_normal_url": "/audio/turns/turn-prk-7_normal.mp3", "audio_slow_url": "/audio/turns/turn-prk-7_slow.mp3", "audio_zh_url": "/audio/turns/turn-prk-7_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+
+    { "id": "turn-phn-1", "dialogue_id": "dlg-phone", "turn_order": 1, "speaker_role": "Receptionist", "speaker_side": "left", "is_learner_role": false, "text_en": "Good morning, Smith Company. How may I direct your call?", "text_en_alt_locale": null, "text_zh": "早安，史密斯公司。請問您要轉接哪裡？", "audio_normal_url": "/audio/turns/turn-phn-1_normal.mp3", "audio_slow_url": "/audio/turns/turn-phn-1_slow.mp3", "audio_zh_url": "/audio/turns/turn-phn-1_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-phn-2", "dialogue_id": "dlg-phone", "turn_order": 2, "speaker_role": "Caller", "speaker_side": "right", "is_learner_role": true, "text_en": "Hello, this is John Jones calling. Could I please speak with David Miller in Marketing?", "text_en_alt_locale": null, "text_zh": "您好，我是約翰・瓊斯。請問我可以和行銷部的大衛・米勒通話嗎？", "audio_normal_url": "/audio/turns/turn-phn-2_normal.mp3", "audio_slow_url": "/audio/turns/turn-phn-2_slow.mp3", "audio_zh_url": "/audio/turns/turn-phn-2_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-phn-3", "dialogue_id": "dlg-phone", "turn_order": 3, "speaker_role": "Receptionist", "speaker_side": "left", "is_learner_role": false, "text_en": "Certainly, Mr. Jones. Just a moment, please. Let me connect you with that department.", "text_en_alt_locale": null, "text_zh": "沒問題，瓊斯先生。請稍候，我現在為您轉接該部門。", "audio_normal_url": "/audio/turns/turn-phn-3_normal.mp3", "audio_slow_url": "/audio/turns/turn-phn-3_slow.mp3", "audio_zh_url": "/audio/turns/turn-phn-3_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-phn-4", "dialogue_id": "dlg-phone", "turn_order": 4, "speaker_role": "Receptionist", "speaker_side": "left", "is_learner_role": false, "text_en": "Thank you for waiting. I'm afraid he is on another line right now. Would you care to hold?", "text_en_alt_locale": null, "text_zh": "感謝您的等候。很抱歉，他目前正在通話中，請問您願意在線上稍候嗎？", "audio_normal_url": "/audio/turns/turn-phn-4_normal.mp3", "audio_slow_url": "/audio/turns/turn-phn-4_slow.mp3", "audio_zh_url": "/audio/turns/turn-phn-4_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-phn-5", "dialogue_id": "dlg-phone", "turn_order": 5, "speaker_role": "Caller", "speaker_side": "right", "is_learner_role": true, "text_en": "Actually, I have to step into a meeting. Could I leave a message instead?", "text_en_alt_locale": null, "text_zh": "其實我馬上要進去開會了。我可以改留個口信嗎？", "audio_normal_url": "/audio/turns/turn-phn-5_normal.mp3", "audio_slow_url": "/audio/turns/turn-phn-5_slow.mp3", "audio_zh_url": "/audio/turns/turn-phn-5_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 },
+    { "id": "turn-phn-6", "dialogue_id": "dlg-phone", "turn_order": 6, "speaker_role": "Receptionist", "speaker_side": "left", "is_learner_role": false, "text_en": "Of course. Can I take a message and have him call you back as soon as he is available?", "text_en_alt_locale": null, "text_zh": "當然可以。我幫您記下留言，等他有空時立刻請他回電給您好嗎？", "audio_normal_url": "/audio/turns/turn-phn-6_normal.mp3", "audio_slow_url": "/audio/turns/turn-phn-6_slow.mp3", "audio_zh_url": "/audio/turns/turn-phn-6_zh.mp3", "timestamp_start_sec": null, "timestamp_end_sec": null, "default_loop_count": 2 }
+  ],
+  "vocabulary": [
+    { "id": "voc-boarding-pass", "word_en": "boarding pass", "base_form": "boarding pass", "ipa_us": "/ˈbɔːrdɪŋ pæs/", "ipa_uk": "/ˈbɔːdɪŋ pɑːs/", "part_of_speech": "n.", "meaning_zh": "登機證", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "Here is my boarding pass.", "example_zh": "這是我的登機證。", "audio_url": "/audio/vocab/voc-boarding-pass.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-aisle-seat", "word_en": "aisle seat", "base_form": "aisle seat", "ipa_us": "/aɪl siːt/", "ipa_uk": "/aɪl siːt/", "part_of_speech": "n.", "meaning_zh": "走道座位（s 不發音）", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "Could I have an aisle seat if possible?", "example_zh": "如果可以，我想要走道座位。", "audio_url": "/audio/vocab/voc-aisle-seat.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-carry-on", "word_en": "carry-on luggage", "base_form": "carry-on luggage", "ipa_us": "/ˈkæri ɑːn ˈlʌɡɪdʒ/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "隨身手提行李", "locale_variant": "US", "equivalent_word": "hand luggage (UK)", "example_en": "Do you have any carry-on luggage?", "example_zh": "您有隨身手提行李嗎？", "audio_url": "/audio/vocab/voc-carry-on.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-customs", "word_en": "customs", "base_form": "customs", "ipa_us": "/ˈkʌstəmz/", "ipa_uk": "/ˈkʌstəmz/", "part_of_speech": "n.", "meaning_zh": "海關", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I have my customs declaration form ready.", "example_zh": "我已準備好海關申報單。", "audio_url": "/audio/vocab/voc-customs.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-appetizer", "word_en": "appetizer", "base_form": "appetizer", "ipa_us": "/ˈæpɪtaɪzər/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "開胃前菜", "locale_variant": "US", "equivalent_word": "starter (UK)", "example_en": "I'll start with an appetizer.", "example_zh": "我先來一份開胃菜。", "audio_url": "/audio/vocab/voc-appetizer.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-allergy", "word_en": "allergy", "base_form": "allergy", "ipa_us": "/ˈælərdʒi/", "ipa_uk": "/ˈælədʒi/", "part_of_speech": "n.", "meaning_zh": "過敏（形容詞為 allergic）", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I have a severe nut allergy.", "example_zh": "我對堅果有嚴重過敏。", "audio_url": "/audio/vocab/voc-allergy.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-specialty", "word_en": "specialty", "base_form": "specialty", "ipa_us": "/ˈspeʃəlti/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "招牌菜、特色菜", "locale_variant": "US", "equivalent_word": "speciality (UK)", "example_en": "Could you recommend a house specialty?", "example_zh": "您能推薦一道招牌菜嗎？", "audio_url": "/audio/vocab/voc-specialty.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-gratuity", "word_en": "gratuity", "base_form": "gratuity", "ipa_us": "/ɡrəˈtuːəti/", "ipa_uk": "/ɡrəˈtjuːəti/", "part_of_speech": "n.", "meaning_zh": "小費、服務費（帳單正式用語，口語常說 tip）", "locale_variant": "BOTH", "equivalent_word": "tip / service charge", "example_en": "Is a gratuity included?", "example_zh": "服務費已經包含在內了嗎？", "audio_url": "/audio/vocab/voc-gratuity.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-sleepyhead", "word_en": "sleepyhead", "base_form": "sleepyhead", "ipa_us": "/ˈsliːpihed/", "ipa_uk": "/ˈsliːpihed/", "part_of_speech": "n.", "meaning_zh": "貪睡者、小懶蟲", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "Wake up, sleepyhead!", "example_zh": "快醒醒，小懶蟲！", "audio_url": "/audio/vocab/voc-sleepyhead.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-gotten-up", "word_en": "gotten up", "base_form": "get up", "ipa_us": "/ˈɡɑːtn ʌp/", "ipa_uk": "/ɡɒt ʌp/", "part_of_speech": "phr.", "meaning_zh": "起床（美式完成式用 gotten，英式用 got）", "locale_variant": "US", "equivalent_word": "got up (UK)", "example_en": "Granny, have you gotten up?", "example_zh": "奶奶，您起床了嗎？", "audio_url": "/audio/vocab/voc-gotten-up.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-faucet", "word_en": "faucet", "base_form": "faucet", "ipa_us": "/ˈfɔːsɪt/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "水龍頭（美式常用）", "locale_variant": "US", "equivalent_word": "tap (UK)", "example_en": "Don't forget to turn off the faucet.", "example_zh": "別忘了關水龍頭。", "audio_url": "/audio/vocab/voc-faucet.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-bathrobe", "word_en": "bathrobe", "base_form": "bathrobe", "ipa_us": "/ˈbæθroʊb/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "浴袍", "locale_variant": "US", "equivalent_word": "dressing gown (UK)", "example_en": "I've put on my bathrobe.", "example_zh": "我已經穿上浴袍了。", "audio_url": "/audio/vocab/voc-bathrobe.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-toast", "word_en": "toast", "base_form": "toast", "ipa_us": "/toʊst/", "ipa_uk": "/təʊst/", "part_of_speech": "v.", "meaning_zh": "烘烤（麵包）；烤吐司", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'm going to toast the sliced bread.", "example_zh": "我正打算烤切片吐司。", "audio_url": "/audio/vocab/voc-toast.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-soapy", "word_en": "soapy", "base_form": "soapy", "ipa_us": "/ˈsoʊpi/", "ipa_uk": "/ˈsəʊpi/", "part_of_speech": "adj.", "meaning_zh": "起肥皂泡的、含肥皂的", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'm washing the dishes in the soapy water.", "example_zh": "我正在用肥皂水洗碗。", "audio_url": "/audio/vocab/voc-soapy.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-trash", "word_en": "trash", "base_form": "trash", "ipa_us": "/træʃ/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "垃圾（美式）", "locale_variant": "US", "equivalent_word": "rubbish (UK)", "example_en": "Take out the trash.", "example_zh": "把垃圾拿出去倒。", "audio_url": "/audio/vocab/voc-trash.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-garbage-can", "word_en": "garbage can", "base_form": "garbage can", "ipa_us": "/ˈɡɑːrbɪdʒ kæn/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "垃圾桶（美式）", "locale_variant": "US", "equivalent_word": "dustbin / rubbish bin (UK)", "example_en": "I've taken it out to the garbage can.", "example_zh": "我已經拿到垃圾桶了。", "audio_url": "/audio/vocab/voc-garbage-can.mp3", "difficulty_level": "zero_basis" },
+    { "id": "voc-fitting-room", "word_en": "fitting rooms", "base_form": "fitting room", "ipa_us": "/ˈfɪtɪŋ ruːm/", "ipa_uk": "/ˈfɪtɪŋ ruːm/", "part_of_speech": "n.", "meaning_zh": "試衣間", "locale_variant": "US", "equivalent_word": "changing room (UK)", "example_en": "The fitting rooms are right over there.", "example_zh": "試衣間就在那邊。", "audio_url": "/audio/vocab/voc-fitting-room.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-receipt", "word_en": "receipt", "base_form": "receipt", "ipa_us": "/rɪˈsiːt/", "ipa_uk": "/rɪˈsiːt/", "part_of_speech": "n.", "meaning_zh": "收據、發票（注意 p 不發音）", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "You have 14 days with the original receipt.", "example_zh": "憑原始收據 14 天內可退換。", "audio_url": "/audio/vocab/voc-receipt.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-refund", "word_en": "refund", "base_form": "refund", "ipa_us": "/ˈriːfʌnd/", "ipa_uk": "/ˈriːfʌnd/", "part_of_speech": "n.", "meaning_zh": "退款、退錢", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "Could I have a refund, please?", "example_zh": "請問我可以辦理退款嗎？", "audio_url": "/audio/vocab/voc-refund.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-exchange", "word_en": "exchange", "base_form": "exchange", "ipa_us": "/ɪksˈtʃeɪndʒ/", "ipa_uk": "/ɪksˈtʃeɪndʒ/", "part_of_speech": "n./v.", "meaning_zh": "換貨、更換", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'd like to exchange this for a different size.", "example_zh": "我想換成其他尺寸。", "audio_url": "/audio/vocab/voc-exchange.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-cashier", "word_en": "cashier's desk", "base_form": "cashier's desk", "ipa_us": "/kæˈʃɪrz desk/", "ipa_uk": null, "part_of_speech": "n.", "meaning_zh": "收銀台、結帳處", "locale_variant": "US", "equivalent_word": "cash desk (UK)", "example_en": "Please pay at the cashier's desk.", "example_zh": "請至收銀台付款。", "audio_url": "/audio/vocab/voc-cashier.mp3", "difficulty_level": "beginner" },
+    { "id": "voc-ran-into", "word_en": "ran into", "base_form": "run into", "ipa_us": "/rʌn ˈɪntuː/", "ipa_uk": "/rʌn ˈɪntuː/", "part_of_speech": "phr.", "meaning_zh": "巧遇、偶然撞見", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'm glad we ran into each other.", "example_zh": "很高興我們今天巧遇！", "audio_url": "/audio/vocab/voc-ran-into.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-catch-up", "word_en": "catch up", "base_form": "catch up", "ipa_us": "/kætʃ ʌp/", "ipa_uk": "/kætʃ ʌp/", "part_of_speech": "phr.", "meaning_zh": "敘舊、聊聊彼此近況", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "Got a minute to catch up?", "example_zh": "有空聊聊近況嗎？", "audio_url": "/audio/vocab/voc-catch-up.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-out-of-shape", "word_en": "out of shape", "base_form": "out of shape", "ipa_us": "/aʊt əv ʃeɪp/", "ipa_uk": "/aʊt əv ʃeɪp/", "part_of_speech": "phr.", "meaning_zh": "體能退步、缺乏鍛鍊", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'm a little out of shape.", "example_zh": "我的體能有點退步了。", "audio_url": "/audio/vocab/voc-out-of-shape.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-up-for", "word_en": "be up for", "base_form": "be up for", "ipa_us": "/bi ʌp fər/", "ipa_uk": "/bi ʌp fɔː/", "part_of_speech": "phr.", "meaning_zh": "願意參加、樂意去做", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'd be up for that!", "example_zh": "我很樂意啊！", "audio_url": "/audio/vocab/voc-up-for.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-direct-call", "word_en": "direct your call", "base_form": "direct a call", "ipa_us": "/dəˈrekt ə kɔːl/", "ipa_uk": null, "part_of_speech": "phr.", "meaning_zh": "轉接／指引電話線路", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "How may I direct your call?", "example_zh": "請問您要轉接哪裡？", "audio_url": "/audio/vocab/voc-direct-call.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-another-line", "word_en": "on another line", "base_form": "on another line", "ipa_us": "/ɑːn əˈnʌðər laɪn/", "ipa_uk": null, "part_of_speech": "phr.", "meaning_zh": "正在另一條線上通話、佔線中", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'm afraid he is on another line right now.", "example_zh": "很抱歉他目前正在通話中。", "audio_url": "/audio/vocab/voc-another-line.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-take-message", "word_en": "take a message", "base_form": "take a message", "ipa_us": "/teɪk ə ˈmesɪdʒ/", "ipa_uk": null, "part_of_speech": "phr.", "meaning_zh": "代為記錄留言", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "Can I take a message?", "example_zh": "我能幫您留個言嗎？", "audio_url": "/audio/vocab/voc-take-message.mp3", "difficulty_level": "intermediate" },
+    { "id": "voc-call-back", "word_en": "call you back", "base_form": "call back", "ipa_us": "/kɔːl bæk/", "ipa_uk": "/kɔːl bæk/", "part_of_speech": "phr.", "meaning_zh": "回電", "locale_variant": "BOTH", "equivalent_word": null, "example_en": "I'll have him call you back.", "example_zh": "我會請他回電給您。", "audio_url": "/audio/vocab/voc-call-back.mp3", "difficulty_level": "beginner" }
+  ],
+  "dialogue_turn_vocabulary": [
+    { "dialogue_turn_id": "turn-air-3", "vocabulary_id": "voc-aisle-seat", "highlight_text": "aisle seat" },
+    { "dialogue_turn_id": "turn-air-4", "vocabulary_id": "voc-carry-on", "highlight_text": "carry-on luggage" },
+    { "dialogue_turn_id": "turn-air-5", "vocabulary_id": "voc-customs", "highlight_text": "customs" },
+    { "dialogue_turn_id": "turn-air-8", "vocabulary_id": "voc-boarding-pass", "highlight_text": "boarding pass" },
+    { "dialogue_turn_id": "turn-res-2", "vocabulary_id": "voc-specialty", "highlight_text": "specialty" },
+    { "dialogue_turn_id": "turn-res-2", "vocabulary_id": "voc-allergy", "highlight_text": "allergy" },
+    { "dialogue_turn_id": "turn-res-4", "vocabulary_id": "voc-appetizer", "highlight_text": "appetizer" },
+    { "dialogue_turn_id": "turn-res-8", "vocabulary_id": "voc-gratuity", "highlight_text": "gratuity" },
+    { "dialogue_turn_id": "turn-mor-1", "vocabulary_id": "voc-sleepyhead", "highlight_text": "sleepyhead" },
+    { "dialogue_turn_id": "turn-mor-3", "vocabulary_id": "voc-gotten-up", "highlight_text": "gotten up" },
+    { "dialogue_turn_id": "turn-mor-5", "vocabulary_id": "voc-faucet", "highlight_text": "faucet" },
+    { "dialogue_turn_id": "turn-mor-6", "vocabulary_id": "voc-bathrobe", "highlight_text": "bathrobe" },
+    { "dialogue_turn_id": "turn-kit-2", "vocabulary_id": "voc-toast", "highlight_text": "toast" },
+    { "dialogue_turn_id": "turn-kit-4", "vocabulary_id": "voc-soapy", "highlight_text": "soapy" },
+    { "dialogue_turn_id": "turn-kit-5", "vocabulary_id": "voc-trash", "highlight_text": "trash" },
+    { "dialogue_turn_id": "turn-kit-6", "vocabulary_id": "voc-garbage-can", "highlight_text": "garbage can" },
+    { "dialogue_turn_id": "turn-shp-3", "vocabulary_id": "voc-fitting-room", "highlight_text": "fitting rooms" },
+    { "dialogue_turn_id": "turn-shp-6", "vocabulary_id": "voc-refund", "highlight_text": "refund" },
+    { "dialogue_turn_id": "turn-shp-6", "vocabulary_id": "voc-exchange", "highlight_text": "exchange" },
+    { "dialogue_turn_id": "turn-shp-7", "vocabulary_id": "voc-receipt", "highlight_text": "receipt" },
+    { "dialogue_turn_id": "turn-shp-7", "vocabulary_id": "voc-cashier", "highlight_text": "cashier's desk" },
+    { "dialogue_turn_id": "turn-prk-2", "vocabulary_id": "voc-ran-into", "highlight_text": "ran into" },
+    { "dialogue_turn_id": "turn-prk-2", "vocabulary_id": "voc-catch-up", "highlight_text": "catch up" },
+    { "dialogue_turn_id": "turn-prk-4", "vocabulary_id": "voc-out-of-shape", "highlight_text": "out of shape" },
+    { "dialogue_turn_id": "turn-prk-7", "vocabulary_id": "voc-up-for", "highlight_text": "be up for" },
+    { "dialogue_turn_id": "turn-phn-1", "vocabulary_id": "voc-direct-call", "highlight_text": "direct your call" },
+    { "dialogue_turn_id": "turn-phn-4", "vocabulary_id": "voc-another-line", "highlight_text": "on another line" },
+    { "dialogue_turn_id": "turn-phn-6", "vocabulary_id": "voc-take-message", "highlight_text": "take a message" },
+    { "dialogue_turn_id": "turn-phn-6", "vocabulary_id": "voc-call-back", "highlight_text": "call you back" }
+  ],
+  "cultural_notes": [
+    { "id": "note-air-1", "scenario_id": "scn-airport", "dialogue_id": "dlg-airport", "note_type": "travel_warning", "title_zh": "移民署查驗區禁止拍照與通話", "content_zh": "在 Immigration 排隊查驗時不可拍照或講手機，建議提前備妥護照、回程機票與紙本訂房確認單，回答簡潔明確即可。", "sort_order": 1 },
+    { "id": "note-air-2", "scenario_id": "scn-airport", "dialogue_id": "dlg-airport", "note_type": "culture", "title_zh": "隨身與託運行李限重提醒", "content_zh": "手提行李稱作 carry-on luggage，託運行李為 checked baggage；若行李超重（overweight）會產生高額罰金，報到前宜先於機場磅秤確認。", "sort_order": 2 },
+    { "id": "note-res-1", "scenario_id": "scn-restaurant", "dialogue_id": "dlg-restaurant", "note_type": "etiquette", "title_zh": "北美餐廳小費文化（15%–20%）", "content_zh": "在北美正式餐廳用餐，小費通常未含在帳單中（多人聚餐才可能自動計入）。結帳時可禮貌詢問 Is a gratuity included?，一般行情約 15%–20%。", "sort_order": 1 },
+    { "id": "note-res-2", "scenario_id": "scn-restaurant", "dialogue_id": "dlg-restaurant", "note_type": "culture", "title_zh": "菜單標價多為未稅價（Tax Excluded）", "content_zh": "美加餐廳菜單價格通常未含州稅／地方消費稅（Sales Tax），結帳總額會略高於菜單單價加總。", "sort_order": 2 },
+    { "id": "note-mor-1", "scenario_id": "scn-morning", "dialogue_id": "dlg-morning", "note_type": "grammar_tip", "title_zh": "Wake up 與 Get up 的差別", "content_zh": "wake up 指「醒來睜開眼睛」（人還在床上），而 get up 則是「真正離開床鋪起身」。", "sort_order": 1 },
+    { "id": "note-mor-2", "scenario_id": "scn-morning", "dialogue_id": "dlg-morning", "note_type": "grammar_tip", "title_zh": "美式 gotten vs. 英式 got", "content_zh": "美式英語在現在完成式廣泛保留過去分詞 gotten（have you gotten up?），現代英式英語則慣用 got（have you got up?）。", "sort_order": 2 },
+    { "id": "note-kit-1", "scenario_id": "scn-kitchen", "dialogue_id": "dlg-kitchen", "note_type": "grammar_tip", "title_zh": "可分動詞片語：代名詞必須夾在中間", "content_zh": "當受詞是代名詞 it / them 時，必須放在動詞與介副詞之間：要說 turn it off / take it out，不能說 turn off it。", "sort_order": 1 },
+    { "id": "note-kit-2", "scenario_id": "scn-kitchen", "dialogue_id": "dlg-kitchen", "note_type": "culture", "title_zh": "垃圾名詞的美英差異", "content_zh": "美式日常慣用 trash / garbage（垃圾桶為 garbage can），英式英語則常用 rubbish（垃圾桶為 dustbin / rubbish bin）。", "sort_order": 2 },
+    { "id": "note-shp-1", "scenario_id": "scn-shopping", "dialogue_id": "dlg-shopping", "note_type": "culture", "title_zh": "結帳前先確認是否含稅", "content_zh": "美國各州消費稅不同，標價經常不含稅。買單前可問 Does the price include tax? 或 Is tax included? 避免結帳金額落差。", "sort_order": 1 },
+    { "id": "note-shp-2", "scenario_id": "scn-shopping", "dialogue_id": "dlg-shopping", "note_type": "travel_warning", "title_zh": "務必保留原始收據（Original Receipt）", "content_zh": "國外店家辦理退換貨通常嚴格要求出示 original receipt，且吊牌完整未拆；結帳後請妥善收好收據。", "sort_order": 2 },
+    { "id": "note-prk-1", "scenario_id": "scn-park", "dialogue_id": "dlg-park", "note_type": "conversation_hack", "title_zh": "高共鳴接話詞（Empathy Bridge）", "content_zh": "當對方說最近很忙或很累時，別只回單調的 Yes！用 Tell me about it!（可不是嗎！）或 Same here.（我也是）能瞬間拉近距離。", "sort_order": 1 },
+    { "id": "note-prk-2", "scenario_id": "scn-park", "dialogue_id": "dlg-park", "note_type": "conversation_hack", "title_zh": "乒乓球原則（Ping-Pong Rule）避免句點", "content_zh": "回答完自己的近況後，順勢拋出一個延伸問題（如 Got any plans for the weekend?），讓對話自然來回流動。", "sort_order": 2 },
+    { "id": "note-phn-1", "scenario_id": "scn-phone", "dialogue_id": "dlg-phone", "note_type": "etiquette", "title_zh": "用 I'm afraid 軟化佔線與拒絕語氣", "content_zh": "告知不利消息時，用 I'm afraid he is on another line. 取代生硬的 He is busy，語氣專業又體貼。", "sort_order": 1 },
+    { "id": "note-phn-2", "scenario_id": "scn-phone", "dialogue_id": "dlg-phone", "note_type": "conversation_hack", "title_zh": "主動提供替代方案（Hold or Message）", "content_zh": "無法即時轉接時，主動提供兩個選項：Would you care to hold, or can I take a message? 展現積極的商務禮儀。", "sort_order": 2 }
+  ],
+  "sentence_patterns": [
+    {
+      "id": "pat-trv-order",
+      "scenario_id": "scn-restaurant",
+      "source_id": "src-prepedu-travel",
+      "speaker_role": "Customer",
+      "formula_en": "I'd like to have the {{dish}}, and please make it without {{exclude}}.",
+      "formula_zh": "我想要點{{dish}}，並且請不要加{{exclude}}。",
+      "pragmatic_note": "點餐時同時清楚交代不吃或過敏的食材，比事後退菜更安全禮貌。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "dish",
+          "label_zh": "餐點",
+          "choices": [
+            { "en": "grilled salmon", "zh": "烤鮭魚" },
+            { "en": "vegetable risotto", "zh": "蔬菜燉飯" },
+            { "en": "medium steak", "zh": "七分熟牛排" },
+            { "en": "set menu", "zh": "主廚套餐" }
+          ]
+        },
+        {
+          "key": "exclude",
+          "label_zh": "不加的食材",
+          "choices": [
+            { "en": "nuts", "zh": "堅果" },
+            { "en": "onions", "zh": "洋蔥" },
+            { "en": "dairy or cheese", "zh": "乳製品或起司" },
+            { "en": "spicy sauce", "zh": "辣醬" }
+          ]
+        }
+      ],
+      "example_en": "I'd like to have the grilled salmon, and please make it without nuts.",
+      "example_zh": "我想要點烤鮭魚，並且請不要加堅果。",
+      "audio_normal_url": "/audio/patterns/pat-trv-order_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-trv-order_slow.mp3",
+      "is_survival_essential": true,
+      "survival_tag": "飲食過敏"
+    },
+    {
+      "id": "pat-trv-dir",
+      "scenario_id": "scn-airport",
+      "source_id": "src-prepedu-travel",
+      "speaker_role": "Traveler",
+      "formula_en": "Excuse me, where is the nearest {{place}}, and how do I get there?",
+      "formula_zh": "不好意思，請問最近的{{place}}在哪裡，我該怎麼走過去？",
+      "pragmatic_note": "問路開頭先說 Excuse me 引起注意，加上 the nearest 最容易得到具體方向。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "place",
+          "label_zh": "地點",
+          "choices": [
+            { "en": "subway station", "zh": "地鐵站" },
+            { "en": "pharmacy", "zh": "藥局" },
+            { "en": "restroom", "zh": "洗手間" },
+            { "en": "currency exchange", "zh": "外幣兌換處" }
+          ]
+        }
+      ],
+      "example_en": "Excuse me, where is the nearest subway station, and how do I get there?",
+      "example_zh": "不好意思，請問最近的地鐵站在哪裡，我該怎麼走過去？",
+      "audio_normal_url": "/audio/patterns/pat-trv-dir_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-trv-dir_slow.mp3",
+      "is_survival_essential": true,
+      "survival_tag": "問路交通"
+    },
+    {
+      "id": "pat-trv-hotel",
+      "scenario_id": "scn-airport",
+      "source_id": "src-prepedu-travel",
+      "speaker_role": "Traveler",
+      "formula_en": "Could you please send extra {{item}} to my room?",
+      "formula_zh": "能否請你們送額外的{{item}}到我的房間？",
+      "pragmatic_note": "打電話給飯店櫃檯或房務（housekeeping）時最標準禮貌的請求句。",
+      "register": "formal",
+      "slots_json": [
+        {
+          "key": "item",
+          "label_zh": "客房用品",
+          "choices": [
+            { "en": "towels", "zh": "毛巾" },
+            { "en": "pillows", "zh": "枕頭" },
+            { "en": "bottled water", "zh": "瓶裝水" },
+            { "en": "blankets", "zh": "毛毯" }
+          ]
+        }
+      ],
+      "example_en": "Could you please send extra towels to my room?",
+      "example_zh": "能否請你們送額外的毛巾到我的房間？",
+      "audio_normal_url": "/audio/patterns/pat-trv-hotel_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-trv-hotel_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-trv-emerg",
+      "scenario_id": "scn-airport",
+      "source_id": "src-tutorabc-travel",
+      "speaker_role": "Traveler",
+      "formula_en": "This is an emergency. My {{item}} is missing, and I need to file a report.",
+      "formula_zh": "這是緊急狀況。我的{{item}}不見了，我需要報案做紀錄。",
+      "pragmatic_note": "報失或申請旅遊保險理賠時，file a report（報案立卷）是關鍵詞。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "item",
+          "label_zh": "遺失物品",
+          "choices": [
+            { "en": "passport", "zh": "護照" },
+            { "en": "wallet", "zh": "皮夾" },
+            { "en": "suitcase", "zh": "行李箱" },
+            { "en": "credit card", "zh": "信用卡" }
+          ]
+        }
+      ],
+      "example_en": "This is an emergency. My passport is missing, and I need to file a report.",
+      "example_zh": "這是緊急狀況。我的護照不見了，我需要報案做紀錄。",
+      "audio_normal_url": "/audio/patterns/pat-trv-emerg_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-trv-emerg_slow.mp3",
+      "is_survival_essential": true,
+      "survival_tag": "緊急求助"
+    },
+    {
+      "id": "pat-day-time",
+      "scenario_id": "scn-morning",
+      "source_id": "src-500-mini",
+      "speaker_role": "Family",
+      "formula_en": "It's time to {{action}}.",
+      "formula_zh": "該是{{action}}的時候了。",
+      "pragmatic_note": "日常作息提醒最萬用的開頭，後面直接接原形動詞片語。",
+      "register": "informal",
+      "slots_json": [
+        {
+          "key": "action",
+          "label_zh": "日常動作",
+          "choices": [
+            { "en": "get up", "zh": "起床" },
+            { "en": "make the bed", "zh": "整理床鋪" },
+            { "en": "go to the kitchen", "zh": "去廚房" },
+            { "en": "wash the dishes", "zh": "洗碗盤" }
+          ]
+        }
+      ],
+      "example_en": "It's time to get up.",
+      "example_zh": "該起床了。",
+      "audio_normal_url": "/audio/patterns/pat-day-time_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-day-time_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-day-done",
+      "scenario_id": "scn-kitchen",
+      "source_id": "src-500-mini",
+      "speaker_role": "Family",
+      "formula_en": "Have you {{task}} yet?",
+      "formula_zh": "你已經{{task}}了嗎？",
+      "pragmatic_note": "用現在完成式確認某件家事或生活步驟完成了沒，回答常用 I've already ...。",
+      "register": "informal",
+      "slots_json": [
+        {
+          "key": "task",
+          "label_zh": "完成事項",
+          "choices": [
+            { "en": "gotten up", "zh": "起床" },
+            { "en": "finished breakfast", "zh": "吃完早餐" },
+            { "en": "turned off the faucet", "zh": "關掉水龍頭" },
+            { "en": "taken out the trash", "zh": "拿去倒垃圾" }
+          ]
+        }
+      ],
+      "example_en": "Have you taken out the trash yet?",
+      "example_zh": "你已經拿去倒垃圾了嗎？",
+      "audio_normal_url": "/audio/patterns/pat-day-done_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-day-done_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-shp-staff-1",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Shop Assistant",
+      "formula_en": "How may I help you? Are you looking for {{target}}?",
+      "formula_zh": "我可以如何為您服務？您有在找{{target}}嗎？",
+      "pragmatic_note": "進店時最常聽到的店員招呼語，聽懂即可微笑回應 I'm just browsing.",
+      "register": "formal",
+      "slots_json": [
+        {
+          "key": "target",
+          "label_zh": "尋找對象",
+          "choices": [
+            { "en": "anything in particular", "zh": "任何特定款式" },
+            { "en": "a specific size", "zh": "特定尺碼" },
+            { "en": "a gift for someone", "zh": "送人的禮物" }
+          ]
+        }
+      ],
+      "example_en": "How may I help you? Are you looking for anything in particular?",
+      "example_zh": "我可以如何為您服務？您有在找任何特定款式嗎？",
+      "audio_normal_url": "/audio/patterns/pat-shp-staff-1_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-staff-1_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-shp-staff-2",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Shop Assistant",
+      "formula_en": "Would you like to try it on? The {{room}} are right over there.",
+      "formula_zh": "您想試穿看看嗎？{{room}}就在那邊。",
+      "pragmatic_note": "美式多說 fitting rooms，英式與百貨也常見 changing rooms / dressing rooms。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "room",
+          "label_zh": "試衣間說法",
+          "choices": [
+            { "en": "fitting rooms", "zh": "試衣間（美式）" },
+            { "en": "changing rooms", "zh": "更衣室（英式）" },
+            { "en": "dressing rooms", "zh": "試衣間" }
+          ]
+        }
+      ],
+      "example_en": "Would you like to try it on? The fitting rooms are right over there.",
+      "example_zh": "您想試穿看看嗎？試衣間就在那邊。",
+      "audio_normal_url": "/audio/patterns/pat-shp-staff-2_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-staff-2_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-shp-staff-3",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Shop Assistant",
+      "formula_en": "How would you like to pay? Will that be {{method}}?",
+      "formula_zh": "您想怎麼付款呢？要{{method}}？",
+      "pragmatic_note": "結帳櫃檯必聽句，回覆 I'll pay by card / in cash 即可。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "method",
+          "label_zh": "付款方式",
+          "choices": [
+            { "en": "cash or credit", "zh": "付現還是刷卡" },
+            { "en": "in cash or by card", "zh": "現金還是卡片" }
+          ]
+        }
+      ],
+      "example_en": "How would you like to pay? Will that be cash or credit?",
+      "example_zh": "您想怎麼付款呢？要付現還是刷卡？",
+      "audio_normal_url": "/audio/patterns/pat-shp-staff-3_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-staff-3_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-shp-cust-1",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Customer",
+      "formula_en": "Thank you, I'm just {{action}}.",
+      "formula_zh": "謝謝，我只是{{action}}。",
+      "pragmatic_note": "想自己慢慢逛不被店員跟緊時，最禮貌又自然的回應。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "action",
+          "label_zh": "隨意逛逛說法",
+          "choices": [
+            { "en": "browsing", "zh": "隨意翻看" },
+            { "en": "looking around", "zh": "四處逛逛" },
+            { "en": "looking", "zh": "看看而已" }
+          ]
+        }
+      ],
+      "example_en": "Thank you, I'm just browsing.",
+      "example_zh": "謝謝，我只是隨意看看。",
+      "audio_normal_url": "/audio/patterns/pat-shp-cust-1_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-cust-1_slow.mp3",
+      "is_survival_essential": false,
+      "survival_tag": null
+    },
+    {
+      "id": "pat-shp-cust-2",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Customer",
+      "formula_en": "It doesn't fit well. It's too {{fit}}.",
+      "formula_zh": "這件不太合身，它太{{fit}}了。",
+      "pragmatic_note": "試穿後快速向店員形容版型問題的萬用模板。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "fit",
+          "label_zh": "版型形容詞",
+          "choices": [
+            { "en": "tight", "zh": "緊" },
+            { "en": "loose", "zh": "鬆" },
+            { "en": "short", "zh": "短" },
+            { "en": "long", "zh": "長" }
+          ]
+        }
+      ],
+      "example_en": "It doesn't fit well. It's too tight.",
+      "example_zh": "這件不太合身，它太緊了。",
+      "audio_normal_url": "/audio/patterns/pat-shp-cust-2_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-cust-2_slow.mp3",
+      "is_survival_essential": true,
+      "survival_tag": "購物試穿"
+    },
+    {
+      "id": "pat-shp-cust-3",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Customer",
+      "formula_en": "Do you have this in {{option}}?",
+      "formula_zh": "這件有{{option}}嗎？",
+      "pragmatic_note": "購物最高頻萬用句！尺寸、顏色、材質都能直接套進 in 後面。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "option",
+          "label_zh": "尺寸／顏色／材質",
+          "choices": [
+            { "en": "a smaller size", "zh": "小一點的尺寸" },
+            { "en": "a larger size", "zh": "大一點的尺寸" },
+            { "en": "a different color", "zh": "其他顏色" },
+            { "en": "stock", "zh": "現貨庫存" }
+          ]
+        }
+      ],
+      "example_en": "Do you have this in a smaller size?",
+      "example_zh": "這件有小一點的尺寸嗎？",
+      "audio_normal_url": "/audio/patterns/pat-shp-cust-3_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-cust-3_slow.mp3",
+      "is_survival_essential": true,
+      "survival_tag": "購物試穿"
+    },
+    {
+      "id": "pat-shp-cust-4",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-gjun-shop",
+      "speaker_role": "Customer",
+      "formula_en": "I'd like to {{action}}, please.",
+      "formula_zh": "我想要{{action}}，謝謝。",
+      "pragmatic_note": "結帳、退貨或換貨時用 I'd like to... 禮貌又清楚。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "action",
+          "label_zh": "結帳／售後動作",
+          "choices": [
+            { "en": "pay by card", "zh": "刷卡付款" },
+            { "en": "pay in cash", "zh": "付現" },
+            { "en": "return this", "zh": "退掉這件商品" },
+            { "en": "exchange this for a different size", "zh": "把這件換成其他尺寸" }
+          ]
+        }
+      ],
+      "example_en": "I'd like to exchange this for a different size, please.",
+      "example_zh": "我想要把這件換成其他尺寸，謝謝。",
+      "audio_normal_url": "/audio/patterns/pat-shp-cust-4_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-shp-cust-4_slow.mp3",
+      "is_survival_essential": true,
+      "survival_tag": "退換貨結帳"
+    }
+  ],
+  "expression_groups": [
+    {
+      "id": "grp-upg-bridge",
+      "scenario_id": "scn-park",
+      "source_id": "src-tilc-daily",
+      "topic_code": "UPG-01",
+      "title_en": "Opening Small Talk & Asking Impressions",
+      "title_zh": "開啟話題與自然徵詢感受（Small Talk Bridge）",
+      "group_type": "native_upgrade",
+      "illustration_url": null
+    },
+    {
+      "id": "grp-upg-soften",
+      "scenario_id": "scn-phone",
+      "source_id": "src-tilc-daily",
+      "topic_code": "UPG-02",
+      "title_en": "Delivering Bad News & Polite Refusal",
+      "title_zh": "傳遞壞消息與委婉拒絕（Softening 軟化語氣）",
+      "group_type": "native_upgrade",
+      "illustration_url": null
+    },
+    {
+      "id": "grp-upg-hedge",
+      "scenario_id": "scn-shopping",
+      "source_id": "src-mcgraw-hill",
+      "topic_code": "UPG-03",
+      "title_en": "Polite Requests & Pausing Politely",
+      "title_zh": "禮貌請求許可與緩衝說法（Hedging）",
+      "group_type": "native_upgrade",
+      "illustration_url": null
+    },
+    {
+      "id": "grp-spec-greet",
+      "scenario_id": "scn-park",
+      "source_id": "src-mcgraw-hill",
+      "topic_code": "MH-002",
+      "title_en": "Greetings & Asking How Someone Is",
+      "title_zh": "打招呼與關心近況（正式 ➜ 俚語光譜）",
+      "group_type": "synonym_spectrum",
+      "illustration_url": null
+    },
+    {
+      "id": "grp-spec-wait",
+      "scenario_id": "scn-phone",
+      "source_id": "src-mcgraw-hill",
+      "topic_code": "MH-459",
+      "title_en": "Asking Someone to Wait / Hold",
+      "title_zh": "請對方稍候與等一下（正式 ➜ 慣用語光譜）",
+      "group_type": "synonym_spectrum",
+      "illustration_url": null
+    }
+  ],
+  "expressions": [
+    { "id": "exp-1", "group_id": "grp-upg-bridge", "standard_en": "Do you like your new job?", "native_en": "How do you like your new job so far?", "meaning_zh": "到目前為止，你覺得新工作怎麼樣？", "register_tag": "neutral", "nuance_type": "small_talk_bridge", "idiom_note": "把封閉式 Yes/No 問句改成 How do you like...? 並加上 so far，能自然引導對方分享更多細節。", "audio_normal_url": "/audio/expressions/exp-1_normal.mp3", "audio_slow_url": "/audio/expressions/exp-1_slow.mp3", "sort_order": 1 },
+    { "id": "exp-2", "group_id": "grp-upg-bridge", "standard_en": "Is that incredible?", "native_en": "Can you believe it?", "meaning_zh": "真的假的？你能相信嗎？", "register_tag": "informal", "nuance_type": "small_talk_bridge", "idiom_note": "美國人極常用的情緒共鳴開場白，並非真的問相不相信，而是表達驚訝。", "audio_normal_url": "/audio/expressions/exp-2_normal.mp3", "audio_slow_url": "/audio/expressions/exp-2_slow.mp3", "sort_order": 2 },
+    { "id": "exp-3", "group_id": "grp-upg-bridge", "standard_en": "What time is it?", "native_en": "Do you happen to have the time?", "meaning_zh": "請問您剛好有看時間嗎？", "register_tag": "neutral", "nuance_type": "hedging", "idiom_note": "加上 happen to（恰巧）能大幅降低向陌生人發問的唐突感。", "audio_normal_url": "/audio/expressions/exp-3_normal.mp3", "audio_slow_url": "/audio/expressions/exp-3_slow.mp3", "sort_order": 3 },
+
+    { "id": "exp-4", "group_id": "grp-upg-soften", "standard_en": "I cannot come to dinner tonight.", "native_en": "I'm afraid I can't join you for dinner tonight.", "meaning_zh": "很抱歉，我今晚恐怕無法一起吃晚餐了。", "register_tag": "neutral", "nuance_type": "softening", "idiom_note": "句首加上 I'm afraid... 能有效軟化拒絕帶來的生硬感，顯得真誠有禮。", "audio_normal_url": "/audio/expressions/exp-4_normal.mp3", "audio_slow_url": "/audio/expressions/exp-4_slow.mp3", "sort_order": 1 },
+    { "id": "exp-5", "group_id": "grp-upg-soften", "standard_en": "We do not have any more in stock.", "native_en": "I'm afraid we don't have any more left.", "meaning_zh": "不好意思，我們已經售完了。", "register_tag": "neutral", "nuance_type": "softening", "idiom_note": "門市與客服最常聽見的溫和缺貨說法。", "audio_normal_url": "/audio/expressions/exp-5_normal.mp3", "audio_slow_url": "/audio/expressions/exp-5_slow.mp3", "sort_order": 2 },
+    { "id": "exp-6", "group_id": "grp-upg-soften", "standard_en": "You understood me wrong.", "native_en": "I'm afraid you misunderstood what I meant.", "meaning_zh": "恐怕您有點誤會我的意思了。", "register_tag": "formal", "nuance_type": "softening", "idiom_note": "避免直接指責對方錯了，用緩衝語降低對立與尷尬。", "audio_normal_url": "/audio/expressions/exp-6_normal.mp3", "audio_slow_url": "/audio/expressions/exp-6_slow.mp3", "sort_order": 3 },
+
+    { "id": "exp-7", "group_id": "grp-upg-hedge", "standard_en": "Can I open the window?", "native_en": "Do you mind if I open the window? It's getting a bit stuffy.", "meaning_zh": "你介意我開個窗嗎？這裡有點悶。", "register_tag": "neutral", "nuance_type": "hedging", "idiom_note": "用 Do you mind if I...? 把決定權交給對方，並補上原因，非常體貼道地。", "audio_normal_url": "/audio/expressions/exp-7_normal.mp3", "audio_slow_url": "/audio/expressions/exp-7_slow.mp3", "sort_order": 1 },
+    { "id": "exp-8", "group_id": "grp-upg-hedge", "standard_en": "Wait for me. I will answer the phone.", "native_en": "Sorry, do you mind if I take this call? I'll just be a minute.", "meaning_zh": "抱歉，介意我接一下這通電話嗎？只要一分鐘。", "register_tag": "neutral", "nuance_type": "hedging", "idiom_note": "取代命令式的 Wait，加上時間承諾 just be a minute 展現禮節。", "audio_normal_url": "/audio/expressions/exp-8_normal.mp3", "audio_slow_url": "/audio/expressions/exp-8_slow.mp3", "sort_order": 2 },
+    { "id": "exp-9", "group_id": "grp-upg-hedge", "standard_en": "I will think about this product.", "native_en": "I have to think it over.", "meaning_zh": "我得再仔細考慮一下。", "register_tag": "neutral", "nuance_type": "idiom", "idiom_note": "think it over = 仔細斟酌，逛街想委婉離開時超好用。", "audio_normal_url": "/audio/expressions/exp-9_normal.mp3", "audio_slow_url": "/audio/expressions/exp-9_slow.mp3", "sort_order": 3 },
+
+    { "id": "exp-10", "group_id": "grp-spec-greet", "standard_en": null, "native_en": "Good morning. How are you doing today?", "meaning_zh": "早安。您今天過得如何？（客戶、長官、正式會議）", "register_tag": "formal", "nuance_type": null, "idiom_note": "最安全得體的商務問候。", "audio_normal_url": "/audio/expressions/exp-10_normal.mp3", "audio_slow_url": "/audio/expressions/exp-10_slow.mp3", "sort_order": 1 },
+    { "id": "exp-11", "group_id": "grp-spec-greet", "standard_en": null, "native_en": "How's it going? How have you been?", "meaning_zh": "近來如何？過得怎麼樣？（日常熟人與同事）", "register_tag": "neutral", "nuance_type": null, "idiom_note": "美國最普遍的日常萬用招呼。", "audio_normal_url": "/audio/expressions/exp-11_normal.mp3", "audio_slow_url": "/audio/expressions/exp-11_slow.mp3", "sort_order": 2 },
+    { "id": "exp-12", "group_id": "grp-spec-greet", "standard_en": null, "native_en": "How you been? What's up?", "meaning_zh": "最近如何？有什麼新鮮事？（朋友同儕）", "register_tag": "informal", "nuance_type": null, "idiom_note": "口語常省略 have，快速唸成 How ya been?", "audio_normal_url": "/audio/expressions/exp-12_normal.mp3", "audio_slow_url": "/audio/expressions/exp-12_slow.mp3", "sort_order": 3 },
+    { "id": "exp-13", "group_id": "grp-spec-greet", "standard_en": null, "native_en": "Wassup? How's it shakin'?", "meaning_zh": "嘿！最近瞎忙啥呢？（極親近好友、年輕族群）", "register_tag": "slang", "nuance_type": "idiom", "idiom_note": "極口語街頭俚語，請勿用於正式商務場合。", "audio_normal_url": "/audio/expressions/exp-13_normal.mp3", "audio_slow_url": "/audio/expressions/exp-13_slow.mp3", "sort_order": 4 },
+
+    { "id": "exp-14", "group_id": "grp-spec-wait", "standard_en": null, "native_en": "Would you care to hold, please? Just a moment, please.", "meaning_zh": "請問您願意稍候嗎？請稍等片刻。（總機與櫃檯）", "register_tag": "formal", "nuance_type": "softening", "idiom_note": "商務電話最禮貌的保留說法。", "audio_normal_url": "/audio/expressions/exp-14_normal.mp3", "audio_slow_url": "/audio/expressions/exp-14_slow.mp3", "sort_order": 1 },
+    { "id": "exp-15", "group_id": "grp-spec-wait", "standard_en": null, "native_en": "Hold on a second. Wait a moment.", "meaning_zh": "請等一下。（辦公與日常通用）", "register_tag": "neutral", "nuance_type": null, "idiom_note": "自然不拘謹的標準表達。", "audio_normal_url": "/audio/expressions/exp-15_normal.mp3", "audio_slow_url": "/audio/expressions/exp-15_slow.mp3", "sort_order": 2 },
+    { "id": "exp-16", "group_id": "grp-spec-wait", "standard_en": null, "native_en": "Hang on a sec. Just a sec.", "meaning_zh": "等我一下下。（朋友熟人快節奏口語）", "register_tag": "informal", "nuance_type": "idiom", "idiom_note": "to hang on = to wait，sec 為 second 的口語縮寫。", "audio_normal_url": "/audio/expressions/exp-16_normal.mp3", "audio_slow_url": "/audio/expressions/exp-16_slow.mp3", "sort_order": 3 },
+    { "id": "exp-17", "group_id": "grp-spec-wait", "standard_en": null, "native_en": "Hold your horses! Keep your shirt on!", "meaning_zh": "別急！耐心點！（熟人間幽默提醒別性急）", "register_tag": "slang", "nuance_type": "idiom", "idiom_note": "字面為「拉住你的馬」，常用於半開玩笑叫對方冷靜別催。", "audio_normal_url": "/audio/expressions/exp-17_normal.mp3", "audio_slow_url": "/audio/expressions/exp-17_slow.mp3", "sort_order": 4 }
+  ],
+  "exercises": [
+    { "id": "q3s-01", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "還不錯，只是有點累", "prompt_en": "How's it going today?", "situation_tag": "日常寒暄", "prompt_audio_url": "/audio/qa/q3s-01_q.mp3", "options_json": null, "correct_answer": "Pretty good, just a bit tired.", "correct_answer_zh": "蠻好的，只是有點累。", "answer_audio_normal_url": "/audio/qa/q3s-01_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-01_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-01_a_zh.mp3", "acceptable_answers_json": ["Pretty good, just a little tired."], "explanation_zh": "回答 How's it going? 用 Pretty good 開頭最自然，不必每次都背 I'm fine, thank you.", "time_limit_sec": 3, "sort_order": 1 },
+    { "id": "q3s-02", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "沒什麼特別的，在這邊晃晃", "prompt_en": "What's up with you today?", "situation_tag": "朋友閒聊", "prompt_audio_url": "/audio/qa/q3s-02_q.mp3", "options_json": null, "correct_answer": "Not much, just hanging around here.", "correct_answer_zh": "沒什麼事，就隨處晃晃。", "answer_audio_normal_url": "/audio/qa/q3s-02_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-02_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-02_a_zh.mp3", "acceptable_answers_json": ["Nothing much, just hanging out."], "explanation_zh": "What's up? 幾乎八成都以 Not much 開頭。", "time_limit_sec": 3, "sort_order": 2 },
+    { "id": "q3s-03", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "對啊，很慶幸終於快結束了", "prompt_en": "Long day at work today, huh?", "situation_tag": "同事茶水間", "prompt_audio_url": "/audio/qa/q3s-03_q.mp3", "options_json": null, "correct_answer": "Yeah, I'm glad it's almost over.", "correct_answer_zh": "是啊，真高興終於快過完了。", "answer_audio_normal_url": "/audio/qa/q3s-03_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-03_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-03_a_zh.mp3", "acceptable_answers_json": [], "explanation_zh": "I'm glad it's almost over 是下班前與同事閒聊超高頻回覆。", "time_limit_sec": 3, "sort_order": 3 },
+    { "id": "q3s-04", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "還過得去，老樣子", "prompt_en": "How have you been lately?", "situation_tag": "偶遇寒暄", "prompt_audio_url": "/audio/qa/q3s-04_q.mp3", "options_json": null, "correct_answer": "Could be worse. Same as usual.", "correct_answer_zh": "還過得去，就跟平常一樣。", "answer_audio_normal_url": "/audio/qa/q3s-04_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-04_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-04_a_zh.mp3", "acceptable_answers_json": ["Same as always."], "explanation_zh": "Could be worse 字面是「還能更糟」，實際意思是「算不錯／過得去」。", "time_limit_sec": 3, "sort_order": 4 },
+    { "id": "q3s-05", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "恐怕去不了，明天一早有會", "prompt_en": "Are you coming to the party tonight?", "situation_tag": "社交邀約", "prompt_audio_url": "/audio/qa/q3s-05_q.mp3", "options_json": null, "correct_answer": "I'm afraid I won't be able to make it.", "correct_answer_zh": "我恐怕去不了。", "answer_audio_normal_url": "/audio/qa/q3s-05_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-05_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-05_a_zh.mp3", "acceptable_answers_json": ["I'm afraid I can't make it."], "explanation_zh": "make it 在邀約語境中表示「到場、赴約」。", "time_limit_sec": 3, "sort_order": 5 },
+    { "id": "q3s-06", "scenario_id": "scn-phone", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "一點也不介意，儘管拿去！", "prompt_en": "Do you mind if I borrow your notes?", "situation_tag": "辦公協作", "prompt_audio_url": "/audio/qa/q3s-06_q.mp3", "options_json": null, "correct_answer": "Not at all, feel free to take them!", "correct_answer_zh": "一點都不介意，儘管拿去用！", "answer_audio_normal_url": "/audio/qa/q3s-06_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-06_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-06_a_zh.mp3", "acceptable_answers_json": ["Of course not, go ahead!"], "explanation_zh": "注意 Do you mind...? 表示「不介意」要答 Not at all / No, go ahead，千萬別說 Yes！", "time_limit_sec": 3, "sort_order": 6 },
+    { "id": "q3s-07", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "真的很棒！窗外景色超美", "prompt_en": "How do you like your new office?", "situation_tag": "破冰閒聊", "prompt_audio_url": "/audio/qa/q3s-07_q.mp3", "options_json": null, "correct_answer": "It's really nice! The view is amazing.", "correct_answer_zh": "真的很棒！窗外的視野好極了。", "answer_audio_normal_url": "/audio/qa/q3s-07_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-07_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-07_a_zh.mp3", "acceptable_answers_json": [], "explanation_zh": "先給整體正面評價，再補一個具體細節（The view is amazing）。", "time_limit_sec": 3, "sort_order": 7 },
+    { "id": "q3s-08", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "就是說啊！冷得要命！", "prompt_en": "Can you believe this weather?", "situation_tag": "天氣閒聊", "prompt_audio_url": "/audio/qa/q3s-08_q.mp3", "options_json": null, "correct_answer": "I know, right? It's freezing!", "correct_answer_zh": "就是說啊！冷得要命！", "answer_audio_normal_url": "/audio/qa/q3s-08_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-08_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-08_a_zh.mp3", "acceptable_answers_json": [], "explanation_zh": "I know, right? 是美式超高頻附和句，表達強烈認同。", "time_limit_sec": 3, "sort_order": 8 },
+    { "id": "q3s-09", "scenario_id": "scn-park", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "對，我才剛搬來這一區", "prompt_en": "Is this your first time here?", "situation_tag": "鄰里認識", "prompt_audio_url": "/audio/qa/q3s-09_q.mp3", "options_json": null, "correct_answer": "Yeah, I just moved to this area.", "correct_answer_zh": "對，我才剛搬到這一帶。", "answer_audio_normal_url": "/audio/qa/q3s-09_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-09_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-09_a_zh.mp3", "acceptable_answers_json": [], "explanation_zh": "move to this area / neighborhood 是自我介紹與新環境破冰常用語。", "time_limit_sec": 3, "sort_order": 9 },
+    { "id": "q3s-10", "scenario_id": "scn-phone", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "我是約翰・瓊斯，請問她在等我電話嗎？", "prompt_en": "May I ask who is calling?", "situation_tag": "商務電話", "prompt_audio_url": "/audio/qa/q3s-10_q.mp3", "options_json": null, "correct_answer": "This is John Jones. Is she expecting me?", "correct_answer_zh": "我是約翰・瓊斯，請問她在等我電話嗎？", "answer_audio_normal_url": "/audio/qa/q3s-10_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-10_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-10_a_zh.mp3", "acceptable_answers_json": [], "explanation_zh": "電話報名字用 This is ... speaking，不用 I am ...。", "time_limit_sec": 3, "sort_order": 10 },
+    { "id": "q3s-11", "scenario_id": "scn-restaurant", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "不用了，謝謝你問我", "prompt_en": "Can I get you another cup of coffee?", "situation_tag": "餐飲接待", "prompt_audio_url": "/audio/qa/q3s-11_q.mp3", "options_json": null, "correct_answer": "I'm good, thanks for asking.", "correct_answer_zh": "我不用了，謝謝你問我。", "answer_audio_normal_url": "/audio/qa/q3s-11_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-11_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-11_a_zh.mp3", "acceptable_answers_json": ["No thanks, I'm good."], "explanation_zh": "在餐廳婉拒加點或續杯，I'm good 比直接說 No 更親切道地。", "time_limit_sec": 3, "sort_order": 11 },
+    { "id": "q3s-12", "scenario_id": "scn-shopping", "dialogue_id": null, "exercise_type": "quick_response_3s", "prompt_text": "好，請問試衣間在哪裡？", "prompt_en": "Would you like to try it on?", "situation_tag": "購物消費", "prompt_audio_url": "/audio/qa/q3s-12_q.mp3", "options_json": null, "correct_answer": "Sure, where are the fitting rooms?", "correct_answer_zh": "好的，請問試衣間在哪裡？", "answer_audio_normal_url": "/audio/qa/q3s-12_a_normal.mp3", "answer_audio_slow_url": "/audio/qa/q3s-12_a_slow.mp3", "answer_audio_zh_url": "/audio/qa/q3s-12_a_zh.mp3", "acceptable_answers_json": ["Sure, where is the fitting room?", "Sure, where are the changing rooms?"], "explanation_zh": "試衣間常以複數 the fitting rooms 稱呼。", "time_limit_sec": 3, "sort_order": 12 },
+
+    { "id": "quiz-air-1", "scenario_id": "scn-airport", "dialogue_id": "dlg-airport", "exercise_type": "fill_in_blank", "prompt_text": "如果可以的話，能給我一個走道座位嗎？\nCould I also have an ________ ________ if possible?", "prompt_audio_url": "/audio/turns/turn-air-3_normal.mp3", "options_json": ["aisle seat", "window seat", "boarding pass", "check-in counter"], "correct_answer": "aisle seat", "acceptable_answers_json": ["aisle seat"], "explanation_zh": "走道座位為 aisle seat（注意 aisle 的 s 不發音）。", "time_limit_sec": null, "sort_order": 1 },
+    { "id": "quiz-air-2", "scenario_id": "scn-airport", "dialogue_id": "dlg-airport", "exercise_type": "reverse_translation", "prompt_text": "請翻譯：「我是來觀光的，預計停留七天。」", "prompt_audio_url": "/audio/turns/turn-air-7_normal.mp3", "options_json": null, "correct_answer": "I'm here for tourism, staying for seven days.", "acceptable_answers_json": ["I am here for tourism, staying for seven days.", "I'm here for tourism and will be staying for seven days."], "explanation_zh": "過海關最常被問 purpose of visit 與 length of stay，一句即可回答完整。", "time_limit_sec": null, "sort_order": 2 },
+    { "id": "quiz-res-1", "scenario_id": "scn-restaurant", "dialogue_id": "dlg-restaurant", "exercise_type": "fill_in_blank", "prompt_text": "請問總金額已經包含小費／服務費了嗎？\nDoes this total include the tip, or should I add the ________?", "prompt_audio_url": "/audio/turns/turn-res-8_normal.mp3", "options_json": ["gratuity", "appetizer", "specialty", "receipt"], "correct_answer": "gratuity", "acceptable_answers_json": ["gratuity", "tip"], "explanation_zh": "北美餐廳帳單常用 gratuity 代表小費／服務費。", "time_limit_sec": null, "sort_order": 1 },
+    { "id": "quiz-mor-1", "scenario_id": "scn-morning", "dialogue_id": "dlg-morning", "exercise_type": "reverse_translation", "prompt_text": "請翻譯（美式完成式）：「奶奶，您起床了嗎？」", "prompt_audio_url": "/audio/turns/turn-mor-3_normal.mp3", "options_json": null, "correct_answer": "Granny, have you gotten up?", "acceptable_answers_json": ["Granny, have you got up?", "Grandmother, have you gotten up?"], "explanation_zh": "現在完成式 have + p.p.；美式慣用 gotten up，英式則用 got up。", "time_limit_sec": null, "sort_order": 1 },
+    { "id": "quiz-mor-2", "scenario_id": "scn-morning", "dialogue_id": "dlg-morning", "exercise_type": "fill_in_blank", "prompt_text": "別忘了關掉水龍頭。\nDon't forget to ________ ________ the faucet.", "prompt_audio_url": "/audio/turns/turn-mor-5_normal.mp3", "options_json": ["turn off", "put on", "take out", "wake up"], "correct_answer": "turn off", "acceptable_answers_json": ["turn off", "shut off"], "explanation_zh": "關閉水龍頭與電器標準片語為 turn off。", "time_limit_sec": null, "sort_order": 2 },
+    { "id": "quiz-kit-1", "scenario_id": "scn-kitchen", "dialogue_id": "dlg-kitchen", "exercise_type": "reverse_translation", "prompt_text": "請翻譯（美式用語）：「把垃圾拿出去倒。」", "prompt_audio_url": "/audio/turns/turn-kit-5_normal.mp3", "options_json": null, "correct_answer": "Take out the trash.", "acceptable_answers_json": ["Take out the garbage.", "Take out the rubbish."], "explanation_zh": "倒垃圾美式常用 take out the trash / garbage，英式用 rubbish。", "time_limit_sec": null, "sort_order": 1 },
+    { "id": "quiz-kit-2", "scenario_id": "scn-kitchen", "dialogue_id": "dlg-kitchen", "exercise_type": "fill_in_blank", "prompt_text": "他正在起泡的肥皂水裡洗碗盤。\nI'm washing the dishes in the ________ water.", "prompt_audio_url": "/audio/turns/turn-kit-4_normal.mp3", "options_json": ["soapy", "sliced", "blunt", "awake"], "correct_answer": "soapy", "acceptable_answers_json": ["soapy", "sudsy"], "explanation_zh": "soapy 為形容詞「充滿肥皂泡沫的」。", "time_limit_sec": null, "sort_order": 2 },
+    { "id": "quiz-shp-1", "scenario_id": "scn-shopping", "dialogue_id": "dlg-shopping", "exercise_type": "listening_choice", "prompt_text": "聽音檔，選出顧客想表達的核心需求：", "prompt_audio_url": "/audio/turns/turn-shp-2_normal.mp3", "options_json": ["詢問是否有更小尺寸並想試穿", "要求刷卡與開立免稅單", "表示只是隨意看看不需要協助", "詢問商品是否可以退貨退款"], "correct_answer": "詢問是否有更小尺寸並想試穿", "acceptable_answers_json": [], "explanation_zh": "Do you have this in a smaller size? Can I try it on? 表示想找小一號並試穿。", "time_limit_sec": null, "sort_order": 1 },
+    { "id": "quiz-prk-1", "scenario_id": "scn-park", "dialogue_id": "dlg-park", "exercise_type": "listening_choice", "prompt_text": "當好友說 work has been crazy busy lately，以下哪句最能展現美式高共鳴接話？", "prompt_audio_url": "/audio/turns/turn-prk-5_normal.mp3", "options_json": ["Tell me about it! Same here.", "Yes, I am busy too. Goodbye.", "You are welcome.", "I'm afraid I can't."], "correct_answer": "Tell me about it! Same here.", "acceptable_answers_json": [], "explanation_zh": "Tell me about it! 意為「可不是嗎！我太懂了！」，搭配 Same here. 超自然。", "time_limit_sec": null, "sort_order": 1 },
+    { "id": "quiz-phn-1", "scenario_id": "scn-phone", "dialogue_id": "dlg-phone", "exercise_type": "fill_in_blank", "prompt_text": "很抱歉，他目前正在另一條線上通話。\nI'm afraid he is ________ ________ ________ right now.", "prompt_audio_url": "/audio/turns/turn-phn-4_normal.mp3", "options_json": ["on another line", "out of shape", "in a smaller size", "at the register"], "correct_answer": "on another line", "acceptable_answers_json": ["on another line"], "explanation_zh": "be on another line 是商務電話「佔線中／正在講另一通電話」的道地說法。", "time_limit_sec": null, "sort_order": 1 }
+  ],
+  "users": [
+    {
+      "id": "demo-user",
+      "email": "learner@echospeak.local",
+      "display_name": "學員",
+      "role": "admin",
+      "current_level": "beginner",
+      "learning_goal": "travel_solo",
+      "preferred_accent": "US",
+      "daily_goal_minutes": 15,
+      "streak_days": 3,
+      "last_active_date": "2026-11-22",
+      "created_at": "2026-11-20T08:00:00.000Z"
+    }
+  ],
+  "user_scenario_progress": [
+    {
+      "id": "prog-demo-airport",
+      "user_id": "demo-user",
+      "scenario_id": "scn-airport",
+      "step1_blind_listen_done": true,
+      "step2_study_done": true,
+      "step3_shadowing_done": false,
+      "step4_quiz_best_score": 0,
+      "completion_percent": 50,
+      "last_studied_at": "2026-11-22T07:30:00.000Z"
+    }
+  ],
+  "user_srs_cards": [
+    {
+      "id": "srs-1",
+      "user_id": "demo-user",
+      "item_type": "vocabulary",
+      "item_id": "voc-aisle-seat",
+      "front_zh": "走道座位（s 不發音）",
+      "back_en": "aisle seat",
+      "ipa": "/aɪl siːt/",
+      "audio_url": "/audio/vocab/voc-aisle-seat.mp3",
+      "personal_note": "飛機劃位必說：Could I have an aisle seat?",
+      "ease_factor": 2.5,
+      "interval_days": 0,
+      "repetitions": 0,
+      "next_review_at": "2026-11-22T00:00:00.000Z",
+      "last_reviewed_at": null
+    },
+    {
+      "id": "srs-2",
+      "user_id": "demo-user",
+      "item_type": "expression",
+      "item_id": "exp-4",
+      "front_zh": "很抱歉，我今晚恐怕無法一起吃晚餐了。（軟化語氣）",
+      "back_en": "I'm afraid I can't join you for dinner tonight.",
+      "ipa": null,
+      "audio_url": "/audio/expressions/exp-4_normal.mp3",
+      "personal_note": "用 I'm afraid 取代生硬的 I cannot",
+      "ease_factor": 2.5,
+      "interval_days": 0,
+      "repetitions": 0,
+      "next_review_at": "2026-11-22T00:00:00.000Z",
+      "last_reviewed_at": null
+    },
+    {
+      "id": "srs-3",
+      "user_id": "demo-user",
+      "item_type": "vocabulary",
+      "item_id": "voc-gotten-up",
+      "front_zh": "起床（美式完成式 gotten / 英式 got）",
+      "back_en": "Have you gotten up?",
+      "ipa": "/ˈɡɑːtn ʌp/",
+      "audio_url": "/audio/vocab/voc-gotten-up.mp3",
+      "personal_note": "wake up 是睜眼，get up 是下床",
+      "ease_factor": 2.5,
+      "interval_days": 0,
+      "repetitions": 0,
+      "next_review_at": "2026-11-22T00:00:00.000Z",
+      "last_reviewed_at": null
+    },
+    {
+      "id": "srs-4",
+      "user_id": "demo-user",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-prk-5",
+      "front_zh": "可不是嗎！我也是。（高共鳴接話）",
+      "back_en": "Tell me about it! Same here.",
+      "ipa": null,
+      "audio_url": "/audio/turns/turn-prk-5_normal.mp3",
+      "personal_note": "避免句點對方的美式萬用附和",
+      "ease_factor": 2.5,
+      "interval_days": 0,
+      "repetitions": 0,
+      "next_review_at": "2026-11-22T00:00:00.000Z",
+      "last_reviewed_at": null
+    }
+  ],
+  "user_practice_logs": [
+    {
+      "id": "log-1",
+      "user_id": "demo-user",
+      "activity_type": "loop_listening",
+      "target_type": "playlist",
+      "target_id": "pl-3s-qa",
+      "duration_seconds": 420,
+      "score": null,
+      "detail_json": { "mode": "classic" },
+      "created_at": "2026-11-22T07:20:00.000Z"
+    }
+  ],
+  "listening_playlists": [
+    {
+      "id": "pl-3s-qa",
+      "user_id": null,
+      "title_zh": "睡前 12 組美式高頻 3 秒 Q&A 磨耳朵",
+      "description": "精選日常寒暄、同事茶水間、商務電話與購物 12 組最高頻答句，經典常速➜慢速➜中文循環。",
+      "is_system": true,
+      "playback_recipe_json": {
+        "name_zh": "經典三軌（常速 ➜ 慢速 ➜ 中文）",
+        "sequence": [
+          { "track": "audio_normal_url", "repeat": 1, "pause_ms": 600 },
+          { "track": "audio_slow_url", "repeat": 1, "pause_ms": 600 },
+          { "track": "audio_zh_url", "repeat": 1, "pause_ms": 900 }
+        ],
+        "loop_playlist": true
+      },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "pl-travel-survival",
+      "user_id": null,
+      "title_zh": "出國旅遊：機場過海關與餐廳點餐實戰",
+      "description": "行前必聽！反覆聽熟劃位、走道座位、海關問答、堅果過敏與小費確認。",
+      "is_system": true,
+      "playback_recipe_json": {
+        "name_zh": "經典三軌（常速 ➜ 慢速 ➜ 中文）",
+        "sequence": [
+          { "track": "audio_normal_url", "repeat": 1, "pause_ms": 600 },
+          { "track": "audio_slow_url", "repeat": 1, "pause_ms": 600 },
+          { "track": "audio_zh_url", "repeat": 1, "pause_ms": 900 }
+        ],
+        "loop_playlist": true
+      },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    },
+    {
+      "id": "pl-american-smalltalk",
+      "user_id": null,
+      "title_zh": "美國人公園閒聊與職場電話沉浸聽",
+      "description": "磨出自然語感與連音節奏，適合通勤背景循環播放。",
+      "is_system": true,
+      "playback_recipe_json": {
+        "name_zh": "強化語感（單句英文連播 ×2 ➜ 中文）",
+        "sequence": [
+          { "track": "audio_normal_url", "repeat": 2, "pause_ms": 500 },
+          { "track": "audio_zh_url", "repeat": 1, "pause_ms": 800 }
+        ],
+        "loop_playlist": true
+      },
+      "created_at": "2026-11-22T08:00:00.000Z"
+    }
+  ],
+  "playlist_items": [
+    { "id": "pli-1", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-01", "sort_order": 1 },
+    { "id": "pli-2", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-02", "sort_order": 2 },
+    { "id": "pli-3", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-03", "sort_order": 3 },
+    { "id": "pli-4", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-04", "sort_order": 4 },
+    { "id": "pli-5", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-05", "sort_order": 5 },
+    { "id": "pli-6", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-06", "sort_order": 6 },
+    { "id": "pli-7", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-07", "sort_order": 7 },
+    { "id": "pli-8", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-08", "sort_order": 8 },
+    { "id": "pli-9", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-09", "sort_order": 9 },
+    { "id": "pli-10", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-10", "sort_order": 10 },
+    { "id": "pli-11", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-11", "sort_order": 11 },
+    { "id": "pli-12", "playlist_id": "pl-3s-qa", "item_type": "exercise", "item_id": "q3s-12", "sort_order": 12 },
+
+    { "id": "pli-13", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-air-1", "sort_order": 1 },
+    { "id": "pli-14", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-air-3", "sort_order": 2 },
+    { "id": "pli-15", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-air-6", "sort_order": 3 },
+    { "id": "pli-16", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-air-7", "sort_order": 4 },
+    { "id": "pli-17", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-res-2", "sort_order": 5 },
+    { "id": "pli-18", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-res-4", "sort_order": 6 },
+    { "id": "pli-19", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-res-6", "sort_order": 7 },
+    { "id": "pli-20", "playlist_id": "pl-travel-survival", "item_type": "dialogue_turn", "item_id": "turn-res-8", "sort_order": 8 },
+
+    { "id": "pli-21", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-prk-1", "sort_order": 1 },
+    { "id": "pli-22", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-prk-2", "sort_order": 2 },
+    { "id": "pli-23", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-prk-4", "sort_order": 3 },
+    { "id": "pli-24", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-prk-5", "sort_order": 4 },
+    { "id": "pli-25", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-prk-7", "sort_order": 5 },
+    { "id": "pli-26", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-phn-1", "sort_order": 6 },
+    { "id": "pli-27", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-phn-4", "sort_order": 7 },
+    { "id": "pli-28", "playlist_id": "pl-american-smalltalk", "item_type": "dialogue_turn", "item_id": "turn-phn-6", "sort_order": 8 }
+  ]
+}

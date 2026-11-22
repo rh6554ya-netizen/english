@@ -1,0 +1,21 @@
+{
+  "name": "english-conversation-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "互動式英文對話練習教學網站 Phase 1 MVP (Vite + React + Express + Firebase + Edge TTS)",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n API,WEB -c cyan,green \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "tts:generate": "node scripts/generate-tts.mjs",
+    "seed:firebase": "node scripts/seed-firebase.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "msedge-tts": "^2.0.4"
+  }
+}

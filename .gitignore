@@ -9,6 +9,11 @@ node_modules/
 !.env.example
 *.pem
 *.key
+*firebase-adminsdk*.json
+*serviceAccount*.json
+
+# Local runtime DB state
+data/runtime-db.json
 
 # Build outputs
 .next/

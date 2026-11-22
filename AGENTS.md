@@ -15,8 +15,18 @@
 /home/admin/english/
 ├── AGENTS.md                           # 專案指南與同步對照表
 ├── .gitignore                          # Git 忽略規則
-└── docs/
-    └── plan-features-and-database.md   # 功能架構與資料庫規劃書（18 張表設計）
+├── package.json                        # 根目錄腳本（dev / build / tts:generate / seed:firebase）
+├── docs/
+│   └── plan-features-and-database.md   # 功能架構與資料庫規劃書（18 張表設計）
+├── shared/
+│   └── types.ts                        # 前後端共用 18 張表 TypeScript 型別定義
+├── data/
+│   └── seed-notebooklm.json            # 自 NotebookLM「英文對話練習」萃取之 4 大主題種子教材
+├── scripts/
+│   ├── generate-tts.mjs                # Edge TTS 批次音檔產生器（常速 / 慢速 / 中文 MP3）
+│   └── seed-firebase.mjs               # Firebase Firestore 18 張集合種子資料寫入腳本
+├── server/                             # Node.js + Express + Firebase Admin API 後端
+└── client/                             # Vite + React + Tailwind CSS 前端網站與 public/audio/
 ```
 
 ## 同步對照表
