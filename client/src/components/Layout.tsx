@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import {
   BookOpen,
+  Bot,
   CheckCircle2,
   Cloud,
   Database,
@@ -17,6 +18,7 @@ import {
   ShieldCheck,
   Smartphone,
   Sparkles,
+  Trophy,
   User,
   WifiOff,
   X,
@@ -27,11 +29,13 @@ import { usePwa } from '../lib/pwa';
 
 const NAV_ITEMS = [
   { to: '/', label: '學習總覽', icon: LayoutDashboard, end: true },
+  { to: '/ai-roleplay', label: 'AI 口說實戰', icon: Bot },
   { to: '/scenarios', label: '情境課程館', icon: BookOpen },
   { to: '/loop-player', label: '磨耳朵播放', icon: Headphones },
   { to: '/quick-drill', label: '3秒反應訓練', icon: Zap },
   { to: '/patterns', label: '句型與美式升級', icon: Sparkles },
   { to: '/survival', label: '隨身急救卡', icon: LifeBuoy },
+  { to: '/challenges', label: '7天衝刺＆成就', icon: Trophy },
   { to: '/srs', label: 'SRS 複習庫', icon: Layers },
   { to: '/admin', label: '內容後台 CMS', icon: Database },
 ];

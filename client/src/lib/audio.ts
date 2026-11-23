@@ -65,6 +65,22 @@ export function playAudio({
       const utter = new SpeechSynthesisUtterance(fallbackText);
       utter.lang = lang;
       utter.rate = rate;
+
+      // Prefer natural-sounding US/UK/TW voices when available
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        const langPrefix = lang.toLowerCase();
+        const preferred =
+          voices.find(
+            (v) =>
+              v.lang.toLowerCase().replace('_', '-') === langPrefix &&
+              /samantha|aria|jenny|guy|google us english|natural|enhanced|ava|allison/i.test(v.name)
+          ) ||
+          voices.find((v) => v.lang.toLowerCase().replace('_', '-') === langPrefix) ||
+          voices.find((v) => v.lang.toLowerCase().startsWith(langPrefix.slice(0, 2)));
+        if (preferred) utter.voice = preferred;
+      }
+
       utter.onend = done;
       utter.onerror = done;
       window.speechSynthesis.speak(utter);

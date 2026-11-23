@@ -28,7 +28,10 @@ const gitEmail = execFileSync('git', ['config', 'user.email'], {
   encoding: 'utf8',
 }).trim();
 
+const aiApiBase =
+  process.env.VITE_AI_API_BASE || 'https://echospeak-ai.echospeak-studio.workers.dev';
 console.log('[Pages] Building client for GitHub Pages (/english/)...');
+console.log(`[Pages] Injecting VITE_AI_API_BASE=${aiApiBase}`);
 run('npm', ['--prefix', 'client', 'run', 'build'], {
   cwd: ROOT,
   env: {
@@ -36,6 +39,7 @@ run('npm', ['--prefix', 'client', 'run', 'build'], {
     VITE_BASE_PATH: '/english/',
     VITE_USE_FIRESTORE_DIRECT: 'true',
     VITE_USE_HASH_ROUTER: 'true',
+    VITE_AI_API_BASE: aiApiBase,
   },
 });
 

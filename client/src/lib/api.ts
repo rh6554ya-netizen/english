@@ -238,6 +238,14 @@ const httpApi = {
       method: 'POST',
       body: JSON.stringify(payload),
     }),
+
+  // Phase 2 methods delegate to firestoreApi (works seamlessly in local/Firestore modes)
+  getAiSessions: () => firestoreApi.getAiSessions(),
+  saveAiSession: (body: Parameters<typeof firestoreApi.saveAiSession>[0]) =>
+    firestoreApi.saveAiSession(body),
+  deleteAiSession: (id: string) => firestoreApi.deleteAiSession(id),
+  getGamificationSnapshot: () => firestoreApi.getGamificationSnapshot(),
+  startTravelSprint: () => firestoreApi.startTravelSprint(),
 };
 
 export const api = USE_FIRESTORE_DIRECT ? firestoreApi : httpApi;

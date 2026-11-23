@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
+  Bot,
   Clock,
   Flame,
   Headphones,
@@ -9,6 +10,7 @@ import {
   LifeBuoy,
   Play,
   SlidersHorizontal,
+  Trophy,
   Zap,
 } from 'lucide-react';
 import { api, type DashboardResponse } from '../lib/api';
@@ -219,6 +221,51 @@ export function DashboardPage() {
               張到期（共 {stats.total_srs_count} 張）
             </span>
           </div>
+        </Link>
+      </section>
+
+      {/* Phase 2 Featured Entry: AI Roleplay + 7-Day Sprint */}
+      <section className="grid md:grid-cols-2 gap-4">
+        <Link
+          to="/ai-roleplay"
+          className="group rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 text-white p-5 flex items-start gap-4 shadow-sm hover:shadow-md transition"
+        >
+          <div className="w-11 h-11 rounded-xl bg-white/15 text-white flex items-center justify-center shrink-0">
+            <Bot className="w-6 h-6" />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
+              <h3 className="font-extrabold text-base">AI 實境口說角色扮演</h3>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-400 text-slate-950">
+                NEW
+              </span>
+            </div>
+            <p className="text-xs text-indigo-100 mt-1 leading-relaxed">
+              直接語音開口與 AI 模擬機場、餐廳、購物與美式閒聊，獲得即時自然度評分、救場提示與 SRS 升級卡。
+            </p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-white/80 group-hover:translate-x-0.5 transition shrink-0 mt-1" />
+        </Link>
+
+        <Link
+          to="/challenges"
+          className="group rounded-2xl bg-gradient-to-br from-amber-500 to-rose-600 text-white p-5 flex items-start gap-4 shadow-sm hover:shadow-md transition"
+        >
+          <div className="w-11 h-11 rounded-xl bg-white/15 text-white flex items-center justify-center shrink-0">
+            <Trophy className="w-6 h-6" />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
+              <h3 className="font-extrabold text-base">7 天旅遊英文衝刺 ＆ 成就</h3>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-white/20 text-white">
+                12 枚徽章
+              </span>
+            </div>
+            <p className="text-xs text-amber-50 mt-1 leading-relaxed">
+              出國前 7 天每日實戰清單自動同步進度，解鎖口說、發音與連勝成就徽章。
+            </p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-white/80 group-hover:translate-x-0.5 transition shrink-0 mt-1" />
         </Link>
       </section>
 

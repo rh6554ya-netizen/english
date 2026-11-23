@@ -1,0 +1,15 @@
+name = "echospeak-ai"
+main = "src/index.ts"
+compatibility_date = "2025-01-29"
+
+[vars]
+FIREBASE_PROJECT_ID = "echospeak-english-studio"
+GROQ_CHAT_MODEL = "llama-3.3-70b-versatile"
+GROQ_STT_MODEL = "whisper-large-v3-turbo"
+DAILY_LIMIT_LEARNER = "30"
+DAILY_LIMIT_ADMIN = "300"
+ALLOWED_ORIGINS = "https://rh6554ya-netizen.github.io,http://localhost:5173,http://127.0.0.1:5173"
+
+[[kv_namespaces]]
+binding = "QUOTA_KV"
+id = "aaa53a3d1ea141b788b559148c86b4d5"

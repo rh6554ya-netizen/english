@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import {
   ArrowLeft,
   BookmarkPlus,
+  Bot,
   CheckCircle2,
   Download,
   Headphones,
@@ -11,12 +12,16 @@ import {
   Mic,
   Play,
   RotateCcw,
+  Sparkles,
   Square,
   Volume2,
   X,
 } from 'lucide-react';
+import { PronunciationCoachCard } from '../components/PronunciationCoachCard';
+import { ROLEPLAY_PRESETS } from '../data/roleplayPresets';
 import { api, type HydratedTurn, type ScenarioDetailResponse } from '../lib/api';
 import { playAudio, sleep, stopAllAudio } from '../lib/audio';
+import { VoiceRecorder } from '../lib/recorder';
 import {
   cacheAudioPaths,
   countCachedPaths,
@@ -54,12 +59,14 @@ export function DialogueStudioPage() {
   const [selectedVocab, setSelectedVocab] = useState<Vocabulary | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
-  // Step 3 roleplay & recorder
+  // Step 3 roleplay & recorder + AI pronunciation coach
   const [myRole, setMyRole] = useState<string>('');
   const [roleCountdown, setRoleCountdown] = useState<number | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [recordedUrl, setRecordedUrl] = useState<string | null>(null);
-  const recorderRef = useRef<MediaRecorder | null>(null);
+  const [activeCoachTurnId, setActiveCoachTurnId] = useState<string | null>(null);
+  const [turnPronScores, setTurnPronScores] = useState<Record<string, number>>({});
+  const recorderRef = useRef<VoiceRecorder | null>(null);
 
   // Step 4 quiz
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -215,26 +222,26 @@ export function DialogueStudioPage() {
 
   const toggleRecording = async () => {
     if (isRecording) {
-      recorderRef.current?.stop();
       setIsRecording(false);
+      const rec = recorderRef.current;
+      recorderRef.current = null;
+      if (!rec) return;
+      try {
+        const audio = await rec.stop();
+        if (recordedUrl) URL.revokeObjectURL(recordedUrl);
+        setRecordedUrl(audio.objectUrl);
+      } catch (err) {
+        showToast((err as Error).message || '錄音失敗');
+      }
       return;
     }
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mr = new MediaRecorder(stream);
-      const chunks: BlobPart[] = [];
-      mr.ondataavailable = (e) => chunks.push(e.data);
-      mr.onstop = () => {
-        const blob = new Blob(chunks, { type: 'audio/webm' });
-        if (recordedUrl) URL.revokeObjectURL(recordedUrl);
-        setRecordedUrl(URL.createObjectURL(blob));
-        stream.getTracks().forEach((tr) => tr.stop());
-      };
-      mr.start();
-      recorderRef.current = mr;
+      const rec = new VoiceRecorder();
+      await rec.start();
+      recorderRef.current = rec;
       setIsRecording(true);
-    } catch {
-      showToast('無法存取麥克風，請確認瀏覽器權限');
+    } catch (err) {
+      showToast((err as Error).message || '無法存取麥克風，請確認瀏覽器權限');
     }
   };
 
@@ -785,21 +792,76 @@ export function DialogueStudioPage() {
                         </span>
                       )}
                     </div>
-                    <button
-                      onClick={() => playSingleTurn(turn, speed === 0.75 ? 'slow' : 'normal')}
-                      className="text-xs font-semibold text-indigo-600 hover:underline inline-flex items-center gap-1"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5" /> 聽示範
-                    </button>
+                    <div className="flex items-center gap-2">
+                      {turnPronScores[turn.id] !== undefined && (
+                        <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+                          AI 發音 {turnPronScores[turn.id]} 分
+                        </span>
+                      )}
+                      <button
+                        onClick={() =>
+                          setActiveCoachTurnId((cur) => (cur === turn.id ? null : turn.id))
+                        }
+                        className={`text-xs font-bold px-2.5 py-1 rounded-lg border inline-flex items-center gap-1 transition ${
+                          activeCoachTurnId === turn.id
+                            ? 'bg-indigo-600 text-white border-indigo-600'
+                            : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100'
+                        }`}
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                        {activeCoachTurnId === turn.id ? '收起評測' : 'AI 發音評測'}
+                      </button>
+                      <button
+                        onClick={() => playSingleTurn(turn, speed === 0.75 ? 'slow' : 'normal')}
+                        className="text-xs font-semibold text-indigo-600 hover:underline inline-flex items-center gap-1"
+                      >
+                        <RotateCcw className="w-3.5 h-3.5" /> 聽示範
+                      </button>
+                    </div>
                   </div>
                   <div className="text-base font-bold text-slate-900 mt-2">{turn.text_en}</div>
                   <div className="text-xs text-slate-500 mt-1">{turn.text_zh}</div>
+
+                  {activeCoachTurnId === turn.id && (
+                    <PronunciationCoachCard
+                      targetTextEn={turn.text_en}
+                      targetTextZh={turn.text_zh}
+                      scenarioId={detail.scenario.id}
+                      scenarioTitle={detail.scenario.title_en}
+                      onPlayDemo={() => playSingleTurn(turn, speed === 0.75 ? 'slow' : 'normal')}
+                      onClose={() => setActiveCoachTurnId(null)}
+                      onScored={(assessment) => {
+                        setTurnPronScores((prev) => ({
+                          ...prev,
+                          [turn.id]: assessment.overall_score,
+                        }));
+                        showToast(`AI 發音評測完成：${assessment.overall_score} 分！`);
+                      }}
+                    />
+                  )}
                 </div>
               );
             })}
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {(() => {
+              const matchingPreset = ROLEPLAY_PRESETS.find(
+                (p) => p.scenario_id === detail.scenario.id
+              );
+              return (
+                <Link
+                  to={
+                    matchingPreset
+                      ? `/ai-roleplay?preset=${matchingPreset.id}`
+                      : '/ai-roleplay'
+                  }
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-violet-50 hover:bg-violet-100 border border-violet-200 text-violet-800 text-sm font-bold transition"
+                >
+                  <Bot className="w-4 h-4" /> 挑戰本課 AI 自由角色扮演
+                </Link>
+              );
+            })()}
             <button
               onClick={async () => {
                 await markProgress({ step3_shadowing_done: true, duration_seconds: 90 });

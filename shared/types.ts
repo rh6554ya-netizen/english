@@ -212,7 +212,13 @@ export interface UserScenarioProgress {
 export interface UserSrsCard {
   id: string;
   user_id: string;
-  item_type: 'vocabulary' | 'sentence_pattern' | 'expression' | 'dialogue_turn' | 'exercise';
+  item_type:
+    | 'vocabulary'
+    | 'sentence_pattern'
+    | 'expression'
+    | 'dialogue_turn'
+    | 'exercise'
+    | 'ai_upgrade';
   item_id: string;
   front_zh: string;
   back_en: string;
@@ -229,13 +235,127 @@ export interface UserSrsCard {
 export interface UserPracticeLog {
   id: string;
   user_id: string;
-  activity_type: 'loop_listening' | 'quick_3s' | 'shadowing' | 'quiz' | 'srs_review' | 'ai_roleplay';
+  activity_type:
+    | 'loop_listening'
+    | 'quick_3s'
+    | 'shadowing'
+    | 'quiz'
+    | 'srs_review'
+    | 'ai_roleplay'
+    | 'pronunciation_check';
   target_type: 'scenario' | 'dialogue' | 'playlist' | null;
   target_id: string | null;
   duration_seconds: number;
   score: number | null;
   detail_json: Record<string, unknown>;
   created_at: string;
+}
+
+/* ===== Phase 2: AI Roleplay, Pronunciation Assessment & Gamification ===== */
+
+export interface AiQuotaStatus {
+  used: number;
+  limit: number;
+  remaining: number;
+  reset_at: string;
+  storage?: 'kv' | 'memory';
+}
+
+export interface AiRescueHint {
+  en: string;
+  zh: string;
+  tone: 'simple' | 'natural' | 'polite';
+}
+
+export interface AiTurnFeedback {
+  naturalness_score: number;
+  grammar_correction: string | null;
+  native_upgrade_en: string;
+  native_upgrade_reason_zh: string;
+  pronunciation_tip_zh: string | null;
+}
+
+export interface AiRoleplayMessage {
+  id: string;
+  role: 'ai' | 'user';
+  text_en: string;
+  text_zh?: string | null;
+  used_audio?: boolean;
+  feedback?: AiTurnFeedback | null;
+  created_at: string;
+}
+
+export interface AiUpgradeCard {
+  user_said: string;
+  native_en: string;
+  meaning_zh: string;
+  nuance_note_zh: string;
+}
+
+export interface AiSessionReport {
+  overall_score: number;
+  naturalness_score: number;
+  grammar_score: number;
+  task_completion_score: number;
+  pronunciation_score: number | null;
+  summary_zh: string;
+  strengths_zh: string[];
+  focus_areas_zh: string[];
+  upgrade_cards: AiUpgradeCard[];
+}
+
+export interface UserAiSession {
+  id: string;
+  user_id: string;
+  scenario_id: string | null;
+  scenario_title_zh: string;
+  scenario_title_en: string;
+  ai_role: string;
+  user_role: string;
+  difficulty_level: DifficultyLevel;
+  missions: string[];
+  completed_mission_indices: number[];
+  messages: AiRoleplayMessage[];
+  report: AiSessionReport | null;
+  duration_seconds: number;
+  created_at: string;
+}
+
+export interface PronunciationWordFeedback {
+  word: string;
+  status: 'good' | 'watch' | 'missed';
+  ipa?: string | null;
+  tip_zh?: string | null;
+}
+
+export interface PronunciationAssessment {
+  overall_score: number;
+  accuracy_score: number;
+  fluency_score: number;
+  intonation_score: number;
+  heard_text: string;
+  word_feedback: PronunciationWordFeedback[];
+  linking_tips_zh: string[];
+  encouragement_zh: string;
+}
+
+export interface UnlockedBadgeRecord {
+  badge_id: string;
+  unlocked_at: string;
+}
+
+export interface TravelChallengeState {
+  started_at: string | null;
+  completed_days: number[];
+  completed_at: string | null;
+}
+
+export interface UserGamification {
+  id: string;
+  user_id: string;
+  unlocked_badges: UnlockedBadgeRecord[];
+  challenge_7d: TravelChallengeState;
+  updated_at: string;
 }
 
 export interface PlaybackStep {

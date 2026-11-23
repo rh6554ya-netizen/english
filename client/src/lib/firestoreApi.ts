@@ -9,6 +9,7 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 import { firestore, isFirebaseClientConfigured } from './firebase';
+import { evaluateGamification, type ComputedGamification, type GamificationInputs } from './gamification';
 import seedData from '../../../data/seed-notebooklm.json';
 import type {
   Category,
@@ -20,6 +21,8 @@ import type {
   ListeningPlaylist,
   PlaylistItem,
   SentencePattern,
+  UserAiSession,
+  UserGamification,
   UserPracticeLog,
   UserProfile,
   UserScenarioProgress,
@@ -85,6 +88,8 @@ interface UserScopedState {
   user_practice_logs: UserPracticeLog[];
   user_playlists: ListeningPlaylist[];
   user_playlist_items: PlaylistItem[];
+  user_ai_sessions: UserAiSession[];
+  user_gamification: UserGamification | null;
 }
 
 const SURVIVAL_PHRASES: SurvivalPhrase[] = [
@@ -288,6 +293,8 @@ function buildDefaultGuestState(seed: DatabaseState): UserScopedState {
     user_practice_logs: seed.user_practice_logs || [],
     user_playlists: [],
     user_playlist_items: [],
+    user_ai_sessions: [],
+    user_gamification: null,
   };
 }
 
@@ -437,30 +444,44 @@ class BrowserDataStore {
         try {
           const isOffline = typeof navigator !== 'undefined' && !navigator.onLine;
           const timeoutMs = isOffline ? 1800 : 8000;
-          const [userDoc, progSnap, srsSnap, logSnap, plSnap, plItemSnap] = await withTimeout(
-            Promise.all([
-              getDoc(doc(firestore, 'users', targetUid)),
-              getDocs(
-                query(
-                  collection(firestore, 'user_scenario_progress'),
-                  where('user_id', '==', targetUid)
-                )
-              ),
-              getDocs(
-                query(collection(firestore, 'user_srs_cards'), where('user_id', '==', targetUid))
-              ),
-              getDocs(
-                query(collection(firestore, 'user_practice_logs'), where('user_id', '==', targetUid))
-              ),
-              getDocs(
-                query(collection(firestore, 'listening_playlists'), where('user_id', '==', targetUid))
-              ),
-              getDocs(
-                query(collection(firestore, 'playlist_items'), where('user_id', '==', targetUid))
-              ),
-            ]),
-            timeoutMs
-          );
+          const [userDoc, progSnap, srsSnap, logSnap, plSnap, plItemSnap, aiSessSnap, gamifDoc] =
+            await withTimeout(
+              Promise.all([
+                getDoc(doc(firestore, 'users', targetUid)),
+                getDocs(
+                  query(
+                    collection(firestore, 'user_scenario_progress'),
+                    where('user_id', '==', targetUid)
+                  )
+                ),
+                getDocs(
+                  query(collection(firestore, 'user_srs_cards'), where('user_id', '==', targetUid))
+                ),
+                getDocs(
+                  query(
+                    collection(firestore, 'user_practice_logs'),
+                    where('user_id', '==', targetUid)
+                  )
+                ),
+                getDocs(
+                  query(
+                    collection(firestore, 'listening_playlists'),
+                    where('user_id', '==', targetUid)
+                  )
+                ),
+                getDocs(
+                  query(collection(firestore, 'playlist_items'), where('user_id', '==', targetUid))
+                ),
+                getDocs(
+                  query(
+                    collection(firestore, 'user_ai_sessions'),
+                    where('user_id', '==', targetUid)
+                  )
+                ).catch(() => null),
+                getDoc(doc(firestore, 'user_gamification', targetUid)).catch(() => null),
+              ]),
+              timeoutMs
+            );
 
           let profile: UserProfile;
           if (userDoc.exists()) {
@@ -481,6 +502,11 @@ class BrowserDataStore {
             user_practice_logs: logSnap.docs.map((d) => d.data() as UserPracticeLog),
             user_playlists: plSnap.docs.map((d) => d.data() as ListeningPlaylist),
             user_playlist_items: plItemSnap.docs.map((d) => d.data() as PlaylistItem),
+            user_ai_sessions: aiSessSnap
+              ? aiSessSnap.docs.map((d) => d.data() as UserAiSession)
+              : [],
+            user_gamification:
+              gamifDoc && gamifDoc.exists() ? (gamifDoc.data() as UserGamification) : null,
           };
           this.loadedForUid = targetUid;
           try {
@@ -497,7 +523,17 @@ class BrowserDataStore {
           try {
             const offlineMirror = localStorage.getItem(`${AUTH_USER_CACHE_PREFIX}${targetUid}`);
             if (offlineMirror) {
-              this.userState = JSON.parse(offlineMirror) as UserScopedState;
+              const parsed = JSON.parse(offlineMirror) as Partial<UserScopedState>;
+              this.userState = {
+                users: parsed.users || [],
+                user_scenario_progress: parsed.user_scenario_progress || [],
+                user_srs_cards: parsed.user_srs_cards || [],
+                user_practice_logs: parsed.user_practice_logs || [],
+                user_playlists: parsed.user_playlists || [],
+                user_playlist_items: parsed.user_playlist_items || [],
+                user_ai_sessions: parsed.user_ai_sessions || [],
+                user_gamification: parsed.user_gamification || null,
+              };
               this.loadedForUid = targetUid;
               return;
             }
@@ -511,7 +547,17 @@ class BrowserDataStore {
       try {
         const cached = localStorage.getItem(GUEST_STORAGE_KEY);
         if (cached) {
-          this.userState = JSON.parse(cached) as UserScopedState;
+          const parsed = JSON.parse(cached) as Partial<UserScopedState>;
+          this.userState = {
+            users: parsed.users || [],
+            user_scenario_progress: parsed.user_scenario_progress || [],
+            user_srs_cards: parsed.user_srs_cards || [],
+            user_practice_logs: parsed.user_practice_logs || [],
+            user_playlists: parsed.user_playlists || [],
+            user_playlist_items: parsed.user_playlist_items || [],
+            user_ai_sessions: parsed.user_ai_sessions || [],
+            user_gamification: parsed.user_gamification || null,
+          };
           this.loadedForUid = targetUid;
           return;
         }
@@ -597,7 +643,9 @@ class BrowserDataStore {
       | 'user_srs_cards'
       | 'user_practice_logs'
       | 'listening_playlists'
-      | 'playlist_items',
+      | 'playlist_items'
+      | 'user_ai_sessions'
+      | 'user_gamification',
     docs: Record<string, unknown>[]
   ): Promise<void> {
     if (!this.authUser) {
@@ -640,7 +688,7 @@ class BrowserDataStore {
     }
   }
 
-  async removeUserDoc(col: 'user_srs_cards', id: string): Promise<void> {
+  async removeUserDoc(col: 'user_srs_cards' | 'user_ai_sessions', id: string): Promise<void> {
     if (!this.authUser) {
       this.persistGuestState();
       return;
@@ -1451,5 +1499,154 @@ export const firestoreApi = {
     }
 
     return { ok: true, imported };
+  },
+
+  /* ===== Phase 2: AI Roleplay Sessions & Gamification ===== */
+
+  async getAiSessions(): Promise<{ sessions: UserAiSession[] }> {
+    await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
+    const sessions = usr.user_ai_sessions
+      .filter((s) => s.user_id === uid)
+      .sort((a, b) => b.created_at.localeCompare(a.created_at));
+    return { sessions };
+  },
+
+  async saveAiSession(
+    body: Omit<UserAiSession, 'id' | 'user_id' | 'created_at'> & { id?: string }
+  ): Promise<{ session: UserAiSession }> {
+    const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
+    const existingIdx = body.id
+      ? usr.user_ai_sessions.findIndex((s) => s.id === body.id && s.user_id === uid)
+      : -1;
+
+    const session: UserAiSession = {
+      id: body.id || randomId('aisess'),
+      user_id: uid,
+      scenario_id: body.scenario_id ?? null,
+      scenario_title_zh: body.scenario_title_zh,
+      scenario_title_en: body.scenario_title_en,
+      ai_role: body.ai_role,
+      user_role: body.user_role,
+      difficulty_level: body.difficulty_level,
+      missions: body.missions,
+      completed_mission_indices: body.completed_mission_indices,
+      messages: body.messages,
+      report: body.report,
+      duration_seconds: Math.max(10, Math.round(body.duration_seconds || 60)),
+      created_at:
+        existingIdx >= 0 ? usr.user_ai_sessions[existingIdx].created_at : new Date().toISOString(),
+    };
+
+    if (existingIdx >= 0) {
+      usr.user_ai_sessions[existingIdx] = session;
+    } else {
+      usr.user_ai_sessions.push(session);
+    }
+
+    await browserStore
+      .saveUserDocs('user_ai_sessions', [session as unknown as Record<string, unknown>])
+      .catch((err) => {
+        console.warn('[EchoSpeak] Failed to sync user_ai_sessions to Firestore:', err);
+      });
+
+    // Also record into user_practice_logs when evaluated
+    if (session.report) {
+      const log: UserPracticeLog = {
+        id: randomId('log'),
+        user_id: uid,
+        activity_type: 'ai_roleplay',
+        target_type: session.scenario_id ? 'scenario' : null,
+        target_id: session.scenario_id,
+        duration_seconds: session.duration_seconds,
+        score: session.report.overall_score,
+        detail_json: {
+          session_id: session.id,
+          naturalness_score: session.report.naturalness_score,
+          scenario_title_zh: session.scenario_title_zh,
+        },
+        created_at: new Date().toISOString(),
+      };
+      usr.user_practice_logs.push(log);
+      const user = touchUserActivity(db);
+      await browserStore.saveUserDocs('user_practice_logs', [
+        log as unknown as Record<string, unknown>,
+      ]);
+      if (user) {
+        await browserStore.saveUserDocs('users', [user as unknown as Record<string, unknown>]);
+      }
+    }
+
+    return { session };
+  },
+
+  async deleteAiSession(id: string): Promise<{ ok: boolean }> {
+    await browserStore.ensureLoaded();
+    const usr = browserStore.getUserScopedState();
+    const idx = usr.user_ai_sessions.findIndex((s) => s.id === id);
+    if (idx >= 0) {
+      usr.user_ai_sessions.splice(idx, 1);
+      await browserStore.removeUserDoc('user_ai_sessions', id).catch(() => {});
+    }
+    return { ok: true };
+  },
+
+  async getGamificationSnapshot(): Promise<GamificationInputs & { computed: ComputedGamification }> {
+    const db = await browserStore.ensureLoaded();
+    const uid = browserStore.getActiveUserId();
+    const usr = browserStore.getUserScopedState();
+    const user = db.users.find((u) => u.id === uid) || db.users[0];
+
+    const inputs: GamificationInputs = {
+      user,
+      progress: usr.user_scenario_progress.filter((p) => p.user_id === uid),
+      logs: usr.user_practice_logs.filter((l) => l.user_id === uid),
+      srsCards: usr.user_srs_cards.filter((c) => c.user_id === uid),
+      aiSessions: usr.user_ai_sessions.filter((s) => s.user_id === uid),
+      saved: usr.user_gamification,
+    };
+
+    const computed = evaluateGamification(inputs);
+
+    const prevDays = (usr.user_gamification?.challenge_7d.completed_days || []).join(',');
+    const nextDays = computed.nextRecord.challenge_7d.completed_days.join(',');
+    const changed =
+      !usr.user_gamification ||
+      computed.newlyUnlockedIds.length > 0 ||
+      prevDays !== nextDays;
+
+    if (changed) {
+      usr.user_gamification = computed.nextRecord;
+      await browserStore
+        .saveUserDocs('user_gamification', [
+          computed.nextRecord as unknown as Record<string, unknown>,
+        ])
+        .catch((err) => {
+          console.warn('[EchoSpeak] Failed to sync user_gamification to Firestore:', err);
+        });
+    }
+
+    return { ...inputs, saved: usr.user_gamification, computed };
+  },
+
+  async startTravelSprint(): Promise<{ gamification: UserGamification }> {
+    const snap = await this.getGamificationSnapshot();
+    const usr = browserStore.getUserScopedState();
+    const record: UserGamification = {
+      ...snap.computed.nextRecord,
+      challenge_7d: {
+        ...snap.computed.nextRecord.challenge_7d,
+        started_at: snap.computed.nextRecord.challenge_7d.started_at || new Date().toISOString(),
+      },
+      updated_at: new Date().toISOString(),
+    };
+    usr.user_gamification = record;
+    await browserStore
+      .saveUserDocs('user_gamification', [record as unknown as Record<string, unknown>])
+      .catch(() => {});
+    return { gamification: record };
   },
 };
