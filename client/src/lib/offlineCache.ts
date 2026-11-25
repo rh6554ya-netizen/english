@@ -23,7 +23,7 @@ export interface DownloadProgress {
 }
 
 export interface OfflinePackDefinition {
-  id: 'survival' | 'essential_scenarios' | 'quick_drill' | 'all';
+  id: 'survival' | 'essential_scenarios' | 'business_pack' | 'quick_drill' | 'all';
   title: string;
   subtitle: string;
   approxMb: string;
@@ -88,6 +88,26 @@ export function getEssentialScenariosAudioPaths(): string[] {
   ]);
 }
 
+export function getBusinessPackAudioPaths(): string[] {
+  const businessIds = [
+    'scn-meeting',
+    'scn-project',
+    'scn-schedule',
+    'scn-interview',
+    'scn-phone',
+  ];
+  const businessGroupIds = new Set(
+    typedSeed.expression_groups
+      .filter((g) => g.scenario_id && businessIds.includes(g.scenario_id))
+      .map((g) => g.id)
+  );
+  const businessExprs = typedSeed.expressions.filter((e) => businessGroupIds.has(e.group_id));
+  return dedupeAudioPaths([
+    ...businessIds.flatMap((id) => getScenarioAudioPaths(id)),
+    ...businessExprs.flatMap((e) => [e.audio_normal_url, e.audio_slow_url]),
+  ]);
+}
+
 export function getQuickDrillAudioPaths(): string[] {
   return dedupeAudioPaths(
     typedSeed.exercises
@@ -114,8 +134,13 @@ export function getAllAudioPaths(): string[] {
 export function getOfflinePacks(): OfflinePackDefinition[] {
   const survivalUrls = getSurvivalAudioPaths();
   const essentialUrls = getEssentialScenariosAudioPaths();
+  const businessUrls = getBusinessPackAudioPaths();
   const quickDrillUrls = getQuickDrillAudioPaths();
   const allUrls = getAllAudioPaths();
+  const totalScenarios = typedSeed.scenarios.length;
+  const totalQuickDrills = typedSeed.exercises.filter(
+    (e) => e.exercise_type === 'quick_response_3s'
+  ).length;
 
   return [
     {
@@ -133,17 +158,24 @@ export function getOfflinePacks(): OfflinePackDefinition[] {
       urls: essentialUrls,
     },
     {
+      id: 'business_pack',
+      title: '💼 職場商務英語實戰包',
+      subtitle: '開會反對、專案協調、日程改期、英文面試與商務電話 5 大職場課＋16 題職場快問快答',
+      approxMb: '8.6 MB',
+      urls: businessUrls,
+    },
+    {
       id: 'quick_drill',
-      title: '3 秒直覺反應 60 題包',
-      subtitle: '全部 60 組高頻 Q&A 提問與美式標準回覆音檔，搭機或通勤離線刷題',
-      approxMb: '4.8 MB',
+      title: `3 秒直覺反應 ${totalQuickDrills} 題包`,
+      subtitle: `全部 ${totalQuickDrills} 組生活與職場高頻 Q&A 提問與美式標準回覆音檔，搭機或通勤離線刷題`,
+      approxMb: '5.9 MB',
       urls: quickDrillUrls,
     },
     {
       id: 'all',
       title: '完整離線教材包（全站）',
-      subtitle: '一次下載全站 11 大情境、60 組問答、單字、萬用句型、美式升級表達與急救卡',
-      approxMb: '19 MB',
+      subtitle: `一次下載全站 ${totalScenarios} 大情境、${totalQuickDrills} 組問答、單字、萬用句型、美式升級表達與急救卡`,
+      approxMb: '24.4 MB',
       urls: allUrls,
     },
   ];

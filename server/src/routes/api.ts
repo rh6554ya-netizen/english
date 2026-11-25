@@ -76,10 +76,11 @@ apiRouter.get('/dashboard', (_req, res) => {
 
   // Recommend scenarios matching user's learning_goal or difficulty_level
   const goalCategoryMap: Record<string, string[]> = {
-    travel_solo: ['cat-travel-airport', 'cat-travel-dining', 'cat-shopping-tryon'],
-    travel_group: ['cat-shopping-tryon', 'cat-travel-dining', 'cat-travel-airport'],
-    daily_life: ['cat-daily-morning', 'cat-daily-kitchen', 'cat-social-park'],
-    small_talk: ['cat-social-park', 'cat-social-phone', 'cat-travel-dining'],
+    travel_solo: ['cat-travel-airport', 'cat-travel-hotel', 'cat-travel-transport', 'cat-travel-dining', 'cat-shopping-tryon'],
+    travel_group: ['cat-shopping-tryon', 'cat-travel-dining', 'cat-travel-hotel', 'cat-travel-airport'],
+    daily_life: ['cat-daily-morning', 'cat-daily-kitchen', 'cat-daily-health', 'cat-social-park'],
+    small_talk: ['cat-social-park', 'cat-social-weekend', 'cat-social-phone', 'cat-biz-meeting'],
+    workplace: ['cat-biz-meeting', 'cat-biz-project', 'cat-biz-schedule', 'cat-biz-interview', 'cat-social-phone'],
   };
   const preferredCats = goalCategoryMap[user.learning_goal] || [];
 

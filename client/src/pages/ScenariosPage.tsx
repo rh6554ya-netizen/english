@@ -62,7 +62,7 @@ export function ScenariosPage() {
         <div>
           <h1 className="text-2xl font-extrabold text-slate-900">情境主題課程館</h1>
           <p className="text-sm text-slate-500 mt-1">
-            依四大領域、難度與旅遊模式瀏覽實戰課程，支援角色雙向對照視圖
+            依五大領域（旅遊、職場商務、生活、購物、社交）、難度與模式瀏覽實戰課程
           </p>
         </div>
         <button
@@ -180,7 +180,7 @@ export function ScenariosPage() {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="搜尋情境關鍵字（如：機場、過敏、試穿、公園）..."
+                placeholder="搜尋情境關鍵字（如：開會、面試、改期、機場、過敏）..."
                 className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>

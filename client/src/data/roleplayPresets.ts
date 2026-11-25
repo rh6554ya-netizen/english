@@ -4,7 +4,7 @@ export interface RoleplayPreset {
   id: string;
   scenario_id: string;
   scenario_slug: string;
-  category_tag: 'travel' | 'shopping' | 'daily' | 'social';
+  category_tag: 'travel' | 'shopping' | 'daily' | 'social' | 'business';
   emoji: string;
   title_zh: string;
   title_en: string;
@@ -181,7 +181,7 @@ export const ROLEPLAY_PRESETS: RoleplayPreset[] = [
     id: 'rp-phone',
     scenario_id: 'scn-phone',
     scenario_slug: 'business-phone-transfer',
-    category_tag: 'social',
+    category_tag: 'business',
     emoji: '📞',
     title_zh: '職場商務電話轉接與留言',
     title_en: 'Business Phone Transfer & Message',
@@ -195,6 +195,86 @@ export const ROLEPLAY_PRESETS: RoleplayPreset[] = [
       '禮貌自我介紹並請求轉接給 Sarah Miller',
       '當對方告知 Sarah 正在開會時，表示願意留言',
       '清楚留下回電號碼與簡短來電事由',
+    ],
+  },
+  {
+    id: 'rp-meeting',
+    scenario_id: 'scn-meeting',
+    scenario_slug: 'business-meeting-opinions',
+    category_tag: 'business',
+    emoji: '🗣️',
+    title_zh: '開會發表意見與禮貌反對',
+    title_en: 'Meeting Pushback & Compromise',
+    setting_background:
+      'You are in a weekly product sync with your US team lead, who wants to launch a new feature this Friday even though QA testing is not finished.',
+    ai_role: 'Team Lead (Morgan)',
+    ai_persona: 'Results-driven but open-minded American engineering manager who appreciates constructive pushback.',
+    user_role: 'Team Member',
+    default_level: 'intermediate',
+    missions: [
+      '禮貌切入發言（如 If I may）並點出本週五上線時間太趕的顧慮',
+      '使用緩衝語氣回應對方堅持（如 That\'s fair, but hear me out）',
+      '提出一個具體折衷方案（如小規模試推或分階段上線）並確認共識',
+    ],
+  },
+  {
+    id: 'rp-project',
+    scenario_id: 'scn-project',
+    scenario_slug: 'project-progress-deadlines',
+    category_tag: 'business',
+    emoji: '📊',
+    title_zh: '專案進度追蹤與婉拒插單',
+    title_en: 'Tight Deadlines & Workload Alignment',
+    setting_background:
+      'Your client just moved the project deadline up by a week, and your coworker asks you to review a slide deck and also take over tomorrow\'s demo slides.',
+    ai_role: 'Coworker (Jordan)',
+    ai_persona: 'Collaborative, slightly stressed American teammate trying to coordinate tight deliverables.',
+    user_role: 'Teammate',
+    default_level: 'intermediate',
+    missions: [
+      '答應一起過目簡報並討論是否該向主管申請延期（extension）',
+      '針對額外插單，用專業緩衝語氣表達目前滿載無法承諾（stretched pretty thin）',
+      '請對方確認經理答覆後隨時更新進度（keep me posted）',
+    ],
+  },
+  {
+    id: 'rp-schedule',
+    scenario_id: 'scn-schedule',
+    scenario_slug: 'scheduling-rescheduling-followup',
+    category_tag: 'business',
+    emoji: '📅',
+    title_zh: '約會議時間、改期與 Email 確認',
+    title_en: 'Rescheduling a Client Call',
+    setting_background:
+      'You realized you accidentally double-booked yourself for tomorrow\'s 2 PM project sync with an important US client and need to move it.',
+    ai_role: 'Client (Rachel)',
+    ai_persona: 'Busy but friendly American client with a packed calendar.',
+    user_role: 'Account Lead',
+    default_level: 'beginner',
+    missions: [
+      '禮貌提出改期請求（I was wondering if we could reschedule）並簡短說明撞期原因',
+      '主動提議一個新的替代時段並和對方敲定可行時間',
+      '承諾會寄出更新後的行事曆邀請或 Email 確認並道謝',
+    ],
+  },
+  {
+    id: 'rp-interview',
+    scenario_id: 'scn-interview',
+    scenario_slug: 'job-interview-self-intro',
+    category_tag: 'business',
+    emoji: '🎯',
+    title_zh: '英文面試自我介紹與優勢展現',
+    title_en: 'US Tech Job Interview Practice',
+    setting_background:
+      'You are in the final behavioral interview with a hiring manager at a US tech company for a regional role.',
+    ai_role: 'Hiring Manager (David)',
+    ai_persona: 'Warm, sharp American hiring manager evaluating communication clarity, career motivation, and reliability.',
+    user_role: 'Candidate',
+    default_level: 'intermediate',
+    missions: [
+      '用精簡自然的美式說法介紹目前的職位與核心負責項目',
+      '正向說明轉職／追求更大舞台的動機，並展現務實可靠的個人優勢',
+      '面試尾聲主動向面試官提出一個有深度的反問問題（如前 90 天成功指標）',
     ],
   },
   {

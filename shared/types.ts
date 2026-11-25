@@ -3,7 +3,7 @@ export type TravelMode = 'general' | 'solo_travel' | 'group_tour';
 export type DialogueType = 'mini_dialogue' | 'qa_pair' | 'roleplay_script' | 'story_animation';
 export type RegisterTag = 'formal' | 'neutral' | 'informal' | 'slang' | 'sarcastic' | 'ironic' | 'mildly_vulgar';
 export type NuanceType = 'hedging' | 'small_talk_bridge' | 'idiom' | 'filler' | 'softening';
-export type LearningGoal = 'travel_solo' | 'travel_group' | 'daily_life' | 'small_talk';
+export type LearningGoal = 'travel_solo' | 'travel_group' | 'daily_life' | 'small_talk' | 'workplace';
 
 export interface ContentSource {
   id: string;

@@ -783,7 +783,14 @@ export const firestoreApi = {
         'cat-social-park',
         'cat-social-weekend',
         'cat-social-phone',
-        'cat-travel-dining',
+        'cat-biz-meeting',
+      ],
+      workplace: [
+        'cat-biz-meeting',
+        'cat-biz-project',
+        'cat-biz-schedule',
+        'cat-biz-interview',
+        'cat-social-phone',
       ],
     };
     const preferredCats = goalCategoryMap[user.learning_goal] || [];

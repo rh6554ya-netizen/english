@@ -251,6 +251,51 @@
       "name_en": "Coffee & Weekend Plans",
       "icon": "🎬",
       "sort_order": 43
+    },
+    {
+      "id": "cat-business",
+      "parent_id": null,
+      "slug": "business-workplace",
+      "name_zh": "職場商務實戰",
+      "name_en": "Workplace & Business",
+      "icon": "💼",
+      "sort_order": 5
+    },
+    {
+      "id": "cat-biz-meeting",
+      "parent_id": "cat-business",
+      "slug": "biz-meeting",
+      "name_zh": "會議發言與禮貌反對",
+      "name_en": "Meetings & Opinions",
+      "icon": "🗣️",
+      "sort_order": 51
+    },
+    {
+      "id": "cat-biz-project",
+      "parent_id": "cat-business",
+      "slug": "biz-project",
+      "name_zh": "專案進度與分工協調",
+      "name_en": "Projects & Deadlines",
+      "icon": "📊",
+      "sort_order": 52
+    },
+    {
+      "id": "cat-biz-schedule",
+      "parent_id": "cat-business",
+      "slug": "biz-schedule",
+      "name_zh": "約時間、改期與確認",
+      "name_en": "Scheduling & Follow-up",
+      "icon": "📅",
+      "sort_order": 53
+    },
+    {
+      "id": "cat-biz-interview",
+      "parent_id": "cat-business",
+      "slug": "biz-interview",
+      "name_zh": "英文面試與自我介紹",
+      "name_en": "Interviews & Career",
+      "icon": "🎯",
+      "sort_order": 54
     }
   ],
   "scenarios": [
@@ -429,6 +474,70 @@
       "is_published": true,
       "sort_order": 11,
       "created_at": "2026-11-22T12:00:00.000Z"
+    },
+    {
+      "id": "scn-meeting",
+      "category_id": "cat-biz-meeting",
+      "slug": "business-meeting-opinions",
+      "title_zh": "開會發表意見、禮貌打斷與委婉反對",
+      "title_en": "Sharing Ideas, Interrupting & Disagreeing Politely",
+      "difficulty_level": "intermediate",
+      "travel_mode": "general",
+      "story_background": "依據《McGraw-Hill》與美式口說攻略設計：在跨國產品週會中，學會在不傷和氣的前提下禮貌插話（If I may）、先肯定再提出不同觀點（That's fair, but hear me out），並用 cut to the chase 聚焦核心結論。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 12,
+      "created_at": "2026-11-25T11:00:00.000Z"
+    },
+    {
+      "id": "scn-project",
+      "category_id": "cat-biz-project",
+      "slug": "project-progress-deadlines",
+      "title_zh": "專案進度追蹤、截止日提前與分工協調",
+      "title_en": "Project Updates, Tight Deadlines & Workload",
+      "difficulty_level": "intermediate",
+      "travel_mode": "general",
+      "story_background": "面對客戶突然將專案截止日提前一週的突發狀況，學習如何主動預警（quick heads-up）、請同事幫忙審核文件（look this over），以及在滿載時專業地婉拒額外任務（stretched pretty thin）。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 13,
+      "created_at": "2026-11-25T11:00:00.000Z"
+    },
+    {
+      "id": "scn-schedule",
+      "category_id": "cat-biz-schedule",
+      "slug": "scheduling-rescheduling-followup",
+      "title_zh": "約會議時間、行程撞期改期與 Email 確認",
+      "title_en": "Scheduling, Rescheduling & Email Follow-ups",
+      "difficulty_level": "beginner",
+      "travel_mode": "general",
+      "story_background": "商務往來最常發生的行事曆撞期與改期協商：練習委婉提議順延會議（push it / reschedule）、坦白撞期（double-booked myself），並用簡潔專業的方式確認後續 Email 會議邀請。",
+      "cover_image_url": null,
+      "estimated_minutes": 9,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 14,
+      "created_at": "2026-11-25T11:00:00.000Z"
+    },
+    {
+      "id": "scn-interview",
+      "category_id": "cat-biz-interview",
+      "slug": "job-interview-self-intro",
+      "title_zh": "英文面試自我介紹、職涯轉折與個人優勢",
+      "title_en": "Job Interview Self-Intro, Career Move & Strengths",
+      "difficulty_level": "intermediate",
+      "travel_mode": "general",
+      "story_background": "鎖定外商與跨國團隊英文面試最必考的三題：精簡介紹現職定位、自然說明轉職動機，以及不卑不亢展現專案實力與可靠度（solid track record / You can count on me）。",
+      "cover_image_url": null,
+      "estimated_minutes": 10,
+      "is_survival_essential": false,
+      "is_published": true,
+      "sort_order": 15,
+      "created_at": "2026-11-25T11:00:00.000Z"
     }
   ],
   "dialogues": [
@@ -571,6 +680,58 @@
       "title_zh": "下班約喝咖啡、聊電影心得與週末旅行",
       "title_en": "Coffee Order, Movie Talk & Seattle Trip",
       "context_note": "練習美式弱化語氣（kind of / honestly / depends on my mood）與自然的週末閒聊接話。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-meeting-1",
+      "scenario_id": "scn-meeting",
+      "source_id": "src-ear-speaking",
+      "source_ref": "McGraw-Hill + 口說卡關救星職場篇",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "產品週會：禮貌切入、委婉反對與聚焦底線",
+      "title_en": "Weekly Sync: Voicing Concerns & Reaching Alignment",
+      "context_note": "練習美式會議黃金結構：「先認同對方觀點」➜「用 hear me out / I feel like 緩衝」➜「提出替代方案並確認共識」。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-project-1",
+      "scenario_id": "scn-project",
+      "source_id": "src-tilc-daily",
+      "source_ref": "輕鬆聊天職場篇 + 口說卡關救星",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "截止日提前一週！團隊進度協調與申請延期",
+      "title_en": "Deadline Moved Up: Reviewing Files & Balancing Workload",
+      "context_note": "學會美式職場最重視的「透明溝通」：提前打招呼（heads-up）、具體說明瓶頸，並專業設立工作量界線。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-schedule-1",
+      "scenario_id": "scn-schedule",
+      "source_id": "src-ear-speaking",
+      "source_ref": "口說卡關救星日程篇 + McGraw-Hill",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "行程撞期改約會議與 Email 邀請確認",
+      "title_en": "Rescheduling a Client Call & Sending the Calendar Invite",
+      "context_note": "掌握 I was wondering if... 與 Any chance we could... 兩種高情商改期起手式，以及會議確認的收尾口語。",
+      "illustration_url": null,
+      "full_audio_url": null,
+      "sort_order": 1
+    },
+    {
+      "id": "dlg-interview-1",
+      "scenario_id": "scn-interview",
+      "source_id": "src-ear-chat",
+      "source_ref": "美國人聊天攻略職場篇 + McGraw-Hill",
+      "dialogue_type": "roleplay_script",
+      "title_zh": "外商面試實戰：自我介紹、轉職契機與核心優勢",
+      "title_en": "Behavioral Interview: Background, Career Move & Reliability",
+      "context_note": "避開死板背稿，用自然流暢的美式職場語氣展現務實自信（not the best, but solid）與跨團隊協作價值。",
       "illustration_url": null,
       "full_audio_url": null,
       "sort_order": 1
@@ -1953,6 +2114,550 @@
       "timestamp_start_sec": null,
       "timestamp_end_sec": null,
       "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-1",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 1,
+      "speaker_role": "Team Lead",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Let's cut to the chase. We're thinking of launching the new app feature this Friday. Any thoughts?",
+      "text_en_alt_locale": null,
+      "text_zh": "我們直接切入重點吧。我們打算這週五推出新的 App 功能，大家有什麼想法？",
+      "audio_normal_url": "/audio/turns/turn-mtg-1_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-1_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-1_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-2",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 2,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "If I may jump in, I feel like this Friday is kind of tight for QA testing.",
+      "text_en_alt_locale": null,
+      "text_zh": "容我插一句，我覺得這週五對品質測試來說時間有點趕。",
+      "audio_normal_url": "/audio/turns/turn-mtg-2_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-2_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-2_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-3",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 3,
+      "speaker_role": "Team Lead",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "I see what you're saying, though Marketing already scheduled the announcement.",
+      "text_en_alt_locale": null,
+      "text_zh": "我明白你的意思，不過行銷團隊已經把宣傳公告都排好了。",
+      "audio_normal_url": "/audio/turns/turn-mtg-3_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-3_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-3_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-4",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 4,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "That's fair, but hear me out. If we rush it, a major bug could hurt user trust.",
+      "text_en_alt_locale": null,
+      "text_zh": "這說得有道理，但請聽我把話說完。如果我們太趕，一個重大錯誤可能會傷害用戶信任。",
+      "audio_normal_url": "/audio/turns/turn-mtg-4_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-4_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-4_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-5",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 5,
+      "speaker_role": "Team Lead",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "I see your point, not fully sold on delaying though. What would change your mind?",
+      "text_en_alt_locale": null,
+      "text_zh": "我懂你的論點，但我還沒完全被說服要延期。那怎麼做會讓你比較放心？",
+      "audio_normal_url": "/audio/turns/turn-mtg-5_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-5_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-5_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-6",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 6,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "A soft launch for ten percent of users might be one option. Am I making sense?",
+      "text_en_alt_locale": null,
+      "text_zh": "先針對一成用戶小規模試推或許是個選項。我這樣說有道理嗎？",
+      "audio_normal_url": "/audio/turns/turn-mtg-6_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-6_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-6_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-7",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 7,
+      "speaker_role": "Team Lead",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Point well taken. Here's the bottom line: we keep Friday's date, but roll it out gradually.",
+      "text_en_alt_locale": null,
+      "text_zh": "很有道理，我接受你的建議。結論就是：我們維持週五的日期，但採分階段釋出。",
+      "audio_normal_url": "/audio/turns/turn-mtg-7_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-7_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-7_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-mtg-8",
+      "dialogue_id": "dlg-meeting-1",
+      "turn_order": 8,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Sounds like a solid compromise. I'm totally on board with that plan.",
+      "text_en_alt_locale": null,
+      "text_zh": "聽起來是很紮實的折衷方案，我完全贊成這個計畫。",
+      "audio_normal_url": "/audio/turns/turn-mtg-8_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-mtg-8_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-mtg-8_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-1",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 1,
+      "speaker_role": "Colleague",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Hey, just a quick heads-up—have you seen the new project deadline? They moved it up by a week!",
+      "text_en_alt_locale": null,
+      "text_zh": "嘿，先跟你提個醒——你看到新的專案截止日了嗎？他們提前了一週！",
+      "audio_normal_url": "/audio/turns/turn-prj-1_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-1_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-1_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-2",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 2,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Can you believe it? We barely had enough time as it was. Did you send the draft file yet?",
+      "text_en_alt_locale": null,
+      "text_zh": "你敢相信嗎？我們原本時間就幾乎不夠用了。你的草稿檔案寄出了嗎？",
+      "audio_normal_url": "/audio/turns/turn-prj-2_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-2_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-2_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-3",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 3,
+      "speaker_role": "Colleague",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Not yet, still working on it. Could you look this over? I'm a bit stuck on the budget slide.",
+      "text_en_alt_locale": null,
+      "text_zh": "還沒，手頭還在趕工。你能幫我過目一下嗎？我在預算那頁投影片有點卡住了。",
+      "audio_normal_url": "/audio/turns/turn-prj-3_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-3_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-3_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-4",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 4,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Happy to help, let's review it together after lunch. Do you think we should ask for an extension?",
+      "text_en_alt_locale": null,
+      "text_zh": "很樂意幫忙，我們午飯後一起來看。你覺得我們應該申請延期嗎？",
+      "audio_normal_url": "/audio/turns/turn-prj-4_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-4_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-4_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-5",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 5,
+      "speaker_role": "Colleague",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "It's worth a try. By the way, can you also cover the client demo slides tomorrow?",
+      "text_en_alt_locale": null,
+      "text_zh": "值得一試。對了，你明天也能順便幫忙扛一下客戶展示簡報嗎？",
+      "audio_normal_url": "/audio/turns/turn-prj-5_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-5_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-5_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-6",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 6,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "I'd love to help, but I can't commit right now. I'm stretched pretty thin with Q4 reports.",
+      "text_en_alt_locale": null,
+      "text_zh": "我很想幫忙，但我現在沒辦法答應。我手頭的第四季報表已經讓我分身乏術了。",
+      "audio_normal_url": "/audio/turns/turn-prj-6_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-6_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-6_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-7",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 7,
+      "speaker_role": "Colleague",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Totally fair, thanks for letting me know. I'll loop in Jason and adjust our plans accordingly.",
+      "text_en_alt_locale": null,
+      "text_zh": "完全理解，謝謝你直接跟我說。我會把 Jason 拉進來，並相應調整我們的計畫。",
+      "audio_normal_url": "/audio/turns/turn-prj-7_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-7_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-7_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-prj-8",
+      "dialogue_id": "dlg-project-1",
+      "turn_order": 8,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Thanks, I appreciate that. Keep me posted on what the manager says about the extension.",
+      "text_en_alt_locale": null,
+      "text_zh": "謝啦，很感謝你。經理對延期怎麼說再隨時讓我知道。",
+      "audio_normal_url": "/audio/turns/turn-prj-8_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-prj-8_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-prj-8_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-1",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 1,
+      "speaker_role": "Client",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Hi! Just checking in—are we still on for our project sync tomorrow at two?",
+      "text_en_alt_locale": null,
+      "text_zh": "嗨！確認一下——我們明天下午兩點的專案同步會議還照常嗎？",
+      "audio_normal_url": "/audio/turns/turn-sch-1_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-1_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-1_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-2",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 2,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Hi! I was wondering if we could reschedule. Something came up and I accidentally double-booked myself.",
+      "text_en_alt_locale": null,
+      "text_zh": "嗨！我在想我們能不能改期。臨時有點突發狀況，我不小心把時間撞在一起了。",
+      "audio_normal_url": "/audio/turns/turn-sch-2_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-2_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-2_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-3",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 3,
+      "speaker_role": "Client",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "No worries, it happens! This week's pretty packed for me too. Should we push it to Thursday?",
+      "text_en_alt_locale": null,
+      "text_zh": "別擔心，難免會這樣！我這週行程也排得很滿。我們要順延到週四嗎？",
+      "audio_normal_url": "/audio/turns/turn-sch-3_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-3_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-3_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-4",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 4,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Thursday works much better for me. Any chance we could do ten in the morning?",
+      "text_en_alt_locale": null,
+      "text_zh": "週四對我來說好多了。有機會約在早上十點嗎？",
+      "audio_normal_url": "/audio/turns/turn-sch-4_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-4_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-4_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-5",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 5,
+      "speaker_role": "Client",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Let me check my calendar. Ten might be tight, but I should be free after eleven.",
+      "text_en_alt_locale": null,
+      "text_zh": "我看一下行事曆。十點可能有點趕，但我十一點之後應該有空。",
+      "audio_normal_url": "/audio/turns/turn-sch-5_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-5_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-5_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-6",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 6,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Eleven works great! I'll send over an updated calendar invite and a quick recap by email.",
+      "text_en_alt_locale": null,
+      "text_zh": "十一點太棒了！我待會寄出更新後的行事曆邀請，順便用 Email 簡短確認議程。",
+      "audio_normal_url": "/audio/turns/turn-sch-6_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-6_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-6_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-7",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 7,
+      "speaker_role": "Client",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Awesome. If anything changes on your end, let's just play it by ear and message me.",
+      "text_en_alt_locale": null,
+      "text_zh": "太好了。如果你那邊有任何變動，我們就看情況彈性調整，直接傳訊息給我就好。",
+      "audio_normal_url": "/audio/turns/turn-sch-7_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-7_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-7_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-sch-8",
+      "dialogue_id": "dlg-schedule-1",
+      "turn_order": 8,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Will do, I'll keep you posted. Thanks so much for being flexible—talk Thursday!",
+      "text_en_alt_locale": null,
+      "text_zh": "沒問題，有狀況我會隨時通知您。非常感謝您的彈性配合——週四見！",
+      "audio_normal_url": "/audio/turns/turn-sch-8_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-sch-8_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-sch-8_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-1",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 1,
+      "speaker_role": "Interviewer",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Thanks for coming in today! To kick things off, could you walk me through your current role?",
+      "text_en_alt_locale": null,
+      "text_zh": "謝謝你今天來面試！先暖身一下，可以簡單帶我了解你目前的工作內容嗎？",
+      "audio_normal_url": "/audio/turns/turn-int-1_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-1_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-1_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-2",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 2,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Sure! Right now, I'm in a product marketing role at a tech startup, leading regional launches.",
+      "text_en_alt_locale": null,
+      "text_zh": "當然！我目前在一家科技新創擔任產品行銷，負責主導區域性的產品上市專案。",
+      "audio_normal_url": "/audio/turns/turn-int-2_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-2_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-2_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-3",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 3,
+      "speaker_role": "Interviewer",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "That sounds interesting. What's making you consider switching teams or moving to a new company?",
+      "text_en_alt_locale": null,
+      "text_zh": "聽起來很有趣。是什麼原因讓你考慮轉換團隊或加入新公司呢？",
+      "audio_normal_url": "/audio/turns/turn-int-3_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-3_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-3_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-4",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 4,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "I've learned a lot there, and now I'm looking for a bigger global scope where I can grow.",
+      "text_en_alt_locale": null,
+      "text_zh": "我在那裡學到很多，現在希望能往更大的跨國舞台發展，讓自己持續成長。",
+      "audio_normal_url": "/audio/turns/turn-int-4_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-4_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-4_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-5",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 5,
+      "speaker_role": "Interviewer",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "Makes total sense. How would your coworkers describe your biggest strength under pressure?",
+      "text_en_alt_locale": null,
+      "text_zh": "完全合理。在高壓情況下，你的同事會怎麼形容你最大的優勢？",
+      "audio_normal_url": "/audio/turns/turn-int-5_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-5_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-5_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-6",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 6,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "I wouldn't say I'm the flashiest speaker, but my execution is solid and people can count on me.",
+      "text_en_alt_locale": null,
+      "text_zh": "我不會自誇是最會炒熱氣氛的演說家，但我的執行力非常紮實，大家都能放心把事交給我。",
+      "audio_normal_url": "/audio/turns/turn-int-6_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-6_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-6_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-7",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 7,
+      "speaker_role": "Interviewer",
+      "speaker_side": "left",
+      "is_learner_role": false,
+      "text_en": "That's huge for this team. Do you have any questions for us before we wrap up?",
+      "text_en_alt_locale": null,
+      "text_zh": "這對我們團隊非常重要。在面試收尾前，你有什麼問題想問我們嗎？",
+      "audio_normal_url": "/audio/turns/turn-int-7_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-7_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-7_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
+    },
+    {
+      "id": "turn-int-8",
+      "dialogue_id": "dlg-interview-1",
+      "turn_order": 8,
+      "speaker_role": "You",
+      "speaker_side": "right",
+      "is_learner_role": true,
+      "text_en": "Yes! What would success look like in the first ninety days for someone stepping into this role?",
+      "text_en_alt_locale": null,
+      "text_zh": "有的！對剛接手這個職位的人來說，前九十天達到什麼成果會被視為成功呢？",
+      "audio_normal_url": "/audio/turns/turn-int-8_normal.mp3",
+      "audio_slow_url": "/audio/turns/turn-int-8_slow.mp3",
+      "audio_zh_url": "/audio/turns/turn-int-8_zh.mp3",
+      "timestamp_start_sec": null,
+      "timestamp_end_sec": null,
+      "default_loop_count": 3
     }
   ],
   "vocabulary": [
@@ -2720,6 +3425,306 @@
       "example_zh": "週末計畫成形了嗎？",
       "difficulty_level": "intermediate",
       "audio_url": "/audio/vocab/voc-shaping-up.mp3"
+    },
+    {
+      "id": "voc-cut-to-chase",
+      "word_en": "cut to the chase",
+      "base_form": "cut to the chase",
+      "ipa_us": "/kʌt tu ðə tʃeɪs/",
+      "ipa_uk": "/kʌt tuː ðə tʃeɪs/",
+      "part_of_speech": "idiom",
+      "meaning_zh": "直接切入重點、開門見山",
+      "locale_variant": "US",
+      "equivalent_word": "get to the point",
+      "example_en": "Let's cut to the chase and review the numbers.",
+      "example_zh": "我們直接切入重點，來檢視數據吧。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-cut-to-chase.mp3"
+    },
+    {
+      "id": "voc-hear-me-out",
+      "word_en": "hear me out",
+      "base_form": "hear someone out",
+      "ipa_us": "/hɪr mi aʊt/",
+      "ipa_uk": "/hɪə miː aʊt/",
+      "part_of_speech": "phr. v.",
+      "meaning_zh": "先聽我把話說完、聽我解釋",
+      "locale_variant": "BOTH",
+      "equivalent_word": "listen to my full explanation",
+      "example_en": "That's fair, but hear me out before we vote.",
+      "example_zh": "那說得有理，但投票前請先聽我說完。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-hear-me-out.mp3"
+    },
+    {
+      "id": "voc-not-fully-sold",
+      "word_en": "not fully sold",
+      "base_form": "be sold on",
+      "ipa_us": "/nɑːt ˈfʊli soʊld/",
+      "ipa_uk": "/nɒt ˈfʊli səʊld/",
+      "part_of_speech": "phr.",
+      "meaning_zh": "還沒完全被說服、持保留態度",
+      "locale_variant": "US",
+      "equivalent_word": "not completely convinced",
+      "example_en": "I see your point, but I'm not fully sold yet.",
+      "example_zh": "我懂你的觀點，但我還沒完全被說服。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-not-fully-sold.mp3"
+    },
+    {
+      "id": "voc-point-well-taken",
+      "word_en": "point well taken",
+      "base_form": "point well taken",
+      "ipa_us": "/pɔɪnt wɛl ˈteɪkən/",
+      "ipa_uk": "/pɔɪnt wel ˈteɪkən/",
+      "part_of_speech": "phr.",
+      "meaning_zh": "很有道理、虛心接受你的觀點",
+      "locale_variant": "BOTH",
+      "equivalent_word": "that is a very valid point",
+      "example_en": "Point well taken—let's add an extra week for testing.",
+      "example_zh": "很有道理——我們多加一週來做測試吧。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-point-well-taken.mp3"
+    },
+    {
+      "id": "voc-bottom-line",
+      "word_en": "bottom line",
+      "base_form": "bottom line",
+      "ipa_us": "/ˈbɑːtəm laɪn/",
+      "ipa_uk": "/ˈbɒtəm laɪn/",
+      "part_of_speech": "n.",
+      "meaning_zh": "核心底線、最終結論",
+      "locale_variant": "US",
+      "equivalent_word": "main takeaway",
+      "example_en": "Here's the bottom line: quality comes first.",
+      "example_zh": "核心底線就是：品質第一。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-bottom-line.mp3"
+    },
+    {
+      "id": "voc-heads-up",
+      "word_en": "heads-up",
+      "base_form": "heads-up",
+      "ipa_us": "/ˌhɛdz ˈʌp/",
+      "ipa_uk": "/ˌhedz ˈʌp/",
+      "part_of_speech": "n.",
+      "meaning_zh": "事前提醒、預警打招呼",
+      "locale_variant": "US",
+      "equivalent_word": "advance notice",
+      "example_en": "Just a quick heads-up that the client joined early.",
+      "example_zh": "先提個醒，客戶提前上線了。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-heads-up.mp3"
+    },
+    {
+      "id": "voc-move-up",
+      "word_en": "moved it up",
+      "base_form": "move up",
+      "ipa_us": "/muːvd ɪt ʌp/",
+      "ipa_uk": "/muːvd ɪt ʌp/",
+      "part_of_speech": "phr. v.",
+      "meaning_zh": "將（日期、會議）提前",
+      "locale_variant": "BOTH",
+      "equivalent_word": "bring forward",
+      "example_en": "They moved the product launch up by two days.",
+      "example_zh": "他們把產品發表提前了兩天。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-move-up.mp3"
+    },
+    {
+      "id": "voc-look-over",
+      "word_en": "look this over",
+      "base_form": "look over",
+      "ipa_us": "/lʊk ðɪs ˈoʊvər/",
+      "ipa_uk": "/lʊk ðɪs ˈəʊvə/",
+      "part_of_speech": "phr. v.",
+      "meaning_zh": "過目、快速審核檢查",
+      "locale_variant": "BOTH",
+      "equivalent_word": "review briefly",
+      "example_en": "Could you look this over before I hit send?",
+      "example_zh": "在我按送出前，你能幫我過目一下嗎？",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-look-over.mp3"
+    },
+    {
+      "id": "voc-extension",
+      "word_en": "extension",
+      "base_form": "extension",
+      "ipa_us": "/ɪkˈstɛnʃən/",
+      "ipa_uk": "/ɪkˈstenʃən/",
+      "part_of_speech": "n.",
+      "meaning_zh": "延期、展延期限",
+      "locale_variant": "BOTH",
+      "equivalent_word": "extra time",
+      "example_en": "We might need to ask for a two-day extension.",
+      "example_zh": "我們可能需要申請延期兩天。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-extension.mp3"
+    },
+    {
+      "id": "voc-stretched-thin",
+      "word_en": "stretched pretty thin",
+      "base_form": "be stretched thin",
+      "ipa_us": "/strɛtʃt ˈprɪti θɪn/",
+      "ipa_uk": "/stretʃt ˈprɪti θɪn/",
+      "part_of_speech": "idiom",
+      "meaning_zh": "分身乏術、精力與人力滿載",
+      "locale_variant": "US",
+      "equivalent_word": "overloaded with work",
+      "example_en": "I'm stretched pretty thin this sprint, sorry.",
+      "example_zh": "不好意思，這個衝刺週期我真的分身乏術了。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-stretched-thin.mp3"
+    },
+    {
+      "id": "voc-reschedule",
+      "word_en": "reschedule",
+      "base_form": "reschedule",
+      "ipa_us": "/ˌriːˈskɛdʒuːl/",
+      "ipa_uk": "/ˌriːˈʃedjuːl/",
+      "part_of_speech": "v.",
+      "meaning_zh": "重新安排時間、改期",
+      "locale_variant": "BOTH",
+      "equivalent_word": "move to another time",
+      "example_en": "I was wondering if we could reschedule our call.",
+      "example_zh": "我在想我們是否可以將通話改期。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-reschedule.mp3"
+    },
+    {
+      "id": "voc-double-booked",
+      "word_en": "double-booked",
+      "base_form": "double-book",
+      "ipa_us": "/ˌdʌbəl ˈbʊkt/",
+      "ipa_uk": "/ˌdʌbəl ˈbʊkt/",
+      "part_of_speech": "v. / adj.",
+      "meaning_zh": "行程撞期、同時段重複預約",
+      "locale_variant": "BOTH",
+      "equivalent_word": "scheduled two things at once",
+      "example_en": "Sorry, I accidentally double-booked myself at 3 PM.",
+      "example_zh": "抱歉，我下午三點不小心行程撞期了。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-double-booked.mp3"
+    },
+    {
+      "id": "voc-push-it",
+      "word_en": "push it",
+      "base_form": "push (a meeting)",
+      "ipa_us": "/pʊʃ ɪt/",
+      "ipa_uk": "/pʊʃ ɪt/",
+      "part_of_speech": "v. phr.",
+      "meaning_zh": "把會議／行程往後順延",
+      "locale_variant": "US",
+      "equivalent_word": "postpone it",
+      "example_en": "Should we push it to next Tuesday instead?",
+      "example_zh": "我們要不要改成順延到下週二？",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-push-it.mp3"
+    },
+    {
+      "id": "voc-play-by-ear",
+      "word_en": "play it by ear",
+      "base_form": "play it by ear",
+      "ipa_us": "/pleɪ ɪt baɪ ɪr/",
+      "ipa_uk": "/pleɪ ɪt baɪ ɪə/",
+      "part_of_speech": "idiom",
+      "meaning_zh": "見機行事、屆時視情況彈性調整",
+      "locale_variant": "BOTH",
+      "equivalent_word": "decide as things go",
+      "example_en": "Let's play it by ear and confirm tomorrow morning.",
+      "example_zh": "我們看情況彈性安排，明天早上再確認。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-play-by-ear.mp3"
+    },
+    {
+      "id": "voc-keep-posted",
+      "word_en": "keep you posted",
+      "base_form": "keep someone posted",
+      "ipa_us": "/kiːp ju ˈpoʊstɪd/",
+      "ipa_uk": "/kiːp juː ˈpəʊstɪd/",
+      "part_of_speech": "phr.",
+      "meaning_zh": "隨時向你更新最新進度與消息",
+      "locale_variant": "BOTH",
+      "equivalent_word": "keep you updated",
+      "example_en": "I'll keep you posted once the client confirms.",
+      "example_zh": "等客戶一確認，我會馬上通知你。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-keep-posted.mp3"
+    },
+    {
+      "id": "voc-walk-through",
+      "word_en": "walk me through",
+      "base_form": "walk someone through",
+      "ipa_us": "/wɔːk mi θruː/",
+      "ipa_uk": "/wɔːk miː θruː/",
+      "part_of_speech": "phr. v.",
+      "meaning_zh": "帶我一步步了解、概述說明",
+      "locale_variant": "US",
+      "equivalent_word": "explain step by step",
+      "example_en": "Could you walk me through your recent project?",
+      "example_zh": "可以帶我了解一下你最近的專案嗎？",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-walk-through.mp3"
+    },
+    {
+      "id": "voc-switching-teams",
+      "word_en": "switching teams",
+      "base_form": "switch teams",
+      "ipa_us": "/ˈswɪtʃɪŋ tiːmz/",
+      "ipa_uk": "/ˈswɪtʃɪŋ tiːmz/",
+      "part_of_speech": "v. phr.",
+      "meaning_zh": "內部轉調、更換團隊",
+      "locale_variant": "US",
+      "equivalent_word": "changing departments",
+      "example_en": "I'm thinking of switching teams next quarter.",
+      "example_zh": "我考慮下一季內部轉調到別的團隊。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-switching-teams.mp3"
+    },
+    {
+      "id": "voc-global-scope",
+      "word_en": "global scope",
+      "base_form": "scope",
+      "ipa_us": "/ˈɡloʊbəl skoʊp/",
+      "ipa_uk": "/ˈɡləʊbəl skəʊp/",
+      "part_of_speech": "n. phr.",
+      "meaning_zh": "跨國視野與業務範疇",
+      "locale_variant": "BOTH",
+      "equivalent_word": "international responsibility",
+      "example_en": "This role offers a wider global scope across APAC.",
+      "example_zh": "這個職位提供涵蓋亞太區的更廣跨國範疇。",
+      "difficulty_level": "intermediate",
+      "audio_url": "/audio/vocab/voc-global-scope.mp3"
+    },
+    {
+      "id": "voc-count-on",
+      "word_en": "count on me",
+      "base_form": "count on",
+      "ipa_us": "/kaʊnt ɑːn mi/",
+      "ipa_uk": "/kaʊnt ɒn miː/",
+      "part_of_speech": "phr. v.",
+      "meaning_zh": "信賴我、放心倚靠我",
+      "locale_variant": "BOTH",
+      "equivalent_word": "rely on me",
+      "example_en": "You can always count on me to hit the deadline.",
+      "example_zh": "你可以完全放心交給我，我一定準時交件。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-count-on.mp3"
+    },
+    {
+      "id": "voc-wrap-up",
+      "word_en": "wrap up",
+      "base_form": "wrap up",
+      "ipa_us": "/ræp ʌp/",
+      "ipa_uk": "/ræp ʌp/",
+      "part_of_speech": "phr. v.",
+      "meaning_zh": "收尾、結束會議或面試",
+      "locale_variant": "BOTH",
+      "equivalent_word": "conclude",
+      "example_en": "Before we wrap up, let's confirm next steps.",
+      "example_zh": "在我們結束會議前，先確認一下後續步驟。",
+      "difficulty_level": "beginner",
+      "audio_url": "/audio/vocab/voc-wrap-up.mp3"
     }
   ],
   "dialogue_turn_vocabulary": [
@@ -2977,6 +3982,106 @@
       "dialogue_turn_id": "turn-wkd-7",
       "vocabulary_id": "voc-shaping-up",
       "highlight_text": "shaping up"
+    },
+    {
+      "dialogue_turn_id": "turn-mtg-1",
+      "vocabulary_id": "voc-cut-to-chase",
+      "highlight_text": "cut to the chase"
+    },
+    {
+      "dialogue_turn_id": "turn-mtg-4",
+      "vocabulary_id": "voc-hear-me-out",
+      "highlight_text": "hear me out"
+    },
+    {
+      "dialogue_turn_id": "turn-mtg-5",
+      "vocabulary_id": "voc-not-fully-sold",
+      "highlight_text": "not fully sold"
+    },
+    {
+      "dialogue_turn_id": "turn-mtg-7",
+      "vocabulary_id": "voc-point-well-taken",
+      "highlight_text": "Point well taken"
+    },
+    {
+      "dialogue_turn_id": "turn-mtg-7",
+      "vocabulary_id": "voc-bottom-line",
+      "highlight_text": "bottom line"
+    },
+    {
+      "dialogue_turn_id": "turn-prj-1",
+      "vocabulary_id": "voc-heads-up",
+      "highlight_text": "heads-up"
+    },
+    {
+      "dialogue_turn_id": "turn-prj-1",
+      "vocabulary_id": "voc-move-up",
+      "highlight_text": "moved it up"
+    },
+    {
+      "dialogue_turn_id": "turn-prj-3",
+      "vocabulary_id": "voc-look-over",
+      "highlight_text": "look this over"
+    },
+    {
+      "dialogue_turn_id": "turn-prj-4",
+      "vocabulary_id": "voc-extension",
+      "highlight_text": "extension"
+    },
+    {
+      "dialogue_turn_id": "turn-prj-6",
+      "vocabulary_id": "voc-stretched-thin",
+      "highlight_text": "stretched pretty thin"
+    },
+    {
+      "dialogue_turn_id": "turn-sch-2",
+      "vocabulary_id": "voc-reschedule",
+      "highlight_text": "reschedule"
+    },
+    {
+      "dialogue_turn_id": "turn-sch-2",
+      "vocabulary_id": "voc-double-booked",
+      "highlight_text": "double-booked"
+    },
+    {
+      "dialogue_turn_id": "turn-sch-3",
+      "vocabulary_id": "voc-push-it",
+      "highlight_text": "push it"
+    },
+    {
+      "dialogue_turn_id": "turn-sch-7",
+      "vocabulary_id": "voc-play-by-ear",
+      "highlight_text": "play it by ear"
+    },
+    {
+      "dialogue_turn_id": "turn-sch-8",
+      "vocabulary_id": "voc-keep-posted",
+      "highlight_text": "keep you posted"
+    },
+    {
+      "dialogue_turn_id": "turn-int-1",
+      "vocabulary_id": "voc-walk-through",
+      "highlight_text": "walk me through"
+    },
+    {
+      "dialogue_turn_id": "turn-int-3",
+      "vocabulary_id": "voc-switching-teams",
+      "highlight_text": "switching teams"
+    },
+    {
+      "dialogue_turn_id": "turn-int-4",
+      "vocabulary_id": "voc-global-scope",
+      "highlight_text": "global scope"
+    },
+    {
+      "dialogue_turn_id": "turn-int-6",
+      "vocabulary_id": "voc-count-on",
+      "highlight_text": "count on me"
+    },
+    {
+      "dialogue_turn_id": "turn-int-7",
+      "vocabulary_id": "voc-wrap-up",
+      "highlight_text": "wrap up"
     }
   ],
   "cultural_notes": [
@@ -3176,6 +4281,78 @@
       "note_type": "culture",
       "title_zh": "「It's been a day.」是大人最懂的默契感嘆",
       "content_zh": "不用冗長解釋今天有多累，一句 \"It's been a day.\" 或 \"I'm swamped.\" 就能立刻引起美國同事或朋友的強烈共鳴。",
+      "sort_order": 2
+    },
+    {
+      "id": "note-mtg-1",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": "dlg-meeting-1",
+      "note_type": "etiquette",
+      "title_zh": "美式會議反對公式：先肯定，再「hear me out」",
+      "content_zh": "直接說 \"I disagree.\" 在美式職場容易顯得有攻擊性。高手會用「認同＋轉折」：先說 \"That's fair\" 或 \"I see your point\"，再補上 \"but hear me out\" 或 \"I feel like it's kind of tight\"，把對立轉為合作解題。",
+      "sort_order": 1
+    },
+    {
+      "id": "note-mtg-2",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": "dlg-meeting-1",
+      "note_type": "conversation_hack",
+      "title_zh": "千萬別問同事「Do you understand?」",
+      "content_zh": "問 \"Do you understand?\" 帶點上對下的質問語氣。想確認對方有沒有聽懂你的論點，應把責任放回自己身上，改問 \"Am I making sense?\"（我有說清楚嗎？）或 \"Do you see where I'm coming from?\"。",
+      "sort_order": 2
+    },
+    {
+      "id": "note-prj-1",
+      "scenario_id": "scn-project",
+      "dialogue_id": "dlg-project-1",
+      "note_type": "culture",
+      "title_zh": "「Quick heads-up」是外商最受歡迎的職場神句",
+      "content_zh": "歐美職場非常忌諱「到死線當天才爆雷」。只要進度可能有變，先傳一句 \"Just a quick heads-up...\" 提前預警，不僅不會被責怪，反而展現你的專業掌控度。",
+      "sort_order": 1
+    },
+    {
+      "id": "note-prj-2",
+      "scenario_id": "scn-project",
+      "dialogue_id": "dlg-project-1",
+      "note_type": "etiquette",
+      "title_zh": "拒絕加班或插單：用「bandwidth / stretched thin」對事不對人",
+      "content_zh": "說 \"No, I'm too busy.\" 顯得生硬；改用 \"I can't commit right now. I'm stretched pretty thin with Q4 reports.\" 同時表達「我不是不願幫忙，而是現有優先任務已滿載」，既守住界線又不傷關係。",
+      "sort_order": 2
+    },
+    {
+      "id": "note-sch-1",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": "dlg-schedule-1",
+      "note_type": "conversation_hack",
+      "title_zh": "「Push it」指順延，「Move it up」指提前！別搞混方向",
+      "content_zh": "英文裡「把會議往後延」常用 push / push back（例：push it to Thursday），而「把截止日往前拉、提前」則用 move up（例：moved it up by a week）。這兩個方向最容易跟中文「往後／往前」混淆，務必記熟！",
+      "sort_order": 1
+    },
+    {
+      "id": "note-sch-2",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": "dlg-schedule-1",
+      "note_type": "etiquette",
+      "title_zh": "改期禮儀：提出改期的人要主動給「替代時段」＋寄新邀請",
+      "content_zh": "美商文化中，若由你提出 reschedule，別只說 \"Can we move it?\" 就把球丟給對方；最加分的做法是接著給出具體選項（\"Any chance we could do Thursday at 10?\"）並主動說 \"I'll send over an updated calendar invite.\"。",
+      "sort_order": 2
+    },
+    {
+      "id": "note-int-1",
+      "scenario_id": "scn-interview",
+      "dialogue_id": "dlg-interview-1",
+      "note_type": "culture",
+      "title_zh": "外商面試切忌抱怨前東家，把焦點放在「成長與舞台」",
+      "content_zh": "當面試官問 \"What's making you consider switching?\" 時，避免批評前主管或薪資；改以正向敘事：\"I've learned a lot there, and now I'm looking for a bigger global scope.\" 展現積極職涯規劃。",
+      "sort_order": 1
+    },
+    {
+      "id": "note-int-2",
+      "scenario_id": "scn-interview",
+      "dialogue_id": "dlg-interview-1",
+      "note_type": "conversation_hack",
+      "title_zh": "面試反問必殺題：「前 90 天的成功指標是什麼？」",
+      "content_zh": "聽到 \"Do you have any questions for us?\" 千萬別只說 \"No, I'm good.\"！問 \"What would success look like in the first 90 days?\" 能瞬間讓面試官把你代入正式員工的畫面，好感度大幅飆升。",
       "sort_order": 2
     }
   ],
@@ -4057,6 +5234,420 @@
       "survival_tag": null,
       "audio_normal_url": "/audio/patterns/pat-wkd-2_normal.mp3",
       "audio_slow_url": "/audio/patterns/pat-wkd-2_slow.mp3"
+    },
+    {
+      "id": "pat-mtg-1",
+      "scenario_id": "scn-meeting",
+      "source_id": "src-ear-speaking",
+      "speaker_role": "Team Member",
+      "formula_en": "That's fair, but hear me out—I feel like [ISSUE] is kind of [CONCERN].",
+      "formula_zh": "那說得有理，但先聽我說完——我覺得 [議題] 有點 [顧慮]。",
+      "pragmatic_note": "美式會議高情商反對公式：先認可對方，再用 I feel like + kind of 雙重軟化。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "ISSUE",
+          "label_zh": "討論議題",
+          "choices": [
+            {
+              "en": "this Friday",
+              "zh": "這週五的時程"
+            },
+            {
+              "en": "this budget plan",
+              "zh": "這個預算方案"
+            },
+            {
+              "en": "the new workflow",
+              "zh": "這套新流程"
+            }
+          ]
+        },
+        {
+          "key": "CONCERN",
+          "label_zh": "顧慮點",
+          "choices": [
+            {
+              "en": "tight for QA testing",
+              "zh": "對測試來說太趕"
+            },
+            {
+              "en": "risky for our launch",
+              "zh": "對上線風險偏高"
+            },
+            {
+              "en": "confusing for new users",
+              "zh": "會讓新用戶困惑"
+            }
+          ]
+        }
+      ],
+      "example_en": "That's fair, but hear me out—I feel like this Friday is kind of tight for QA testing.",
+      "example_zh": "那說得有理，但先聽我說完——我覺得這週五對品質測試來說有點趕。",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-mtg-1_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-mtg-1_slow.mp3"
+    },
+    {
+      "id": "pat-mtg-2",
+      "scenario_id": "scn-meeting",
+      "source_id": "src-mcgraw-hill",
+      "speaker_role": "Team Member",
+      "formula_en": "[PROPOSAL] might be one option though. Am I making sense?",
+      "formula_zh": "[替代方案] 或許是個選項。我這樣說合理嗎？",
+      "pragmatic_note": "提出替代解方時用 might be one option 保留討論空間，結尾用 Am I making sense? 邀請共鳴。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "PROPOSAL",
+          "label_zh": "替代方案",
+          "choices": [
+            {
+              "en": "A soft launch for ten percent of users",
+              "zh": "先針對一成用戶試推"
+            },
+            {
+              "en": "Splitting this into two phases",
+              "zh": "把這案子分成兩階段"
+            },
+            {
+              "en": "Running a quick user survey first",
+              "zh": "先做個快速用戶調查"
+            }
+          ]
+        }
+      ],
+      "example_en": "A soft launch for ten percent of users might be one option though. Am I making sense?",
+      "example_zh": "先針對一成用戶小規模試推或許是個選項。我這樣說合理嗎？",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-mtg-2_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-mtg-2_slow.mp3"
+    },
+    {
+      "id": "pat-prj-1",
+      "scenario_id": "scn-project",
+      "source_id": "src-ear-speaking",
+      "speaker_role": "Colleague",
+      "formula_en": "Could you look [DOCUMENT] over? I'm a bit stuck on [PART].",
+      "formula_zh": "你能幫我過目一下 [文件] 嗎？我在 [部分] 有點卡住了。",
+      "pragmatic_note": "請同事幫忙看資料最自然親切的說法，直接點出卡關處能節省彼此時間。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "DOCUMENT",
+          "label_zh": "文件項目",
+          "choices": [
+            {
+              "en": "this draft",
+              "zh": "這份草稿"
+            },
+            {
+              "en": "the client proposal",
+              "zh": "這份客戶提案"
+            },
+            {
+              "en": "my slide deck",
+              "zh": "我的簡報"
+            }
+          ]
+        },
+        {
+          "key": "PART",
+          "label_zh": "卡關處",
+          "choices": [
+            {
+              "en": "the budget slide",
+              "zh": "預算這頁投影片"
+            },
+            {
+              "en": "the timeline section",
+              "zh": "時程表這段"
+            },
+            {
+              "en": "the closing summary",
+              "zh": "結尾總結"
+            }
+          ]
+        }
+      ],
+      "example_en": "Could you look this draft over? I'm a bit stuck on the budget slide.",
+      "example_zh": "你能幫我過目一下這份草稿嗎？我在預算這頁投影片有點卡住了。",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-prj-1_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-prj-1_slow.mp3"
+    },
+    {
+      "id": "pat-prj-2",
+      "scenario_id": "scn-project",
+      "source_id": "src-ear-speaking",
+      "speaker_role": "Team Member",
+      "formula_en": "I can't commit right now—I'm stretched pretty thin with [TASK].",
+      "formula_zh": "我現在沒辦法答應——我手頭的 [任務] 已經讓我分身乏術了。",
+      "pragmatic_note": "禮貌但堅定守住工作量邊界：先說明無法承諾，再交代目前滿載的具體原因。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "TASK",
+          "label_zh": "手頭任務",
+          "choices": [
+            {
+              "en": "Q4 reports",
+              "zh": "第四季報表"
+            },
+            {
+              "en": "the product launch",
+              "zh": "產品上線任務"
+            },
+            {
+              "en": "two client deadlines",
+              "zh": "兩個客戶的死線"
+            }
+          ]
+        }
+      ],
+      "example_en": "I can't commit right now—I'm stretched pretty thin with Q4 reports.",
+      "example_zh": "我現在沒辦法答應——我手頭的第四季報表已經讓我分身乏術了。",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-prj-2_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-prj-2_slow.mp3"
+    },
+    {
+      "id": "pat-sch-1",
+      "scenario_id": "scn-schedule",
+      "source_id": "src-ear-speaking",
+      "speaker_role": "Professional",
+      "formula_en": "I was wondering if we could reschedule [EVENT]. Any chance we could push it to [NEW_TIME]?",
+      "formula_zh": "我在想我們是否能把 [會議] 改期。有機會順延到 [新時間] 嗎？",
+      "pragmatic_note": "I was wondering if + Any chance we could 雙重緩衝，讓改期要求客氣又有商量餘地。",
+      "register": "formal",
+      "slots_json": [
+        {
+          "key": "EVENT",
+          "label_zh": "會議項目",
+          "choices": [
+            {
+              "en": "our project sync",
+              "zh": "我們的專案同步會"
+            },
+            {
+              "en": "tomorrow's call",
+              "zh": "明天的通話"
+            },
+            {
+              "en": "the design review",
+              "zh": "設計評審會議"
+            }
+          ]
+        },
+        {
+          "key": "NEW_TIME",
+          "label_zh": "新時間",
+          "choices": [
+            {
+              "en": "Thursday at eleven",
+              "zh": "週四上午十一點"
+            },
+            {
+              "en": "Friday afternoon",
+              "zh": "週五下午"
+            },
+            {
+              "en": "next Monday morning",
+              "zh": "下週一早上"
+            }
+          ]
+        }
+      ],
+      "example_en": "I was wondering if we could reschedule our project sync. Any chance we could push it to Thursday at eleven?",
+      "example_zh": "我在想我們是否能把專案同步會改期。有機會順延到週四上午十一點嗎？",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-sch-1_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-sch-1_slow.mp3"
+    },
+    {
+      "id": "pat-sch-2",
+      "scenario_id": "scn-schedule",
+      "source_id": "src-ear-speaking",
+      "speaker_role": "Professional",
+      "formula_en": "I'll send over [ITEM] and keep you posted if [CONDITION].",
+      "formula_zh": "我會寄出 [項目]，如果 [狀況] 我再隨時通知您。",
+      "pragmatic_note": "商務約時間最俐落的收尾模板，清楚交代下一步動作與回報承諾。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "ITEM",
+          "label_zh": "寄送項目",
+          "choices": [
+            {
+              "en": "an updated calendar invite",
+              "zh": "更新後的行事曆邀請"
+            },
+            {
+              "en": "a quick email recap",
+              "zh": "簡短的 Email 紀要"
+            },
+            {
+              "en": "the Zoom link",
+              "zh": "Zoom 會議連結"
+            }
+          ]
+        },
+        {
+          "key": "CONDITION",
+          "label_zh": "後續條件",
+          "choices": [
+            {
+              "en": "anything changes",
+              "zh": "有任何變動"
+            },
+            {
+              "en": "we need to adjust",
+              "zh": "需要再調整"
+            },
+            {
+              "en": "the client replies",
+              "zh": "客戶有回覆"
+            }
+          ]
+        }
+      ],
+      "example_en": "I'll send over an updated calendar invite and keep you posted if anything changes.",
+      "example_zh": "我會寄出更新後的行事曆邀請，如果有任何變動我再隨時通知您。",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-sch-2_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-sch-2_slow.mp3"
+    },
+    {
+      "id": "pat-int-1",
+      "scenario_id": "scn-interview",
+      "source_id": "src-ear-chat",
+      "speaker_role": "Candidate",
+      "formula_en": "Right now, I'm in a [ROLE] role at a [COMPANY], focusing on [FOCUS].",
+      "formula_zh": "目前我在一家 [公司類型] 擔任 [職位]，主要專注於 [核心業務]。",
+      "pragmatic_note": "一句話精準定位現職（30 秒電梯簡報核心），比 \"I work in marketing department\" 更道地有力。",
+      "register": "formal",
+      "slots_json": [
+        {
+          "key": "ROLE",
+          "label_zh": "職位領域",
+          "choices": [
+            {
+              "en": "product marketing",
+              "zh": "產品行銷"
+            },
+            {
+              "en": "project management",
+              "zh": "專案管理"
+            },
+            {
+              "en": "software engineering",
+              "zh": "軟體工程"
+            }
+          ]
+        },
+        {
+          "key": "COMPANY",
+          "label_zh": "公司類型",
+          "choices": [
+            {
+              "en": "tech startup",
+              "zh": "科技新創公司"
+            },
+            {
+              "en": "global consulting firm",
+              "zh": "跨國顧問公司"
+            },
+            {
+              "en": "semiconductor company",
+              "zh": "半導體企業"
+            }
+          ]
+        },
+        {
+          "key": "FOCUS",
+          "label_zh": "負責重點",
+          "choices": [
+            {
+              "en": "regional launches",
+              "zh": "區域產品上市"
+            },
+            {
+              "en": "cross-functional delivery",
+              "zh": "跨部門專案交付"
+            },
+            {
+              "en": "cloud automation",
+              "zh": "雲端自動化架構"
+            }
+          ]
+        }
+      ],
+      "example_en": "Right now, I'm in a product marketing role at a tech startup, focusing on regional launches.",
+      "example_zh": "目前我在一家科技新創公司擔任產品行銷，主要專注於區域產品上市。",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-int-1_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-int-1_slow.mp3"
+    },
+    {
+      "id": "pat-int-2",
+      "scenario_id": "scn-interview",
+      "source_id": "src-mcgraw-hill",
+      "speaker_role": "Candidate",
+      "formula_en": "I wouldn't say I'm [EXTREME], but [STRENGTH] and people can count on me.",
+      "formula_zh": "我不敢說自己是 [誇張特質]，但我的 [核心優勢]，而且大家都能放心信賴我。",
+      "pragmatic_note": "美式高分面試語氣：先輕微謙遜收斂，再落實到具體可靠度，聽起來真誠又有說服力。",
+      "register": "neutral",
+      "slots_json": [
+        {
+          "key": "EXTREME",
+          "label_zh": "謙遜對照",
+          "choices": [
+            {
+              "en": "the flashiest speaker",
+              "zh": "最會炒熱氣氛的演說家"
+            },
+            {
+              "en": "someone who knows everything",
+              "zh": "無所不知的人"
+            },
+            {
+              "en": "the loudest voice in the room",
+              "zh": "會議室裡最大聲的人"
+            }
+          ]
+        },
+        {
+          "key": "STRENGTH",
+          "label_zh": "紮實優勢",
+          "choices": [
+            {
+              "en": "my execution is solid",
+              "zh": "我的執行力很紮實"
+            },
+            {
+              "en": "I learn super fast",
+              "zh": "我的學習速度非常快"
+            },
+            {
+              "en": "I stay calm under pressure",
+              "zh": "我在高壓下能保持冷靜"
+            }
+          ]
+        }
+      ],
+      "example_en": "I wouldn't say I'm the flashiest speaker, but my execution is solid and people can count on me.",
+      "example_zh": "我不敢說自己是最會炒熱氣氛的演說家，但我的執行力很紮實，而且大家都能放心信賴我。",
+      "is_survival_essential": false,
+      "survival_tag": null,
+      "audio_normal_url": "/audio/patterns/pat-int-2_normal.mp3",
+      "audio_slow_url": "/audio/patterns/pat-int-2_slow.mp3"
     }
   ],
   "expression_groups": [
@@ -4127,6 +5718,26 @@
       "topic_code": "MH-13-64",
       "title_en": "Being Busy & Calling It a Day",
       "title_zh": "形容超忙、共鳴接話與準備收工（正式 ➜ 慣用語光譜）",
+      "group_type": "synonym_spectrum",
+      "illustration_url": null
+    },
+    {
+      "id": "grp-upg-workplace",
+      "scenario_id": "scn-meeting",
+      "source_id": "src-ear-speaking",
+      "topic_code": "BIZ-UPG-01",
+      "title_en": "Polite Pushback, Workload & Rescheduling Upgrades",
+      "title_zh": "職場緩衝反對、婉拒插單與改期（教科書 ➜ 美式專業口語）",
+      "group_type": "native_upgrade",
+      "illustration_url": null
+    },
+    {
+      "id": "grp-spec-biz-focus",
+      "scenario_id": "scn-interview",
+      "source_id": "src-mcgraw-hill",
+      "topic_code": "MH-BIZ-47",
+      "title_en": "Getting to the Point & Expressing Reliability",
+      "title_zh": "會議聚焦重點、事前預警與展現可靠度（正式 ➜ 慣用語光譜）",
       "group_type": "synonym_spectrum",
       "illustration_url": null
     }
@@ -4482,6 +6093,136 @@
       "sort_order": 5,
       "audio_normal_url": "/audio/expressions/exp-27_normal.mp3",
       "audio_slow_url": "/audio/expressions/exp-27_slow.mp3"
+    },
+    {
+      "id": "exp-28",
+      "group_id": "grp-upg-workplace",
+      "standard_en": "I disagree with your plan.",
+      "native_en": "That's fair, but hear me out.",
+      "meaning_zh": "那樣講有道理，但請先聽我說明我的考量。",
+      "register_tag": "neutral",
+      "nuance_type": "softening",
+      "idiom_note": "先認同對方邏輯（That's fair）再請對方聽完不同面向，大幅降低會議防禦心。",
+      "sort_order": 1,
+      "audio_normal_url": "/audio/expressions/exp-28_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-28_slow.mp3"
+    },
+    {
+      "id": "exp-29",
+      "group_id": "grp-upg-workplace",
+      "standard_en": "I am very busy and cannot do it.",
+      "native_en": "I can't commit right now. I'm stretched pretty thin.",
+      "meaning_zh": "我現在沒辦法答應，手頭的事情已經讓我分身乏術了。",
+      "register_tag": "neutral",
+      "nuance_type": "hedging",
+      "idiom_note": "用 can't commit（無法承諾）搭配 stretched thin（人力精力拉得很滿），專業又不傷和氣。",
+      "sort_order": 2,
+      "audio_normal_url": "/audio/expressions/exp-29_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-29_slow.mp3"
+    },
+    {
+      "id": "exp-30",
+      "group_id": "grp-upg-workplace",
+      "standard_en": "Please check my report.",
+      "native_en": "Could you look this over? I'm a bit stuck here.",
+      "meaning_zh": "你能幫我過目一下這份文件嗎？我這裡有點卡關了。",
+      "register_tag": "neutral",
+      "nuance_type": "hedging",
+      "idiom_note": "look over 比 check 更柔和，點出 a bit stuck 讓同事更願意出手幫忙。",
+      "sort_order": 3,
+      "audio_normal_url": "/audio/expressions/exp-30_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-30_slow.mp3"
+    },
+    {
+      "id": "exp-31",
+      "group_id": "grp-upg-workplace",
+      "standard_en": "Can we delay the meeting?",
+      "native_en": "Any chance we could push it to Thursday?",
+      "meaning_zh": "有機會把會議順延到週四嗎？",
+      "register_tag": "neutral",
+      "nuance_type": "hedging",
+      "idiom_note": "Any chance...? 給予對方舒適的商量空間，比 delay 更符合美商日程口語。",
+      "sort_order": 4,
+      "audio_normal_url": "/audio/expressions/exp-31_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-31_slow.mp3"
+    },
+    {
+      "id": "exp-32",
+      "group_id": "grp-upg-workplace",
+      "standard_en": "I have two appointments at the same time.",
+      "native_en": "I accidentally double-booked myself.",
+      "meaning_zh": "我不小心把兩個行程排撞期了。",
+      "register_tag": "informal",
+      "nuance_type": "idiom",
+      "idiom_note": "外商最道地的「撞期」說法，一句三個字就交代清楚原因。",
+      "sort_order": 5,
+      "audio_normal_url": "/audio/expressions/exp-32_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-32_slow.mp3"
+    },
+    {
+      "id": "exp-33",
+      "group_id": "grp-spec-biz-focus",
+      "standard_en": "That is a good argument.",
+      "native_en": "Point well taken.",
+      "meaning_zh": "很有道理，我完全理解並接受你的觀點。",
+      "register_tag": "formal",
+      "nuance_type": "softening",
+      "idiom_note": "正式會議與高階主管最愛用的肯定說法，展現高度專業氣度。",
+      "sort_order": 1,
+      "audio_normal_url": "/audio/expressions/exp-33_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-33_slow.mp3"
+    },
+    {
+      "id": "exp-34",
+      "group_id": "grp-spec-biz-focus",
+      "standard_en": "I want to tell you in advance.",
+      "native_en": "Just a quick heads-up.",
+      "meaning_zh": "只是先跟你提個醒／打聲招呼。",
+      "register_tag": "neutral",
+      "nuance_type": "small_talk_bridge",
+      "idiom_note": "Slack、Email 與會議開場必備的預警起手式，瞬間拉近協作默契。",
+      "sort_order": 2,
+      "audio_normal_url": "/audio/expressions/exp-34_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-34_slow.mp3"
+    },
+    {
+      "id": "exp-35",
+      "group_id": "grp-spec-biz-focus",
+      "standard_en": "Let us talk about the main point.",
+      "native_en": "Let's cut to the chase.",
+      "meaning_zh": "我們廢話不多說，直接切入重點吧。",
+      "register_tag": "informal",
+      "nuance_type": "idiom",
+      "idiom_note": "源自電影剪接「直接跳到追逐高潮戲」，開會省時聚焦超好用。",
+      "sort_order": 3,
+      "audio_normal_url": "/audio/expressions/exp-35_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-35_slow.mp3"
+    },
+    {
+      "id": "exp-36",
+      "group_id": "grp-spec-biz-focus",
+      "standard_en": "The final conclusion is...",
+      "native_en": "Here's the bottom line.",
+      "meaning_zh": "核心底線／最終結論就是⋯⋯",
+      "register_tag": "neutral",
+      "nuance_type": "idiom",
+      "idiom_note": "原指財報最底行的淨利，商務口語指「最關鍵的結論與底線」。",
+      "sort_order": 4,
+      "audio_normal_url": "/audio/expressions/exp-36_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-36_slow.mp3"
+    },
+    {
+      "id": "exp-37",
+      "group_id": "grp-spec-biz-focus",
+      "standard_en": "You can trust my work.",
+      "native_en": "You can count on me.",
+      "meaning_zh": "你可以完全放心信賴我！",
+      "register_tag": "neutral",
+      "nuance_type": "idiom",
+      "idiom_note": "面試與專案承諾時最有溫度的保證句，比 trust 更有「靠得住」的團隊感。",
+      "sort_order": 5,
+      "audio_normal_url": "/audio/expressions/exp-37_normal.mp3",
+      "audio_slow_url": "/audio/expressions/exp-37_slow.mp3"
     }
   ],
   "exercises": [
@@ -6141,6 +7882,586 @@
       "explanation_zh": "出自《500 Mini-Dialogues》第 500 壓軸篇：in a couple of minutes（再幾分鐘）。",
       "time_limit_sec": 3,
       "sort_order": 60
+    },
+    {
+      "id": "quiz-mtg-1",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": "dlg-meeting-1",
+      "exercise_type": "listening_choice",
+      "prompt_text": "聽音檔，選出你在會議中提出折衷方案的核心內容：",
+      "prompt_audio_url": "/audio/turns/turn-mtg-6_normal.mp3",
+      "options_json": [
+        "建議先針對一成用戶小規模試推（soft launch）",
+        "要求將產品發表全面取消並重寫程式",
+        "提議改由行銷團隊自行負責品質測試",
+        "表示完全同意週五立刻向全部用戶開放"
+      ],
+      "correct_answer": "建議先針對一成用戶小規模試推（soft launch）",
+      "acceptable_answers_json": [],
+      "explanation_zh": "A soft launch for ten percent of users might be one option 表示「先對一成用戶試推或許是個選項」。",
+      "time_limit_sec": null,
+      "sort_order": 1
+    },
+    {
+      "id": "quiz-mtg-2",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": "dlg-meeting-1",
+      "exercise_type": "fill_in_blank",
+      "prompt_text": "那說得有道理，但先聽我把話說完。\nThat's fair, but ________ ________ ________.",
+      "prompt_audio_url": "/audio/turns/turn-mtg-4_normal.mp3",
+      "options_json": [
+        "hear me out",
+        "cut the chase",
+        "walk me through",
+        "wrap it up"
+      ],
+      "correct_answer": "hear me out",
+      "acceptable_answers_json": [
+        "hear me out"
+      ],
+      "explanation_zh": "hear me out 表示「先聽我把話說完／聽我解釋」，是美式會議委婉反對的黃金片語。",
+      "time_limit_sec": null,
+      "sort_order": 2
+    },
+    {
+      "id": "quiz-mtg-3",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": "dlg-meeting-1",
+      "exercise_type": "reverse_translation",
+      "prompt_text": "請翻譯：「容我插一句，我覺得這週五有點趕。」",
+      "prompt_audio_url": "/audio/turns/turn-mtg-2_normal.mp3",
+      "options_json": null,
+      "correct_answer": "If I may jump in, I feel like this Friday is kind of tight.",
+      "acceptable_answers_json": [
+        "If I may, I feel like this Friday is kind of tight.",
+        "If I may jump in, I feel like this Friday is kind of tight for QA testing."
+      ],
+      "explanation_zh": "If I may (jump in) 禮貌切入發言，搭配 I feel like + kind of tight 軟化反對語氣。",
+      "time_limit_sec": null,
+      "sort_order": 3
+    },
+    {
+      "id": "quiz-prj-1",
+      "scenario_id": "scn-project",
+      "dialogue_id": "dlg-project-1",
+      "exercise_type": "listening_choice",
+      "prompt_text": "聽音檔，同事主動給你「heads-up」是因為發生什麼事？",
+      "prompt_audio_url": "/audio/turns/turn-prj-1_normal.mp3",
+      "options_json": [
+        "新專案的截止日期被提前了一週",
+        "專案預算被刪減了一半",
+        "經理決定取消本週的進度報告",
+        "客戶已經簽約並延後了驗收日"
+      ],
+      "correct_answer": "新專案的截止日期被提前了一週",
+      "acceptable_answers_json": [],
+      "explanation_zh": "They moved it up by a week! 意思是「他們把截止日提前了一週」。",
+      "time_limit_sec": null,
+      "sort_order": 1
+    },
+    {
+      "id": "quiz-prj-2",
+      "scenario_id": "scn-project",
+      "dialogue_id": "dlg-project-1",
+      "exercise_type": "fill_in_blank",
+      "prompt_text": "我現在沒辦法答應，我手頭工作已經分身乏術了。\nI can't commit right now. I'm ________ ________ ________.",
+      "prompt_audio_url": "/audio/turns/turn-prj-6_normal.mp3",
+      "options_json": [
+        "stretched pretty thin",
+        "playing it by ear",
+        "cutting to the chase",
+        "double-booked myself"
+      ],
+      "correct_answer": "stretched pretty thin",
+      "acceptable_answers_json": [
+        "stretched pretty thin"
+      ],
+      "explanation_zh": "be stretched pretty thin 形容工作滿載、分身乏術，是外商拒絕插單的高情商用語。",
+      "time_limit_sec": null,
+      "sort_order": 2
+    },
+    {
+      "id": "quiz-prj-3",
+      "scenario_id": "scn-project",
+      "dialogue_id": "dlg-project-1",
+      "exercise_type": "reverse_translation",
+      "prompt_text": "請翻譯：「你能幫我過目一下這份文件嗎？我這裡有點卡住了。」",
+      "prompt_audio_url": "/audio/turns/turn-prj-3_normal.mp3",
+      "options_json": null,
+      "correct_answer": "Could you look this over? I'm a bit stuck here.",
+      "acceptable_answers_json": [
+        "Could you look this over? I'm a bit stuck on the budget slide.",
+        "Could you look this over? I am a bit stuck here."
+      ],
+      "explanation_zh": "look this over 表示「過目／快速審核」，I'm a bit stuck 表示「我有點卡住了」。",
+      "time_limit_sec": null,
+      "sort_order": 3
+    },
+    {
+      "id": "quiz-sch-1",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": "dlg-schedule-1",
+      "exercise_type": "listening_choice",
+      "prompt_text": "聽音檔，為什麼你要請求把明天的會議改期？",
+      "prompt_audio_url": "/audio/turns/turn-sch-2_normal.mp3",
+      "options_json": [
+        "臨時有突發狀況，且不小心行程撞期了",
+        "因為簡報還沒做好，想再拖延一週",
+        "因為出差班機取消，無法上網開會",
+        "因為想把會議改成純 Email 溝通"
+      ],
+      "correct_answer": "臨時有突發狀況，且不小心行程撞期了",
+      "acceptable_answers_json": [],
+      "explanation_zh": "Something came up and I accidentally double-booked myself 表示臨時有狀況且行程重複預約。",
+      "time_limit_sec": null,
+      "sort_order": 1
+    },
+    {
+      "id": "quiz-sch-2",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": "dlg-schedule-1",
+      "exercise_type": "fill_in_blank",
+      "prompt_text": "我們要把它順延到週四嗎？\nShould we ________ ________ to Thursday?",
+      "prompt_audio_url": "/audio/turns/turn-sch-3_normal.mp3",
+      "options_json": [
+        "push it",
+        "move up",
+        "wrap up",
+        "count on"
+      ],
+      "correct_answer": "push it",
+      "acceptable_answers_json": [
+        "push it"
+      ],
+      "explanation_zh": "push (a meeting) to [time] 表示將會議順延至某個新時段。",
+      "time_limit_sec": null,
+      "sort_order": 2
+    },
+    {
+      "id": "quiz-sch-3",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": "dlg-schedule-1",
+      "exercise_type": "reverse_translation",
+      "prompt_text": "請翻譯：「我在想我們能不能改期。」",
+      "prompt_audio_url": "/audio/turns/turn-sch-2_normal.mp3",
+      "options_json": null,
+      "correct_answer": "I was wondering if we could reschedule.",
+      "acceptable_answers_json": [
+        "I was wondering if we could reschedule our meeting."
+      ],
+      "explanation_zh": "I was wondering if we could... 是商務英語最客氣、最不易冒犯對方的改期起手式。",
+      "time_limit_sec": null,
+      "sort_order": 3
+    },
+    {
+      "id": "quiz-int-1",
+      "scenario_id": "scn-interview",
+      "dialogue_id": "dlg-interview-1",
+      "exercise_type": "listening_choice",
+      "prompt_text": "聽音檔，在面試收尾前你反問面試官的核心問題是什麼？",
+      "prompt_audio_url": "/audio/turns/turn-int-8_normal.mp3",
+      "options_json": [
+        "剛上任的前九十天達到什麼成果會被視為成功",
+        "公司每年有多少天帶薪特休與年終獎金",
+        "這份職位是否每週都可以遠距在家上班",
+        "面試結果最快明天早上會不會通知"
+      ],
+      "correct_answer": "剛上任的前九十天達到什麼成果會被視為成功",
+      "acceptable_answers_json": [],
+      "explanation_zh": "What would success look like in the first ninety days...? 是外商面試極具加分效果的反問問題。",
+      "time_limit_sec": null,
+      "sort_order": 1
+    },
+    {
+      "id": "quiz-int-2",
+      "scenario_id": "scn-interview",
+      "dialogue_id": "dlg-interview-1",
+      "exercise_type": "fill_in_blank",
+      "prompt_text": "我的執行力很紮實，大家都能信賴我。\nMy execution is solid and people can ________ ________ ________.",
+      "prompt_audio_url": "/audio/turns/turn-int-6_normal.mp3",
+      "options_json": [
+        "count on me",
+        "hear me out",
+        "look me over",
+        "push me back"
+      ],
+      "correct_answer": "count on me",
+      "acceptable_answers_json": [
+        "count on me"
+      ],
+      "explanation_zh": "count on someone 表示「信賴、倚靠某人」，在面試中能自然傳達可靠度。",
+      "time_limit_sec": null,
+      "sort_order": 2
+    },
+    {
+      "id": "quiz-int-3",
+      "scenario_id": "scn-interview",
+      "dialogue_id": "dlg-interview-1",
+      "exercise_type": "reverse_translation",
+      "prompt_text": "請翻譯：「我目前在一家科技新創擔任產品行銷。」",
+      "prompt_audio_url": "/audio/turns/turn-int-2_normal.mp3",
+      "options_json": null,
+      "correct_answer": "Right now, I'm in a product marketing role at a tech startup.",
+      "acceptable_answers_json": [
+        "I'm in a product marketing role at a tech startup.",
+        "It's a product marketing role at a tech startup."
+      ],
+      "explanation_zh": "美式自我介紹常用 \"I'm in a [領域] role at a [公司類型]\"，比死板說 department 更自然專業。",
+      "time_limit_sec": null,
+      "sort_order": 3
+    },
+    {
+      "id": "q3s-61",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "那樣講有道理，但先聽我說完。",
+      "prompt_audio_url": "/audio/qa/q3s-61_q.mp3",
+      "prompt_en": "This launch plan seems a bit risky, right?",
+      "situation_tag": "職場會議",
+      "options_json": null,
+      "correct_answer": "That's fair, but hear me out.",
+      "correct_answer_zh": "那樣講有道理，但請先聽我把話說完。",
+      "answer_audio_normal_url": "/audio/qa/q3s-61_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-61_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-61_a_zh.mp3",
+      "acceptable_answers_json": [
+        "That's fair, but hear me out."
+      ],
+      "explanation_zh": "出自《口說卡關救星》：開會遇到質疑時，先用 That's fair 肯定對方，再用 hear me out 拿回發言權。",
+      "time_limit_sec": 3,
+      "sort_order": 61
+    },
+    {
+      "id": "q3s-62",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "我明白你的觀點，但我還沒完全被說服。",
+      "prompt_audio_url": "/audio/qa/q3s-62_q.mp3",
+      "prompt_en": "So, are you convinced we should go with Option A?",
+      "situation_tag": "職場會議",
+      "options_json": null,
+      "correct_answer": "I see your point, I'm just not fully sold yet.",
+      "correct_answer_zh": "我明白你的論點，只是我還沒完全被說服。",
+      "answer_audio_normal_url": "/audio/qa/q3s-62_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-62_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-62_a_zh.mp3",
+      "acceptable_answers_json": [
+        "I see your point, I'm just not fully sold yet."
+      ],
+      "explanation_zh": "委婉保留意見的經典美式說法，避免直接說 I disagree 造成對立。",
+      "time_limit_sec": 3,
+      "sort_order": 62
+    },
+    {
+      "id": "q3s-63",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "好，那我們直接切入重點吧！",
+      "prompt_audio_url": "/audio/qa/q3s-63_q.mp3",
+      "prompt_en": "Wait, I think we lost track of the main goal.",
+      "situation_tag": "職場會議",
+      "options_json": null,
+      "correct_answer": "Fair enough. Let's cut to the chase!",
+      "correct_answer_zh": "有道理，我們直接切入重點吧！",
+      "answer_audio_normal_url": "/audio/qa/q3s-63_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-63_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-63_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Fair enough. Let's cut to the chase!"
+      ],
+      "explanation_zh": "出自《McGraw-Hill》第 48 單元：cut to the chase 用於把發散的會議拉回焦點。",
+      "time_limit_sec": 3,
+      "sort_order": 63
+    },
+    {
+      "id": "q3s-64",
+      "scenario_id": "scn-meeting",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "很有道理，我接受你的觀點。",
+      "prompt_audio_url": "/audio/qa/q3s-64_q.mp3",
+      "prompt_en": "That extra step might slow down checkout for mobile users.",
+      "situation_tag": "職場會議",
+      "options_json": null,
+      "correct_answer": "Point well taken. Let us simplify that step.",
+      "correct_answer_zh": "很有道理，我們來簡化那個步驟。",
+      "answer_audio_normal_url": "/audio/qa/q3s-64_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-64_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-64_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Point well taken. Let us simplify that step.",
+        "Point well taken. Let's simplify that step."
+      ],
+      "explanation_zh": "出自《McGraw-Hill》：Point well taken 展現開明與專業氣度。",
+      "time_limit_sec": 3,
+      "sort_order": 64
+    },
+    {
+      "id": "q3s-65",
+      "scenario_id": "scn-project",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "還沒，我手頭上還在趕工。",
+      "prompt_audio_url": "/audio/qa/q3s-65_q.mp3",
+      "prompt_en": "Did you send the updated file to the client yet?",
+      "situation_tag": "專案協調",
+      "options_json": null,
+      "correct_answer": "Not yet, still working on it. Should be ready by five.",
+      "correct_answer_zh": "還沒，還在處理中。五點前應該會好。",
+      "answer_audio_normal_url": "/audio/qa/q3s-65_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-65_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-65_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Not yet, still working on it. Should be ready by five."
+      ],
+      "explanation_zh": "出自《口說卡關救星》：回報「還沒好」時順帶給出預計完成時間（ETA），最顯專業。",
+      "time_limit_sec": 3,
+      "sort_order": 65
+    },
+    {
+      "id": "q3s-66",
+      "scenario_id": "scn-project",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "我現在沒辦法答應，我手頭工作已經分身乏術了。",
+      "prompt_audio_url": "/audio/qa/q3s-66_q.mp3",
+      "prompt_en": "Can you help cover the client deck tomorrow?",
+      "situation_tag": "專案協調",
+      "options_json": null,
+      "correct_answer": "I can't commit right now. I'm stretched pretty thin.",
+      "correct_answer_zh": "我現在沒辦法答應，我手頭事情已經分身乏術了。",
+      "answer_audio_normal_url": "/audio/qa/q3s-66_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-66_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-66_a_zh.mp3",
+      "acceptable_answers_json": [
+        "I can't commit right now. I'm stretched pretty thin."
+      ],
+      "explanation_zh": "禮貌但直接拒絕超載插單的必背美式句型。",
+      "time_limit_sec": 3,
+      "sort_order": 66
+    },
+    {
+      "id": "q3s-67",
+      "scenario_id": "scn-project",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "很樂意幫忙，我們一起來看一下吧。",
+      "prompt_audio_url": "/audio/qa/q3s-67_q.mp3",
+      "prompt_en": "Could you look this proposal over? I am a bit stuck here.",
+      "situation_tag": "專案協調",
+      "options_json": null,
+      "correct_answer": "Happy to help! Let's review it together.",
+      "correct_answer_zh": "很樂意幫忙！我們一起來過目一下。",
+      "answer_audio_normal_url": "/audio/qa/q3s-67_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-67_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-67_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Happy to help! Let's review it together."
+      ],
+      "explanation_zh": "出自《口說卡關救星》：Happy to help 是美商同事間最溫暖俐落的答應語。",
+      "time_limit_sec": 3,
+      "sort_order": 67
+    },
+    {
+      "id": "q3s-68",
+      "scenario_id": "scn-project",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "謝謝告知，我會相應調整我們的計畫。",
+      "prompt_audio_url": "/audio/qa/q3s-68_q.mp3",
+      "prompt_en": "Just a quick heads-up, the deadline moved up by two days.",
+      "situation_tag": "專案協調",
+      "options_json": null,
+      "correct_answer": "Thanks, I appreciate that. We'll adjust our plans accordingly.",
+      "correct_answer_zh": "謝謝，感謝你提前提醒。我們會相應調整計畫。",
+      "answer_audio_normal_url": "/audio/qa/q3s-68_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-68_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-68_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Thanks, I appreciate that. We'll adjust our plans accordingly."
+      ],
+      "explanation_zh": "結合 quick heads-up 與 adjust accordingly，完美回應突發變動。",
+      "time_limit_sec": 3,
+      "sort_order": 68
+    },
+    {
+      "id": "q3s-69",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "對，我不小心把行程時間撞在一起了。",
+      "prompt_audio_url": "/audio/qa/q3s-69_q.mp3",
+      "prompt_en": "Did something come up for tomorrow afternoon?",
+      "situation_tag": "日程與改期",
+      "options_json": null,
+      "correct_answer": "Yeah, I accidentally double-booked myself.",
+      "correct_answer_zh": "對，我不小心把行程撞期了。",
+      "answer_audio_normal_url": "/audio/qa/q3s-69_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-69_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-69_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Yeah, I accidentally double-booked myself."
+      ],
+      "explanation_zh": "出自《口說卡關救星》：double-book oneself 精準表達行事曆撞期。",
+      "time_limit_sec": 3,
+      "sort_order": 69
+    },
+    {
+      "id": "q3s-70",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "那樣對我來說可能比較好。",
+      "prompt_audio_url": "/audio/qa/q3s-70_q.mp3",
+      "prompt_en": "This week is pretty packed. Should we push it to next week?",
+      "situation_tag": "日程與改期",
+      "options_json": null,
+      "correct_answer": "That might work better for me, too.",
+      "correct_answer_zh": "那樣對我來說可能也比較合適。",
+      "answer_audio_normal_url": "/audio/qa/q3s-70_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-70_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-70_a_zh.mp3",
+      "acceptable_answers_json": [
+        "That might work better for me, too."
+      ],
+      "explanation_zh": "用 might work better 委婉同意改期，語氣自然不生硬。",
+      "time_limit_sec": 3,
+      "sort_order": 70
+    },
+    {
+      "id": "q3s-71",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "聽起來不錯，有消息隨時讓我知道。",
+      "prompt_audio_url": "/audio/qa/q3s-71_q.mp3",
+      "prompt_en": "I should be free after three o clock tomorrow.",
+      "situation_tag": "日程與改期",
+      "options_json": null,
+      "correct_answer": "Sounds good, keep me posted!",
+      "correct_answer_zh": "聽起來不錯，有消息隨時通知我！",
+      "answer_audio_normal_url": "/audio/qa/q3s-71_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-71_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-71_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Sounds good, keep me posted!"
+      ],
+      "explanation_zh": "keep me posted 是約時間與等回覆最常用的美式收尾句。",
+      "time_limit_sec": 3,
+      "sort_order": 71
+    },
+    {
+      "id": "q3s-72",
+      "scenario_id": "scn-schedule",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "我們到時候看情況隨機應變吧，我明天早上再確認。",
+      "prompt_audio_url": "/audio/qa/q3s-72_q.mp3",
+      "prompt_en": "Are we sure about the venue for Friday?",
+      "situation_tag": "日程與改期",
+      "options_json": null,
+      "correct_answer": "Let's play it by ear. I'll confirm tomorrow morning.",
+      "correct_answer_zh": "我們看情況彈性安排吧，我明天早上再跟你確認。",
+      "answer_audio_normal_url": "/audio/qa/q3s-72_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-72_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-72_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Let's play it by ear. I'll confirm tomorrow morning."
+      ],
+      "explanation_zh": "play it by ear（隨機應變）加上明確確認時間點，既彈性又負責任。",
+      "time_limit_sec": 3,
+      "sort_order": 72
+    },
+    {
+      "id": "q3s-73",
+      "scenario_id": "scn-interview",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "我目前在一家科技新創擔任產品行銷。",
+      "prompt_audio_url": "/audio/qa/q3s-73_q.mp3",
+      "prompt_en": "So, what kind of role are you in right now?",
+      "situation_tag": "英文面試",
+      "options_json": null,
+      "correct_answer": "It's a product marketing role at a tech startup.",
+      "correct_answer_zh": "是一家科技新創的產品行銷職位。",
+      "answer_audio_normal_url": "/audio/qa/q3s-73_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-73_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-73_a_zh.mp3",
+      "acceptable_answers_json": [
+        "It's a product marketing role at a tech startup."
+      ],
+      "explanation_zh": "出自《聊天交流全攻略》：用 role at a [company] 介紹現職最道地簡潔。",
+      "time_limit_sec": 3,
+      "sort_order": 73
+    },
+    {
+      "id": "q3s-74",
+      "scenario_id": "scn-interview",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "我拿到了一個無法拒絕的絕佳錄取機會。",
+      "prompt_audio_url": "/audio/qa/q3s-74_q.mp3",
+      "prompt_en": "What brought you to this city last year?",
+      "situation_tag": "英文面試",
+      "options_json": null,
+      "correct_answer": "I got a job offer I couldn't refuse.",
+      "correct_answer_zh": "我得到了一個無法拒絕的工作機會。",
+      "answer_audio_normal_url": "/audio/qa/q3s-74_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-74_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-74_a_zh.mp3",
+      "acceptable_answers_json": [
+        "I got a job offer I couldn't refuse."
+      ],
+      "explanation_zh": "出自《聊天交流全攻略》：a job offer I couldn't refuse 既自信又帶點美式幽默感。",
+      "time_limit_sec": 3,
+      "sort_order": 74
+    },
+    {
+      "id": "q3s-75",
+      "scenario_id": "scn-interview",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "當然，你可以完全放心信賴我。",
+      "prompt_audio_url": "/audio/qa/q3s-75_q.mp3",
+      "prompt_en": "Can our team rely on you during tight product launches?",
+      "situation_tag": "英文面試",
+      "options_json": null,
+      "correct_answer": "Absolutely, you can count on me.",
+      "correct_answer_zh": "當然，你可以完全放心信賴我。",
+      "answer_audio_normal_url": "/audio/qa/q3s-75_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-75_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-75_a_zh.mp3",
+      "acceptable_answers_json": [
+        "Absolutely, you can count on me."
+      ],
+      "explanation_zh": "出自《McGraw-Hill》第 65 單元：count on me 傳達強烈的責任感與支持。",
+      "time_limit_sec": 3,
+      "sort_order": 75
+    },
+    {
+      "id": "q3s-76",
+      "scenario_id": "scn-interview",
+      "dialogue_id": null,
+      "exercise_type": "quick_response_3s",
+      "prompt_text": "我不敢說是最頂尖的，但非常紮實穩健。",
+      "prompt_audio_url": "/audio/qa/q3s-76_q.mp3",
+      "prompt_en": "How would you rate your presentation skills?",
+      "situation_tag": "英文面試",
+      "options_json": null,
+      "correct_answer": "I wouldn't say the best, but very solid.",
+      "correct_answer_zh": "我不敢說是最頂尖的，但水準非常紮實穩健。",
+      "answer_audio_normal_url": "/audio/qa/q3s-76_a_normal.mp3",
+      "answer_audio_slow_url": "/audio/qa/q3s-76_a_slow.mp3",
+      "answer_audio_zh_url": "/audio/qa/q3s-76_a_zh.mp3",
+      "acceptable_answers_json": [
+        "I wouldn't say the best, but very solid."
+      ],
+      "explanation_zh": "出自《口說卡關救星》：謙遜中帶自信的滿分美式答法。",
+      "time_limit_sec": 3,
+      "sort_order": 76
     }
   ],
   "users": [
@@ -6392,6 +8713,35 @@
         "loop_playlist": true
       },
       "created_at": "2026-11-22T12:00:00.000Z"
+    },
+    {
+      "id": "pl-workplace-pro",
+      "user_id": null,
+      "title_zh": "💼 職場商務實戰：開會、專案、改期與面試磨耳朵",
+      "description": "精選 4 大職場核心對話與 8 組高頻商務 3 秒快問快答，通勤一次練熟美式會議反對、進度協調、改期與面試口語。",
+      "is_system": true,
+      "playback_recipe_json": {
+        "name_zh": "經典三軌（常速 ➜ 慢速 ➜ 中文）",
+        "sequence": [
+          {
+            "track": "audio_normal_url",
+            "repeat": 1,
+            "pause_ms": 600
+          },
+          {
+            "track": "audio_slow_url",
+            "repeat": 1,
+            "pause_ms": 600
+          },
+          {
+            "track": "audio_zh_url",
+            "repeat": 1,
+            "pause_ms": 900
+          }
+        ],
+        "loop_playlist": true
+      },
+      "created_at": "2026-11-25T11:00:00.000Z"
     }
   ],
   "playlist_items": [
@@ -6872,6 +9222,134 @@
       "playlist_id": "pl-daily-health-weekend",
       "item_type": "exercise",
       "item_id": "q3s-58",
+      "sort_order": 16,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-1",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-mtg-2",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 1,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-2",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-mtg-4",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 2,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-3",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-prj-3",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 3,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-4",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-prj-6",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 4,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-5",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-sch-2",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 5,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-6",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-sch-6",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 6,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-7",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-int-2",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 7,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-t-8",
+      "item_type": "dialogue_turn",
+      "item_id": "turn-int-6",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 8,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-1",
+      "item_type": "exercise",
+      "item_id": "q3s-61",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 9,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-2",
+      "item_type": "exercise",
+      "item_id": "q3s-62",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 10,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-3",
+      "item_type": "exercise",
+      "item_id": "q3s-66",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 11,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-4",
+      "item_type": "exercise",
+      "item_id": "q3s-67",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 12,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-5",
+      "item_type": "exercise",
+      "item_id": "q3s-69",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 13,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-6",
+      "item_type": "exercise",
+      "item_id": "q3s-71",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 14,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-7",
+      "item_type": "exercise",
+      "item_id": "q3s-73",
+      "playlist_id": "pl-workplace-pro",
+      "sort_order": 15,
+      "is_system": true
+    },
+    {
+      "id": "pli-biz-q-8",
+      "item_type": "exercise",
+      "item_id": "q3s-75",
+      "playlist_id": "pl-workplace-pro",
       "sort_order": 16,
       "is_system": true
     }

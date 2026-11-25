@@ -20,7 +20,8 @@ const GOAL_OPTIONS: { value: LearningGoal; label: string; desc: string }[] = [
   { value: 'travel_solo', label: '✈️ 出國自助行', desc: '機場、海關、餐廳點餐、問路自保' },
   { value: 'travel_group', label: '🛍️ 跟團救急血拼', desc: '自由活動逛街、試穿退換貨、必備急救句' },
   { value: 'daily_life', label: '🏡 零基礎生活日常', desc: '起床到就寢 500 句迷你對話與動詞片語' },
-  { value: 'small_talk', label: '💬 美式社交與職場', desc: '偶遇閒聊不句點、緩衝語氣與電話轉接' },
+  { value: 'small_talk', label: '💬 美式社交與閒聊', desc: '偶遇破冰不句點、週末邀約與緩衝語氣' },
+  { value: 'workplace', label: '💼 職場商務進階', desc: '開會反對、專案協調、日程改期與英文面試' },
 ];
 
 const LEVEL_OPTIONS: { value: DifficultyLevel; label: string }[] = [

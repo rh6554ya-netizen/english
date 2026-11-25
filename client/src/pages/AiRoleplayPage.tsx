@@ -62,10 +62,11 @@ const LEVEL_META: { id: DifficultyLevel; label: string; desc: string }[] = [
 ];
 
 const CAT_FILTERS = [
-  { id: 'all', label: '全部 11 情境' },
+  { id: 'all', label: `全部 ${ROLEPLAY_PRESETS.length} 情境` },
+  { id: 'business', label: '💼 職場商務' },
   { id: 'travel', label: '✈️ 旅遊自保' },
   { id: 'shopping', label: '🛍️ 購物血拼' },
-  { id: 'social', label: '💬 社交職場' },
+  { id: 'social', label: '💬 社交閒聊' },
   { id: 'daily', label: '🏡 生活日常' },
 ] as const;
 
